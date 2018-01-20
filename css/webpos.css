@@ -1,0 +1,113 @@
+.page-content-wrapper .page-content {
+    min-height: 590px!important;
+}
+
+.webpos-card {
+    width: 175px!important;
+    max-height: 175px!important;
+    min-height: 175px!important;
+    padding: 0;
+    margin: 15px!important;
+    float: left;
+}
+
+.webpos-product {
+    width: 67px!important;
+    margin: 0 auto;
+}
+
+.webpos-prname {
+    font-size: 14px!important;
+    text-align: left;
+    margin-left: 5px!important;
+}
+
+.webpos-prstock {
+    text-align: left;
+    margin-left: 5px!important;
+    font-size: 13px!important;
+}
+
+.webpos-icon-popup {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ul-search {
+    width: 50%!important;
+}
+
+.page-toolbar {
+    padding: 11px!important;
+}
+
+.webpos-customer {
+    margin: 0px -20px 0;
+    padding: 10px 10px 10px;
+    border-left: 1px solid #e7ecf1;
+    border-bottom: 1px solid #e7ecf1;
+}
+
+.webpos-footer-cart {
+    margin: 0px -20px 0;
+    padding: 7px;
+    border-left: 1px solid #e7ecf1;
+    border-bottom: 1px solid #e7ecf1;
+}
+
+.webpos-cart {
+    height: 50vh;
+    margin: 0px -20px 0;
+}
+
+.webpos-total {
+    margin: 10px 0;
+}
+
+.webpos-button-cart {
+    width: 100%!important;
+    margin-bottom: 5px;
+}
+
+.custom {
+    margin-right: 10px;
+}
+
+.list-product {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.list-product li {
+    border-bottom: 1px solid #e7ecf1;
+}
+
+.im-product {
+    width: 50px;
+}
+
+.product-name {
+    display: inline-block;
+    margin: 15px 0;
+    width: 50%;
+}
+
+.product-avai {
+    display: inline-block;
+    margin: 0;
+}
+
+.product-avai input {
+    width: 35px;
+    text-align: center;
+}
+
+.product-input-qty {}
+
+.webpos-pagi {
+    text-align: center;
+    padding: 5px;
+}
