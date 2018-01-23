@@ -100,6 +100,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
                             'js/controllers/WebposController.js',
+                            'js/store.js',
                         ]
                     });
                 }]

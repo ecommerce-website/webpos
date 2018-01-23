@@ -2,8 +2,748 @@
 <div ng-controller="WebposController">
 
     <div class="container-fluid">
-        <div class="row">
-            Webpos
+        <div class="col-md-9 col-sm-12 col-xs-12" >
+            <div class="row" style="margin :15px 10px">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <form class="input-group search-form search-form-expanded" action="page_general_search_2.html" method="GET">
+                        <input type="text" class="form-control" placeholder="Scan/search item (name or barcode)">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-th"></i>
+                        </span>
+                     </form>
+
+                </div >
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <a class=" btn btn-default" data-target="#stack1" data-toggle="modal"> Discount All</a>
+                    
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        TOOLS
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li>
+                            <a >Retrieve Layaway</a>
+                            
+                        </li>
+                        <li><a href="#">Return Items</a></li>
+                        </ul>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#draggable">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+                <!-- modal -->
+
+            <div class="modal fade draggable-modal" id="draggable" tabindex="-1" role="basic" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Start Dragging Here</h4>
+                        </div>
+                        <div class="modal-body"> Are you sure you want to reset the transaction? </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn blue">OK</button>
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end/modal -->
+            <div id="stack1" class="modal fade" tabindex="-1" data-width="400">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title" style="font-weight: 700">Discount All</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Enter discount value</h5>
+                                    <p>
+                                        <input type="text" class="col-md-12 form-control"> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn blue">OK</button>
+                            <button type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroller" style="margin-top: 20px; height: 600px " data-always-visible="1" data-rail-visible="0">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="portlet light portlet-fit bordered">
+                        
+                        <div class="portlet-body">
+                            <div class="mt-element-overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mt-overlay-1">
+                                            <img src="../assets/pages/img/page_general_search/01.jpg">
+                                            <div class="mt-overlay">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="">
+                                                            <i class=" glyphicon glyphicon-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-title">
+                            <div class="caption" style="text-align: center;">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">CHÂN VÁY IC01-6247_BR</span>
+                                <div class="caption-desc font-grey-cascade"> IC01-6247_Br</div>
+                                <p style="font-weight: bold">169,000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="transaction_actions_container" class="col-md-3 col-sm-12 col-xs-12">
+            <div id="transaction_actions_container_salesman" class="col-md-12 col-xs-12 col-sm-12" style="display: none;">
+                <div class="row" id="salesman_det_div_select">
+                    <div style="padding: 15px; color: #F8F8F8;">
+                        <div class="col-md-12 col-xs-12 col-sm-12 text-left">
+                            <span class="glyphicon glyphicon-user"></span>
+                            &nbsp; &nbsp; Salesman list <br>
+                        </div>
+                    </div>
+                </div>
+                <div id="salesman_list">
+                    <div class="row salesman_row" onclick="assignSalesman({&quot;id&quot;:1187,&quot;name&quot;:&quot;Hoàng Ngọc Nga&quot;,&quot;email&quot;:&quot;anny.ns.97@gmail.com&quot;,&quot;is_locked&quot;:null})">Hoàng Ngọc Nga</div>
+                </div>
+            </div>
+
+            <div id="transaction_actions_container_normal" class="col-md-12 col-xs-12 col-sm-12" style="display: block;">
+
+                <div class="row" id="salesman_det_div">
+                    <div style="padding: 15px; color: #F8F8F8;" >
+
+                        <div class="col-md-10 col-xs-1 col-sm-10 text-left">
+                            <div id="invoice_salesman">
+                                <span class="glyphicon glyphicon-user"></span> &nbsp; &nbsp;Hoàng Ngọc Nga
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-xs-2 col-sm-2 text-right">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="customer_details_show" style="display: none;">
+                    <div class="row" id="customer_det_div_select">
+                        <div class="col-md-10 col-xs-10 col-sm-10 text-left" style="padding: 15px">
+                            <div class="input-group" id="customer_div">
+							  <span class="input-group-addon" id="basic-addon1">
+								  <span class="glyphicon glyphicon-pawn float-left"></span>
+							  </span>
+                                <div id="input_invoice_customer_diabled"> </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-xs-2 col-sm-2 text-right" style="padding-left: 0px;">
+                            <div class="input-group" id="customer_div">
+								<span class="input-group-addon" id="basic-addon1" style="padding: 0px;">
+									<span class="glyphicon glyphicon-check float-left" style="padding: 15px;" onclick="replaceDiv( 'customer_details_show' , 'customer_details_hide')"></span>
+								</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 text-left" style="height: 45px; border-bottom: 1px solid #d8d8d8;">
+                            <h4> Customer Info </h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 text-left" style="min-height: 70px; padding-top: 10px; border-bottom: 1px solid #d8d8d8;">
+                            <div id="orange_text"><strong><small>Membership</small></strong></div><br>
+                            <div id="customer_membership"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 text-left" style="min-height: 70px; padding-top: 10px; border-bottom: 1px solid #d8d8d8;">
+                            <div id="orange_text"><strong><small>Points</small></strong></div><br>
+                            <div id="customer_points"><h4>undefined</h4></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 text-left" style="padding-top: 10px;">
+                            <div id="orange_text"><strong><small>Pending Transaction</small></strong></div><br>
+                            -
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div id="customer_details_hide">
+                    <div class="row" id="customer_det_div">
+                        <div class="col-md-10 col-xs-10 col-sm-10 text-left">
+                            <div class="input-group" id="customer_div">
+							    <span class="input-group-addon" id="basic-addon1">
+							        <span class="glyphicon glyphicon-pawn float-left" onclick="replaceDiv( 'customer_details_hide' , 'customer_details_show')"></span>
+							    </span>
+                                <input id="input_invoice_customer" type="text" placeholder="Customer Name" tabindex="-1" value="X-1515825888125" style="" class="selectized">
+                                <!-- <div class="selectize-control single">
+                                    <div class="selectize-input items full has-options has-items">
+                                        <div data-value="X-1515825888125">
+                                            <span class="name"> </span>
+                                        </div>
+                                        <input type="text" autocomplete="off" tabindex="" id="input_invoice_customer-selectized" style="width: 4px; opacity: 0; position: absolute; left: -10000px;">
+                                    </div>
+                                    <div class="selectize-dropdown single" style="display: none; width: 268px; top: 36px; left: 0px;">
+                                        <div class="selectize-dropdown-content">
+                                            <div data-selectable="" data-value="X-1515825888125" class="selected">
+                                                <span class="">X-1515825888125 -  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-xs-2 col-sm-2 text-right" style="padding-left: 0px;">
+                            <div class="input-group" id="customer_div">
+								<span class="input-group-addon" id="basic-addon1" style="padding: 0px;">
+									<span id="cust_details" class="glyphicon glyphicon-plus float-left" style="padding: 10px;" onclick="$('#customer_details_modal').appendTo('body').modal('show');"></span>
+								</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 20px; padding-right: 20px; padding-top:20px">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <strong style="font-size: 15px; font-weight: 700">&nbsp; &nbsp; Cart item</strong>
+                        
+                    </div>
+
+
+                    <div class="row " >
+                        <div class="scroller" style="height: 280px; padding: 0px" data-always-visible="1" data-rail-visible="0">
+                            <table class="table table-hover table-light " >
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 100px"> Chan Vay </td>
+                                        <td>
+                                            <div class="input-group bootstrap-touchspin" style="width: 110px">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                                </span>
+                                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                                <input id="touchspin_6" type="text" value="" name="demo_vertical" class="form-control" style="display: block;">
+                                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td> 169,00000 </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove text-center"></span>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width: 90px"> Chan Vay </td>
+                                        <td>
+                                            <div class="input-group bootstrap-touchspin" style="width: 120px">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                                </span>
+                                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                                <input id="touchspin_6" type="text" value="" name="demo_vertical" class="form-control" style="display: block;">
+                                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td> 169,00000 </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove text-center"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 90px"> Chan Vay </td>
+                                        <td>
+                                            <div class="input-group bootstrap-touchspin" style="width: 120px">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                                </span>
+                                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                                <input id="touchspin_6" type="text" value="" name="demo_vertical" class="form-control" style="display: block;">
+                                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td> 169,00000 </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove text-center"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 90px"> Chan Vay </td>
+                                        <td>
+                                            <div class="input-group bootstrap-touchspin" style="width: 120px">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                                </span>
+                                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                                <input id="touchspin_6" type="text" value="" name="demo_vertical" class="form-control" style="display: block;">
+                                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td> 169,00000 </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove text-center"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+
+                    <strong>
+                        <strong>
+                            <div class="row" style="padding-left: 5px; padding-right: 20px; padding-top:20px">
+                                <div class="col-md-6" id="orange_text">
+                                    <strong>TOTAL</strong>
+                                </div>
+                                <div class="col-md-6" id="invoice_amount" align="right">$992.00</div>
+                                <strong><strong></strong></strong>
+                            </div>
+                            <strong><strong>
+
+                            <div id="tax_breakdown" class="row" style="padding-left: 20px; padding-right: 20px; padding-top:10px">
+                                <div class="col-md-12 col-xs-12 col-sm-12 text-left" style="padding: 0px;">
+                                    <div><strong>Giảm giá</strong><br></div>
+                                </div>
+
+                                <div id="tax_list"></div>
+                            </div>
+
+                            <div class="row" style="padding-left: 5px; padding-right: 20px; padding-top:20px">
+                                <div class="col-md-6" id="orange_text">
+                                    <strong>TOTAL</strong>
+                                </div>
+                                <div class="col-md-6" id="invoice_amount" align="right">$992.00</div>
+                                <strong><strong></strong></strong>
+                            </div>
+                        </strong>
+                    </strong>
+                    <div id="right_bar_buttons">
+                        <strong><strong></strong></strong>
+                        <center>
+                            <strong><strong><hr></strong></strong>
+                            <div id="normal_buttons">
+                                <a href="checkout.html" id="green_button" class="btn btn-default btn-md" onclick="showCheckout( event, 'N' );"> CHECKOUT </a>
+                                <br><br>
+                                <a href="#" id="grey_button" class="btn btn-default btn-md layaway_menu" onclick="showCheckout( event, 'L' );"> LAYAWAY </a>
+                                <br><br>
+                            </div>
+                            <div id="return_button" style="display: none;">
+                                <a href="#" id="red_button" class="btn btn-default btn-md" onclick="sendReturn( event );"> RETURN </a><br><br>
+                                <a href="#" id="grey_button" class="btn btn-default btn-md" onclick="cancelReturn( event );"> CANCEL RETURN </a><br><br>
+                            </div>
+                        </center>
+                    </div>
+
+                </strong></strong></div>
+
+            </div>
+
+            <div id="customer_details_modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            Customer Details
+                        </div>
+
+                        <div class="modal-body col-md-12">
+                            <br>
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <label>First Name</label>
+                                <input id="customer_first_name" type="text" class="form-control">
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <br>
+                                <label>Last Name</label>
+                                <input id="customer_last_name" type="text" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 col-xs-6 col-sm-6">
+                                <br>
+                                <label>Telephone</label>
+                                <input id="customer_telephone" type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-sm-6">
+                                <br>
+                                <label>Mobile</label>
+                                <input id="customer_cellphone" type="text" class="form-control">
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <br>
+                                <label>Email</label>
+                                <input id="customer_email" type="text" class="form-control">
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <br>
+                                <label>Notes</label>
+                                <textarea id="customer_notes" class="form-control doc_header" placeholder="Type notes" rows="3"></textarea>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="createCustomer( event )"> Done </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- START - SCRIPT & STYLE-->
+            <script>
+
+                var customer_selectize = $('#input_invoice_customer').selectize({
+                    // 	    	   create: function (input, callback){
+                    // 				    console.log("Created")
+                    //   				},
+                    persist: false,
+                    maxItems: 1,
+                    valueField: 'code',
+                    searchField: ['name', 'code'],
+                    render: {
+                        item: function(item, escape) {
+                            return '<div>' +
+                                (item.name ? '<span class="name">' + escape(item.name) + '</span>' : '') +
+                                '</div>';
+                        },
+                        option: function(item, escape) {
+                            var label = item.code + " - " + item.name || item.name;
+                            var caption = item.name ? item.code : null;
+                            return '<div>' + '<span class="">' + escape(label) + '</span>' + '</div>';
+                        }
+                    },
+                    onChange: function(value) {
+                        console.log("Change");
+                        console.log(value);
+                        if ( value !== "" ){
+                            $('#cust_details').removeClass("glyphicon-plus");
+                            $('#cust_details').addClass("glyphicon-info-sign");
+                            $('#cust_details').attr('onclick', 'replaceDiv( \'customer_details_hide\' , \'customer_details_show\')');
+                            assignCustomerToInvoice( value );
+                        }
+                        sessionStorage.setItem("customer_id", value);
+                    },
+                    onDelete: function(value){
+                        console.log("Delete");
+                        $('#cust_details').removeClass("glyphicon-info-sign");
+                        $('#cust_details').addClass("glyphicon-plus");
+                        $('#cust_details').attr('onclick', '$(\'#customer_details_modal\').appendTo(\'body\').modal(\'show\');');
+                        deleteCustomerFromInvoice();
+                    },
+                    load: function(query, callback) {
+                        if (!query.length) return callback();
+                        var customerTransaction = database.transaction(["customers"], "readonly");
+                        var customerObjectStore = customerTransaction.objectStore("customers");
+
+                        filter 		= query.toLowerCase();
+                        var customer_list = [];
+
+                        customerObjectStore.openCursor().onsuccess = function ( event ) {
+                            var matching_customer = event.target.result;
+                            if (matching_customer){
+                                if ((matching_customer.value.name.toLowerCase()).indexOf(filter) != -1 )
+                                    customer_list.push(matching_customer.value);
+                                matching_customer.continue();
+                            } else {
+                                callback(customer_list);
+                            }
+                        };
+                    }
+                });
+
+            </script>
         </div>
     </div>
 </div>

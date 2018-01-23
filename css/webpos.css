@@ -111,3 +111,333 @@
     text-align: center;
     padding: 5px;
 }
+
+body{
+    height: auto;
+}
+.page-content-wrapper>.page-content{
+    overflow: auto;
+    padding:0px!important;
+}
+.table>tbody>tr>td {
+    height: 80px;
+    vertical-align: middle;
+    padding: 0px;
+}
+
+#table_header_lines {
+    height: 50px;
+    background-color: #f8f8f8;
+    font-size: 12pt;
+}
+
+.text-left {
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+#cus {
+    height: 36px;
+    border: 0;
+    border-radius: 0%;
+    border-bottom: 1.2px solid #c2cad8;
+    font-size: 14px;
+}
+
+#green_button {
+    color: #3db58e;
+    border: 2px solid #3db58e;
+    width: 100%;
+    /*padding-left: 5px;*/
+}
+
+#grey_button {
+    color: #424949;
+    border: 2px solid #d8d8d8;
+    width: 100%;
+    /*padding-left: 5px;*/
+
+}
+
+#transaction_actions_container {
+    background-color: #FFFFFF;
+    border-left: 1px solid #d8d8d8;
+    position: relative;
+    padding-right: 0px;
+}
+#salesman_det_div {
+    min-height: 43px;
+    background-color: #566472;
+}
+
+#salesman_det_div_select {
+    min-height: 43px;
+    background-color: #ea6333;
+}
+
+.salesman_row {
+    min-height: 60px;
+    padding: 20px;
+    border-bottom: 1px solid #d8d8d8;
+    cursor: pointer;
+}
+
+.selectize-control {
+    position: relative;
+}
+
+#customer_div .selectize-input.items {
+    border: none;
+    background-color: #F8F8F8;
+    box-shadow: none;
+    padding-top: 10px;
+}
+#basic-addon1{
+    border: none;
+    background-color: #F8F8F8;
+    padding: 10px 10px 0px 10px;
+}
+
+.selectize-dropdown {
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #d0d0d0;
+    background: #ffffff;
+    margin: -1px 0 0 0;
+    border-top: 0 none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+
+#customer_det_div {
+    min-height: 43px;
+    background-color: #f8f8f8;
+}
+
+#input_invoice_customer{
+    margin-top: 10px;
+    border-style: none;
+    padding: 0px 10px;
+    background-color: #f8f8f8;
+    width: 220px;
+}
+
+#invoice_summary {
+    /*height: 100vh;*/
+    border-right: 1px solid #d8d8d8;
+}
+
+#payment_summary {
+    background-color: #FFFFFF;
+    min-height: 130px;
+    overflow: auto;
+}
+
+#orange_text {
+    color: #ea6333;
+}
+
+#invoice_total_summary {
+    font-size: 18pt;
+}
+
+.collapse.in {
+    display: block;
+}
+
+.collapse {
+    display: none;
+}
+
+.item_line {
+    margin: 0px;
+    padding: 10px;
+    min-height: 40px;
+    border-bottom: 1px solid #d8d8d8;
+}
+#invoice_lines_summary{
+    padding: 0px;
+    background-color: #f2f3f4;
+}
+
+#payment_wrapper {
+    /*height: 100vh;*/
+    padding: 0px;
+    background-color: #FFFFFF;
+}
+
+#payment_container{
+    padding: 0px;
+    margin-right: 0px;
+}
+
+#checkout_summary {
+    padding: 0px;
+
+}
+
+#payment_input {
+    min-height: 130px;
+    max-height: 130px;
+    background-color: #566472;
+}
+
+#payment_back a {
+    color: #FFF;
+}
+
+.big-input {
+    height: 65px;
+    min-width: 97%;
+    border-radius: 15px;
+    font-size: 30pt;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#right_buttons {
+    position: fixed;
+    bottom: 10px;
+    right: 2%;
+    width: 75%;
+}
+
+#payment_button_green {
+    min-width: 220px;
+}
+
+.header {
+    overflow:hidden;
+}
+.logo {
+    background-color:#FFFFFF;
+    text-align:left;
+    float:left;
+}
+.logo>img{
+    width: 50%;
+}
+.company {
+    padding-top:24px;
+    text-transform:uppercase;
+    background-color:#FFFFFF;
+    text-align:center;
+    font-size:20px;
+}
+.title {
+    text-align:center;
+    position:relative;
+    font-size: 20px;
+    top:1px;
+}
+.footer-left {
+    text-align:center;
+    text-transform:uppercase;
+    padding-top:24px;
+    position:relative;
+    width:50%;
+    color:#000;
+    float:left;
+    font-size: 12px;
+    bottom:1px;
+}
+.footer-right {
+    text-align:center;
+    text-transform:uppercase;
+    padding-top:24px;
+    position:relative;
+    width:50%;
+    color:#000;
+    font-size: 12px;
+    float:right;
+    bottom:1px;
+}
+.TableData {
+    background:#ffffff;
+    font: 11px;
+    width:100%;
+    border-collapse:collapse;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+    border:thin solid #d3d3d3;
+}
+.TableData TH {
+    background: rgba(0,0,255,0.1);
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    border: solid 1px #ccc;
+    height: 24px;
+}
+.TableData TR {
+    height: 24px;
+    border:thin solid #d3d3d3;
+}
+.TableData TR TD {
+    padding-right: 2px;
+    padding-left: 2px;
+    border:thin solid #d3d3d3;
+}
+.TableData TR:hover {
+    background: rgba(0,0,0,0.05);
+}
+.TableData .cotSTT {
+    text-align:center;
+    width: 10%;
+}
+.TableData .cotTenSanPham {
+    text-align:left;
+    width: 40%;
+}
+.TableData .cotHangSanXuat {
+    text-align:left;
+    width: 20%;
+}
+.TableData .cotGia {
+    text-align:right;
+    width: 120px;
+}
+.TableData .cotSoLuong {
+    text-align: center;
+    width: 50px;
+}
+.TableData .cotSo {
+    text-align: right;
+    width: 120px;
+}
+.TableData .tong {
+    text-align: right;
+    font-weight:bold;
+    text-transform:uppercase;
+    padding-right: 4px;
+}
+.TableData .cotSoLuong input {
+    text-align: center;
+}
+
+.tabbable-line>.tab-content {
+    margin-top: 0;
+    border: 0;
+    padding: 30px 0;
+}
+
+.portlet.light.bordered>.portlet-title {
+     border-bottom: none;
+}
