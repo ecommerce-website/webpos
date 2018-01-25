@@ -103,10 +103,56 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
             templateUrl: "views/checkout.html",
             data: { pageTitle: 'Checkout' }
         })
-        .state('stockroom', {
-            url: "/stockroom.html",
-            templateUrl: "views/stockroom.html",
-            data: { pageTitle: 'Stock Room' }
+        .state('product', {
+            url: "/product.html",
+            templateUrl: "views/product.html",
+            data: { pageTitle: 'Stock Room' },
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'WebposApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css/product.css',
+                            'assets/pages/scripts/ui-modals.min.js',
+                            'assets/pages/scripts/table-datatables-managed.min.js',
+                            'assets/global/plugins/icheck/icheck.min.js',
+                            'assets/pages/scripts/form-icheck.min.js',
+                            'js/product.js',
+                            'js/print.js',
+                            'js/services/Product.js',
+                            'js/services/BuildUrl.js',
+                            'js/services/CallApi.js',
+                            'js/controllers/WebposController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('inventories', {
+            url: "/inventories.html",
+            templateUrl: "views/inventories.html",
+            data: { pageTitle: 'Inventories' },
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'WebposApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css/inventor.css',
+                            'assets/pages/scripts/ui-modals.min.js',
+                            'assets/pages/scripts/table-datatables-managed.min.js',
+                            'assets/global/plugins/icheck/icheck.min.js',
+                            'assets/pages/scripts/form-icheck.min.js',
+                            'js/print.js',
+                            'js/services/Product.js',
+                            'js/services/BuildUrl.js',
+                            'js/services/CallApi.js',
+                            'js/controllers/WebposController.js',
+                        ]
+                    });
+                }]
+            }
         })
         .state('office', {
             url: "/office.html",
