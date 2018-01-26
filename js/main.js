@@ -111,7 +111,28 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         .state('office', {
             url: "/office.html",
             templateUrl: "views/office.html",
-            data: { pageTitle: 'Danh sách đơn hàng' }
+            data: { pageTitle: 'Danh sách đơn hàng' },
+            controller: "OfficeController",
+            resolve:{
+                deps: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load({
+                        name: 'WebposApp',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            'assets/global/plugins/morris/morris.css',
+                            'assets/global/plugins/morris/morris.min.js',
+                            'assets/global/plugins/morris/raphael-min.js',
+                            'assets/global/plugins/jquery.sparkline.min.js',
+
+                            'assets/pages/scripts/dashboard.min.js',
+                            'js/services/Invoice.js',
+                            'js/services/BuildUrl.js',
+                            'js/services/CallApi.js',
+                            'js/controllers/OfficeController.js',
+                        ]
+                    });
+                }]
+            }
         })
         .state('customer', {
             url: "/customer.html",
