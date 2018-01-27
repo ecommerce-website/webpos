@@ -43,7 +43,8 @@ angular.module('WebposApp').service('Product', function() {
             if (self.listProduct.constructor === Array) {
                 self.listProduct = [];
             }
-        }
+        };
+
         /**
          * add product to list product
          * @param {*} data 

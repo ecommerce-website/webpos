@@ -114,7 +114,8 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'css/product.css',
-                            'assets/pages/scripts/ui-modals.min.js',
+                            // 'js/ui-bootstrap-tpls-2.5.0.min.js',
+                            // 'assets/pages/scripts/ui-modals.min.js',
                             'assets/pages/scripts/table-datatables-managed.min.js',
                             'assets/global/plugins/icheck/icheck.min.js',
                             'assets/pages/scripts/form-icheck.min.js',
@@ -140,7 +141,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'css/inventor.css',
-                            'assets/pages/scripts/ui-modals.min.js',
+                            // 'assets/pages/scripts/ui-modals.min.js',
                             'assets/pages/scripts/table-datatables-managed.min.js',
                             'assets/global/plugins/icheck/icheck.min.js',
                             'assets/pages/scripts/form-icheck.min.js',
