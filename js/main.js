@@ -5,7 +5,19 @@ var WebposApp = angular.module("WebposApp", [
     "oc.lazyLoad",
     "ngSanitize"
 ]);
-
+// Handle global LINK click
+WebposApp.directive('a', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, elem, attrs) {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                elem.on('click', function(e) {
+                    e.preventDefault();
+                });
+            }
+        }
+    };
+});
 /* Setup Layout Part - Header */
 WebposApp.controller('HeaderController', ['$scope', function($scope) {
     $scope.$on('$includeContentLoaded', function() {
@@ -88,6 +100,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
                             'js/controllers/WebposController.js',
+                            'js/store.js',
                         ]
                     });
                 }]

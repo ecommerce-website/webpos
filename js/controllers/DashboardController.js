@@ -2,5 +2,6 @@ angular.module('WebposApp').controller('DashboardController', function($rootScop
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
+        Layout.init();
     });
 });

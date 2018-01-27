@@ -82,4 +82,18 @@ angular.module('WebposApp').service('Invoice',function(){
 			self.invoiceSelect = {};
 		}
 	};
+
+	/**
+     * set product select to data
+     * @param {*} data 
+     */
+    this.setInvoiceSelect = function(data) {
+        var self = this;
+        var invoice = {};
+        $.each(this.initField, function(key, value) {
+            invoice[value] = data[value] != null ? data[value] : '';
+        });
+        self.invoiceSelect = invoice;
+    };
+
 });
