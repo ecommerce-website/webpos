@@ -3,19 +3,21 @@ angular.module('WebposApp').service('Product', function() {
      * init field product
      */
     this.initField = [
-        'id',
-        'type',
-        'active',
-        'stock',
-        'name',
-        'cost',
-        'retail_price',
-        'description',
-        'img',
-        'max_quantity',
-        'min_quantity',
-        'unit_string',
-        'unit_quantity',
+        'product_id',
+        'product_type',
+        'product_active',
+        'product_stock',
+        'product_name',
+        'product_cost',
+        'product_retail_price',
+        'product_description',
+        'product_img',
+        'product_max_quantity',
+        'product_min_quantity',
+        'product_unit_string',
+        'product_unit_quantity',
+        'product_barcode',
+        'product_tag'
     ];
     /**
      * list product
