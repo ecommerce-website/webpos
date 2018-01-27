@@ -5,7 +5,19 @@ var WebposApp = angular.module("WebposApp", [
     "oc.lazyLoad",
     "ngSanitize"
 ]);
-
+// Handle global LINK click
+WebposApp.directive('a', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, elem, attrs) {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                elem.on('click', function(e) {
+                    e.preventDefault();
+                });
+            }
+        }
+    };
+});
 /* Setup Layout Part - Header */
 WebposApp.controller('HeaderController', ['$scope', function($scope) {
     $scope.$on('$includeContentLoaded', function() {
@@ -88,6 +100,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
                             'js/controllers/WebposController.js',
+                            'js/store.js',
                         ]
                     });
                 }]
@@ -114,8 +127,6 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'css/product.css',
-                            // 'js/ui-bootstrap-tpls-2.5.0.min.js',
-                            // 'assets/pages/scripts/ui-modals.min.js',
                             'assets/pages/scripts/table-datatables-managed.min.js',
                             'assets/global/plugins/icheck/icheck.min.js',
                             'assets/pages/scripts/form-icheck.min.js',
@@ -141,7 +152,6 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'css/inventor.css',
-                            // 'assets/pages/scripts/ui-modals.min.js',
                             'assets/pages/scripts/table-datatables-managed.min.js',
                             'assets/global/plugins/icheck/icheck.min.js',
                             'assets/pages/scripts/form-icheck.min.js',

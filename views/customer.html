@@ -3,7 +3,653 @@
 
     <div class="container-fluid">
         <div class="row">
-            Khách hàng
+            <div class="col-md-12 ">
+	            <!-- BEGIN SAMPLE FORM PORTLET-->
+	            <div class="tabbable-line">
+	              <ul class="nav nav-tabs nav-tabs-lg">
+	                <li class="active">
+	                    <a href="#tab_1" data-toggle="tab" aria-expanded="true"> Customers </a>
+	                </li>
+	                <li class="">
+	                    <a href="#tab_2" data-toggle="tab" aria-expanded="false"> Membership </a>
+	                </li>
+	              </ul>
+
+	              <div class="tab-content">
+	                <div class="tab-pane active" id="tab_1">
+	                    <!-- Form -->
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <div class="portlet light bordered">
+	                                <div class="portlet-body">
+	                                    <form role="form">
+	                                        <div class="row">
+	                                            <div class="col-md-3">
+	                                                <label>Sort by:</label>
+	                                                <select class="form-control input-medium blue">
+	                                                    <option>Recently Added</option>
+	                                                    <option>Alphabetical</option>
+	                                                </select>
+	                                            </div>
+	                                            <div class="col-md-3">
+	                                                <label>Search Customer</label>
+	                                                <div class="input-group">
+	                                                    <input type="text" class="form-control" placeholder="Search Invoice ...">
+	                                                    <span class="input-group-btn">
+	                                                        <button class="btn blue">
+	                                                            <i class="fa fa-search"></i>
+	                                                        </button>
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="col-md-3">
+	                                              <div class="form-group">
+	                                                  <label>Delete Customer</label>
+	                                                  <button class="btn btn-danger form-control">Delete All</button>
+	                                              </div>
+	                                            </div>
+	                                        </div>
+	                                    </form>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- List Customers -->
+	                    <div class="row">
+	                      <div class="col-md-4 col-sm-12">
+	                          <div class="portlet blue box">
+	                              <div class="portlet-title">
+	                                  <div class="caption small">
+	                                      <i class="fa fa-user"></i>Customer Name</div>
+	                                  <div class="actions">
+	                                      <a href="#delete" class="btn red-sunglo btn-xs" data-toggle="modal">Delete</a>
+	                                      <a href="#history" class="btn grey-cascade btn-xs" data-toggle="modal">History</a>
+	                                      <a href="#edit" class="btn yellow-crusta btn-xs" data-toggle="modal">Edit</a>
+	                                  </div>
+	                              </div>
+	                              <div class="portlet-body">
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> ID: </div>
+	                                      <div class="col-md-7 value"> 12313232
+	                                      </div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Email : </div>
+	                                      <div class="col-md-7 value">abc@gmail.com</div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Address: </div>
+	                                      <div class="col-md-7 value">
+	                                          abc
+	                                      </div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Phone Number: </div>
+	                                      <div class="col-md-7 value"> 012345678 </div>
+	                                  </div>
+	                              </div>
+	                          </div>
+	                      </div>
+	                    </div>
+	                    <div class="modal fade" id="history" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">Purchase History</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="row">
+	                                        <div class="col-xs-12">
+	                                            <table class="table table-striped table-hover">
+	                                                <thead>
+	                                                    <tr>
+	                                                        <th> # </th>
+	                                                        <th> Item </th>
+	                                                        <th class="hidden-xs"> Description </th>
+	                                                        <th class="hidden-xs"> Quantity </th>
+	                                                        <th class="hidden-xs"> Unit Cost </th>
+	                                                        <th> Total </th>
+	                                                    </tr>
+	                                                </thead>
+	                                                <tbody>
+	                                                    <tr>
+	                                                        <td> 1 </td>
+	                                                        <td> Hardware </td>
+	                                                        <td class="hidden-xs"> Server hardware purchase </td>
+	                                                        <td class="hidden-xs"> 32 </td>
+	                                                        <td class="hidden-xs"> $75 </td>
+	                                                        <td> $2152 </td>
+	                                                    </tr>
+	                                                    <tr>
+	                                                        <td> 2 </td>
+	                                                        <td> Furniture </td>
+	                                                        <td class="hidden-xs"> Office furniture purchase </td>
+	                                                        <td class="hidden-xs"> 15 </td>
+	                                                        <td class="hidden-xs"> $169 </td>
+	                                                        <td> $4169 </td>
+	                                                    </tr>
+	                                                    <tr>
+	                                                        <td> 3 </td>
+	                                                        <td> Foods </td>
+	                                                        <td class="hidden-xs"> Company Anual Dinner Catering </td>
+	                                                        <td class="hidden-xs"> 69 </td>
+	                                                        <td class="hidden-xs"> $49 </td>
+	                                                        <td> $1260 </td>
+	                                                    </tr>
+	                                                </tbody>
+	                                            </table>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+	                                    <button type="button" class="btn green">Purchases</button>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                    <div class="modal fade" id="edit" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">Edit Customer</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="row">
+	                                        <div class="col-md-12">
+	                                            <form class="form-horizontal form-row-seperated" action="#">
+	                                              <div class="portlet">
+	                                                <div class="portlet-body">
+	                                                  <div class="tabbable-bordered">
+	                                                    <ul class="nav nav-tabs">
+	                                                        <li class="active">
+	                                                            <a href="#tab_info" data-toggle="tab" aria-expanded="true"> Personal Info </a>
+	                                                        </li>
+	                                                        <li class="">
+	                                                            <a href="#tab_contact" data-toggle="tab" aria-expanded="false"> Contact Info </a>
+	                                                        </li>
+	                                                        <li class="">
+	                                                            <a href="#tab_note" data-toggle="tab" aria-expanded="false"> Notes </a>
+	                                                        </li>
+	                                                    </ul>
+	                                                    <div class="tab-content">
+	                                                      <div class="tab-pane active" id="tab_info">
+	                                                        <div class="form-body">
+	                                                          <div class="form-group">
+	                                                            <div class="row">
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">First Name:</label>
+	                                                                  <div class="col-md-7">
+	                                                                      <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                </div>
+	                                                              </div>
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">Last Name:
+	                                                                </label>
+	                                                                <div class="col-md-7">
+	                                                                    <input type="text" class="form-control" name="product[name]" placeholder=""> </div>
+	                                                                </div>
+	                                                              </div>
+	                                                            </div>
+	                                                          </div>
+	                                                          <div class="form-group">
+	                                                            <div class="row">
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">Gender:</label>
+	                                                                  <div class="col-md-7">
+	                                                                    <select class="form-control input-xs">
+	                                                                      <option>Male</option>
+	                                                                      <option>Female</option>
+	                                                                    </select> 
+	                                                                  </div>
+	                                                                </div>
+	                                                              </div>
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">Birthday:
+	                                                                </label>
+	                                                                <div class="col-md-7">
+	                                                                    <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                </div>
+	                                                              </div>
+	                                                            </div>
+	                                                          </div>
+	                                                          <div class="form-group">
+	                                                            <div class="row">
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">Custom ID:</label>
+	                                                                  <div class="col-md-7">
+	                                                                      <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                </div>
+	                                                              </div>
+	                                                              <div class="col-md-6">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-5 control-label">Alternate id:
+	                                                                  </label>
+	                                                                  <div class="col-md-7">
+	                                                                      <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                </div>
+	                                                              </div>
+	                                                            </div>
+	                                                          </div>
+	                                                        </div>
+	                                                      </div>
+	                                                      <div class="tab-pane" id="tab_contact">
+	                                                          <div class="form-body">
+	                                                              <div class="form-group">
+	                                                                <div class="row">
+	                                                                  <div class="col-md-6">
+	                                                                    <div class="row">
+	                                                                      <label class="col-md-4 control-label">Email:</label>
+	                                                                      <div class="col-md-8">
+	                                                                          <input type="email" class="form-control" name="" placeholder=""> </div>
+	                                                                    </div>
+	                                                                  </div>
+	                                                                  <div class="col-md-6">
+	                                                                    <div class="row">
+	                                                                      <label class="col-md-4 control-label">Phone Number:
+	                                                                    </label>
+	                                                                    <div class="col-md-8">
+	                                                                        <input type="text" class="form-control" name="" placeholder="" value="12345"> </div>
+	                                                                    </div>
+	                                                                  </div>
+	                                                                </div>
+	                                                              </div>
+	                                                              <div class="form-group">
+	                                                                <div class="row">
+	                                                                  <div class="col-md-6">
+	                                                                    <div class="row">
+	                                                                      <label class="col-md-4 control-label">Country:</label>
+	                                                                      <div class="col-md-8">
+	                                                                          <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                    </div>
+	                                                                  </div>
+	                                                                  <div class="col-md-6">
+	                                                                    <div class="row">
+	                                                                      <label class="col-md-4 control-label">City:
+	                                                                    </label>
+	                                                                    <div class="col-md-8">
+	                                                                        <input type="text" class="form-control" name="" placeholder=""> </div>
+	                                                                    </div>
+	                                                                  </div>
+	                                                                </div>
+	                                                              </div>
+	                                                              <div class="form-group">
+	                                                                <div class="row">
+	                                                                  <label class="col-md-2 control-label">Address : </label>
+	                                                                  <div class="col-md-10">
+	                                                                    <input type="text" class="form-control">
+	                                                                  </div>
+	                                                                </div>
+	                                                              </div>
+	                                                          </div>
+	                                                      </div>
+	                                                      <div class="tab-pane" id="tab_note">
+	                                                          <div class="form-group">
+	                                                              <div class="row">
+	                                                                <label class="col-md-2 control-label">Notes:
+	                                                                </label>
+	                                                                <div class="col-md-10">
+	                                                                    <textarea class="form-control" name="" rows="5"></textarea>
+	                                                                </div>
+	                                                              </div>
+	                                                          </div>
+	                                                      </div>
+	                                                    </div>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                            </form>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+	                                    <button type="button" class="btn green">Save Changes</button>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                </div>
+	                <div class="tab-pane" id="tab_2">
+	                    <!-- Form -->
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <div class="portlet light bordered">
+	                                <div class="portlet-body">
+	                                    <form role="form">
+	                                        <div class="row">
+	                                            <div class="col-md-3">
+	                                                <label>Sort by:</label>
+	                                                <select class="form-control input-medium blue">
+	                                                    <option>Recently Added</option>
+	                                                    <option>Alphabetical</option>
+	                                                </select>
+	                                            </div>
+	                                            <div class="col-md-3">
+	                                                <label>Search Group</label>
+	                                                <div class="input-group">
+	                                                    <input type="text" class="form-control" placeholder="Search Group ...">
+	                                                    <span class="input-group-btn">
+	                                                        <button class="btn blue">
+	                                                            <i class="fa fa-search"></i>
+	                                                        </button>
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="col-md-3">
+	                                              <div class="form-group">
+	                                                  <label>Create Group</label>
+	                                                  <a href="#create_group" class="btn blue form-control" data-toggle="modal">Create</a>
+	                                              </div>
+	                                            </div>
+	                                            <div class="col-md-3">
+	                                              <div class="form-group">
+	                                                  <label>Register Customer</label>
+	                                                  <a href="#register_customer" class="btn blue form-control" data-toggle='modal'>Register</a>
+	                                              </div>
+	                                            </div>
+	                                        </div>
+	                                    </form>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- List Customers -->
+	                    <div class="row">
+	                      <div class="col-md-4 col-sm-12">
+	                          <div class="portlet blue box">
+	                              <div class="portlet-title">
+	                                  <div class="caption small">
+	                                      <i class="fa fa-user"></i>Group Name</div>
+	                                  <div class="actions">
+	                                      <a href="#delete" class="btn red-sunglo btn-xs" data-toggle="modal">Delete</a>
+	                                      <a href="#manage_group" class="btn grey-cascade btn-xs" data-toggle="modal">Manage</a>
+	                                      <a href="#edit_group" class="btn yellow-crusta btn-xs" data-toggle="modal">Edit</a>
+	                                  </div>
+	                              </div>
+	                              <div class="portlet-body">
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Customers : </div>
+	                                      <div class="col-md-7 value"> 3
+	                                      </div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Duration : </div>
+	                                      <div class="col-md-7 value">2 years</div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Discount : </div>
+	                                      <div class="col-md-7 value"> 1 </div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Point Ratio : </div>
+	                                      <div class="col-md-7 value"> 1.0 = 1 point </div>
+	                                  </div>
+	                                  <div class="row static-info">
+	                                      <div class="col-md-5 name"> Point-to-Amount Ratio : </div>
+	                                      <div class="col-md-7 value"> 2 points = 1 </div>
+	                                  </div>
+	                              </div>
+	                          </div>
+	                      </div>
+	                    </div>
+	                    <div class="modal fade" id="register_customer" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">Register Customer</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="portlet light">
+	                                      <div class="portlet-body form">
+	                                          <form role="form">
+	                                            <div class="form-body">
+	                                              <div class="form-group">
+	                                                <label>Customer</label>
+	                                                <input type="text" class="form-control" placeholder="Search customer"> 
+	                                              </div>
+
+	                                              <div class="form-group">
+	                                                  <label>Membership type</label>
+	                                                  <select class="form-control">
+	                                                      <option>Option 1</option>
+	                                                      <option>Option 2</option>
+	                                                      <option>Option 3</option>
+	                                                      <option>Option 4</option>
+	                                                  </select>
+	                                              </div>
+	                                            </div>
+	                                          </form>
+	                                      </div>
+	                                    </div>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+	                                    <button type="button" class="btn green">Update</button>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                    <div class="modal fade" id="create_group" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">New Group</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="portlet light">
+	                                      <div class="portlet-body form">
+	                                          <form role="form">
+	                                            <div class="form-body">
+	                                              <div class="row">
+	                                                <div class="col-md-12">
+	                                                  <div class="form-group">
+	                                                    <label>Group Name</label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Duration: </label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Type</label>
+	                                                    <select class="form-control input-md">
+	                                                      <option>Year/s</option>
+	                                                      <option>Month/s</option>
+	                                                      <option>Day/s</option>
+	                                                    </select>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-12">
+	                                                  <div class="form-group">
+	                                                      <label>Discount</label>
+	                                                      <div class="input-group">
+	                                                          <input type="number" class="form-control" aria-describedby="sizing-addon1">
+	                                                          <span class="input-group-addon" id="sizing-addon1">%</span>
+	                                                      </div>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Earn Point</label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                      <label>Earn with point</label>
+	                                                      <div class="input-group">
+	                                                          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+	                                                          <span class="input-group-addon" id="sizing-addon1">pts</span>
+	                                                      </div>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                            </div>
+	                                          </form>
+	                                      </div>
+	                                    </div>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+	                                    <button type="button" class="btn green">Create</button>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                    <div class="modal fade" id="edit_group" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">Edit Group</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="portlet light">
+	                                      <div class="portlet-body form">
+	                                          <form role="form">
+	                                            <div class="form-body">
+	                                              <div class="row">
+	                                                <div class="col-md-12">
+	                                                  <div class="form-group">
+	                                                    <label>Group Name</label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Duration: </label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Type</label>
+	                                                    <select class="form-control input-md">
+	                                                      <option>Year/s</option>
+	                                                      <option>Month/s</option>
+	                                                      <option>Day/s</option>
+	                                                    </select>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-12">
+	                                                  <div class="form-group">
+	                                                      <label>Discount</label>
+	                                                      <div class="input-group">
+	                                                          <input type="number" class="form-control" aria-describedby="sizing-addon1">
+	                                                          <span class="input-group-addon" id="sizing-addon1">%</span>
+	                                                      </div>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                              <div class="row">
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                    <label>Earn Point</label>
+	                                                    <input type="text" class="form-control" placeholder=""> 
+	                                                  </div>
+	                                                </div>
+
+	                                                <div class="col-md-6">
+	                                                  <div class="form-group">
+	                                                      <label>Earn with point</label>
+	                                                      <div class="input-group">
+	                                                          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+	                                                          <span class="input-group-addon" id="sizing-addon1">pts</span>
+	                                                      </div>
+	                                                  </div>
+	                                                </div>
+	                                              </div>
+	                                            </div>
+	                                          </form>
+	                                      </div>
+	                                    </div>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+	                                    <button type="button" class="btn green">Update</button>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                    <div class="modal fade" id="manage_group" tabindex="-1" role="basic" aria-hidden="true">
+	                        <div class="modal-dialog">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h4 class="modal-title">View Membership : <span>abc</span> </h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <div class="row">
+	                                      <div class="col-md-6">
+	                                          <div class="input-group">
+	                                              <input type="text" class="form-control input-sm" placeholder="Search Customer ...">
+	                                              <span class="input-group-btn">
+	                                                  <button class="btn blue btn-sm">
+	                                                      <i class="fa fa-search"></i>
+	                                                  </button>
+	                                              </span>
+	                                          </div>
+	                                      </div>
+	                                    </div>
+
+	                                    <div class="row">
+	                                        <div class="col-xs-12">
+	                                            <table class="table table-striped table-hover">
+	                                                <thead>
+	                                                    <tr>
+	                                                        <th> Name </th>
+	                                                        <th> Point </th>
+	                                                        <th class="hidden-xs"> Start </th>
+	                                                        <th class="hidden-xs"> Expiry </th>
+	                                                        <th class="hidden-xs"> Action </th>
+	                                                    </tr>
+	                                                </thead>
+	                                                <tbody>
+	                                                    
+	                                                </tbody>
+	                                            </table>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <!-- /.modal-content -->
+	                        </div>
+	                        <!-- /.modal-dialog -->
+	                    </div>
+	                </div>
+	              </div>
+	            </div>
+	            <!-- END SAMPLE FORM PORTLET-->
+	        </div>
         </div>
     </div>
 </div>
