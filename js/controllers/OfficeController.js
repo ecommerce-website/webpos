@@ -11,7 +11,10 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
 
         // Invoice.setValueInvoiceSelect("name", "Regularrrrr");
 
-        $log.info(Invoice);    
+        $log.info(Invoice); 
+        $scope.invoices = Invoice.listInvoice;
+        // console.log($scope.invoice);
+
     });
 
     invoices = [{
@@ -40,4 +43,7 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
         },
     ];
 
+    $scope.openPopup = function(invoice_id){
+        $scope.invoicePopup = Invoice.getInvoice(invoice_id);  
+    };
 });
