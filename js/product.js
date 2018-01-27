@@ -17,15 +17,6 @@ $(document).ready(function(){
 // 	}
 // });
 
-	$('#btn-add-pro').on('click',function(){
-		$('#add-pro').modal("toggle");
-	});
-	$('#btn-history').on('click',function(){
-		$('#history').modal("show");
-	});
-	$('#btn-barcode').on('click',function(){
-		$('#barcode').modal("show");
-	});
 
 });
 
