@@ -120,6 +120,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
             url: "/stockroom.html",
             templateUrl: "views/stockroom.html",
             data: { pageTitle: 'Stock Room' },
+            controller: "StockroomController",
             resolve: {  
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -135,7 +136,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/Product.js',
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
-                            'js/controllers/WebposController.js',
+                            'js/controllers/StockroomController.js',
                         ]
                     });
                 }]

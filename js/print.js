@@ -3,6 +3,7 @@ function printDiv(t) {
 	var n = $("#" + t).html();
 	e.document.write("<html><head><title> Print </title>"),
 	e.document.write('<link rel="stylesheet" type="text/css" href="print.css">'),
+	e.document.write('<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>'),
 	e.document.write("</head><body>"),
 	e.document.write(n),
 	e.document.write("</body></html>"),
