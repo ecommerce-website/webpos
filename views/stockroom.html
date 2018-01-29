@@ -97,1259 +97,1259 @@
                         <div class="col-md-7 value">
                          21.0
                        </div>
-                     </div>
-                     <div class="row static-info">
-                      <div class="col-md-5 name">
-                        Số Lượng:
                       </div>
-                      <div class="col-md-7 value">
-                        2
+                      <div class="row static-info">
+                        <div class="col-md-5 name">
+                          Số Lượng:
+                        </div>
+                        <div class="col-md-7 value">
+                          2
+                        </div>
                       </div>
-                    </div>
-                    <div class="row static-info">
-                      <div class="col-md-5 name">
-                        Mô tả:
+                      <div class="row static-info">
+                        <div class="col-md-5 name">
+                          Mô tả:
+                        </div>
+                        <div class="col-md-7 value">
+                          This is a product
+                        </div>
                       </div>
-                      <div class="col-md-7 value">
-                        This is a product
+                      <div class="row static-info">
+                        <div class="col-md-5 name">
+                          Tags:
+                        </div>
+                        <div class="col-md-7 value">
+                          This is a tag
+                        </div>
                       </div>
-                    </div>
-                    <div class="row static-info">
-                      <div class="col-md-5 name">
-                        Tags:
-                      </div>
-                      <div class="col-md-7 value">
-                        This is a tag
-                      </div>
-                    </div>
-                    <hr class="hr-bottom">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <a data-target="#history" class="btn green btn-md" data-toggle="modal">Lịch sử</a>
-                      </div>
-                      <div class="col-md-4">
-                        <a data-target="#barcode" class="btn green btn-md" data-toggle="modal">Barcode</a>
-                      </div>
-                      <div class="col-md-4">
-                        <a data-target="#add-pro" class="btn green btn-md" data-toggle="modal">Sửa</a>
+                      <hr class="hr-bottom">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <a data-target="#history" class="btn green btn-md" data-toggle="modal">Lịch sử</a>
+                        </div>
+                        <div class="col-md-4">
+                          <a data-target="#barcode" class="btn green btn-md" data-toggle="modal">Barcode</a>
+                        </div>
+                        <div class="col-md-4">
+                          <a data-target="#add-pro" class="btn green btn-md" data-toggle="modal">Sửa</a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End List Product -->
-            <!-- Modal add product -->
-            <div class="modal fade bs-modal-lg" id="add-pro" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title"> Thêm sản phẩm </h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="tabbable tabbable-line">
-                      <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
-                        <li class="active">
-                          <a data-target="#info" data-toggle="tab" aria-expanded="false">Thông tin</a>
-                        </li> 
-                        <li class="">
-                          <a data-target="#image" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
-                        </li>
-                      </ul>
+              <!-- End List Product -->
+              <!-- Modal add product -->
+              <div class="modal fade bs-modal-lg" id="add-pro" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title"> Thêm sản phẩm </h4>
                     </div>
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="info">
-                        <form role="form" class="form-pro" style="margin-top: 15px;">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Loại sản phẩm</label>
-                                <select class="form-control input-large blue">
-                                  <option value="type-1">Đồ gia dụng</option>
-                                  <option value="type-2">Đồ chơi</option>
-                                  <option value="type-3">Đồ nhựa</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Số lượng
-                                  <span class="required" aria-required="true">*</span>
-                                </label>
-                                <input type="number" required="" class="form-control input-large">
-                              </div>
-                              <div class="form-group">
-                                <label>Barcode</label>
-                                <input type="text" required="" class="form-control input-large">
-                              </div>
-                              <div class="form-group">
-                                <label>Tên sản phẩm
-                                  <span class="required" aria-required="true">*</span>
-                                </label>
-                                <input type="text" required="" class="form-control input-large">
-                              </div>
-                              <div class="form-group">
-                                <label>Giá</label>
-                                <input type="number" required="" class="form-control input-large">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Giá bán lẻ
-                                  <span class="required" aria-required="true">*</span>
-                                </label>
-                                <input type="number" required="" class="form-control input-large">
-                              </div>
-                              <div class="form-group">
-                                <label>Tags
-                                </label>
-                                <input type="text" required="" class="form-control input-large">
-                              </div>
-                              <div class="form-group">
-                                <label>Mô tả</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                              </div>
-                              <div class="row">
-                                <div class="col-xs-6">
-                                  <div class="form-group">
-                                    <label>SL ít nhất</label>
-                                    <input type="number" required="" class="form-control input-small">
-                                  </div>
-                                </div>
-                                <div class="col-xs-6">
-                                  <div class="form-group">
-                                    <label>SL nhiểu nhất</label>
-                                    <input type="number" required="" class="form-control input-small">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
+                    <div class="modal-body">
+                      <div class="tabbable tabbable-line">
+                        <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
+                          <li class="active">
+                            <a data-target="#info" data-toggle="tab" aria-expanded="false">Thông tin</a>
+                          </li> 
+                          <li class="">
+                            <a data-target="#image" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
+                          </li>
+                        </ul>
                       </div>
-                      <!-- End Tab Info -->
-                      <div class="tab-pane" id="image">
-                        <form role="form" class="form-pro">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group margin-top-15">
-                                <label>Ảnh minh họa</label>
-                                <input type="file">
-                                <p class="help-block">Tải lên file ảnh</p>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <!-- End Tab Image -->
-                    </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn green">
-                      Lưu
-                    </button>
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- End modal content -->
-              </div>
-              <!-- End modal dialog -->
-            </div>
-            <!-- End modal add product -->  
-            <!-- modal history -->
-            <div class="modal fade bs-modal-lg" id="history" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row static-info">
-                      <div class="col-xs-2 name">
-                        Trong kho:
-                      </div>
-                      <div class="col-xs-2 value">
-                        10
-                      </div>
-                    </div>
-                    <div class="row static-info">
-                      <div class="col-xs-2 name">
-                        Mã số kho:
-                      </div>
-                      <div class="col-xs-2 value">
-                        10
-                      </div>
-                    </div>
-                    <div class="row static-info">
-                      <div class="col-xs-2 name">
-                        Hãng:
-                      </div>
-                      <div class="col-xs-2 value">
-                        Gucci
-                      </div>
-                    </div>
-                    <!-- Tab History -->
-                    <div class="tabbable tabbable-line" id="tab-history">
-                      <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
-                        <li class="active">
-                          <a href="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
-                        </li>
-                        <li class="">
-                          <a href="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
-                        </li>
-                      </ul>
                       <div class="tab-content">
-                        <div class="tab-pane active" id="sale">
-                          <div class="table-responsive table-hover" id="sales_list">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Số Hóa đơn</th>
-                                  <th> Ngày </th>
-                                  <th> Loại giao dịch </th>
-                                  <th> Số lượng </th>
-                                  <th> Tổng tiền </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Số Hóa đơn</td>
-                                  <td> Ngày </td>
-                                  <td> Loại giao dịch </td>
-                                  <td> Số lượng </td>
-                                  <td> Tiền </td>
-                                </tr>
-
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <!-- End Tab Sale -->
-                        <div class="tab-pane" id="import">
-                          <div class="table-responsive table-hover" id="trans_list">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Số hóa đơn</th>
-                                  <th> Ngày </th>
-                                  <th> Loại </th>
-                                  <th> Party </th>
-                                  <th> Effect on Qty </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Số Hóa đơn</td>
-                                  <td> Ngày </td>
-                                  <td> Loại giao dịch </td>
-                                  <td> Số lượng </td>
-                                  <td> Amount </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <!-- End Tab Import -->
-                      </div>
-                    </div>
-                    <!-- End Tab History -->
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
-                      <i class="fa fa-print"></i> In
-                    </button>
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- end modal history  -->
-            <!-- Modal barcode -->
-            <div class="modal fade bs-modal-lg" id="barcode" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title"> Barcode: <span>Tên mặt hàng</span></h4>
-                  </div>
-                  <div class="modal-body" id="print-barcode">
-                    Điền barcode ở đây
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn green" onclick="printDiv('print-barcode');">
-                      <i class="fa fa-print"></i> In
-                    </button>
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- End modal barcode -->                  
-          </div>
-          <!-- End Tab Pane 1 -->
-          <div class="tab-pane" id="tab-2">
-            <!-- Form -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="portlet light bordered">
-                  <div class="portlet-body">
-                    <form role="form">
-                      <div class="row">
-                        <div class="col-lg-4 col-md-4 col-lg-offset-8 col-md-offset-8">
-                          <label style="display: block;">Tìm SP: </label>
-                          <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Form  -->
-            <!-- Table Wrap -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="portlet light bordered">
-                  <div class="portlet-title">
-                    <div class="caption">
-                      <i class="icon-list font-red"></i>
-                      <span class="caption-subject font-red bold uppercase">Danh Sách</span>
-                    </div>
-                    <div class="actions">
-                      <button type="button" class="btn green" id="print-inventor" onclick="printDiv('inventor_list')">
-                        <i class="fa fa-print"></i> In
-                      </button>
-                    </div>
-                  </div>
-                  <div class="portlet-body">
-                    <div class="table-scrollable" id="inventor_list">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th> STT </th>
-                            <th> Mã Kho </th>
-                            <th> Tên SP </th>
-                            <th> Giá bán lẻ </th>
-                            <th> On Hand </th>
-                            <th> Giá TB </th>
-                            <th> Tổng số </th>
-                            <th class="hidden-print">Lịch sử</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr ng-repeat="invoice in invoices">
-                            <td> {{ invoice.invoice_id }} </td>
-                            <td> {{ invoice.invoice_ref}} </td>
-                            <td> {{invoice.invoice_date}} </td>
-                            <td> {{invoice.invoice_transaction}} </td>
-                            <td>
-                              {{invoice.invoice_status}}
-                            </td>
-                            <td>
-                              ok
-                            </td>
-                            <td>
-                              10.4
-                            </td>
-                            <td class="hidden-print">
-                              <a data-toggle="modal" data-target="#history1">Lịch sử</a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <!-- modal history -->
-                    <div class="modal fade bs-modal-lg" id="history1" tabindex="-1" role="dialog" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                            <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
-                          </div>
-                          <div class="modal-body">
-                            <div class="row static-info">
-                              <div class="col-xs-2 name">
-                                Trong kho:
+                        <div class="tab-pane active" id="info">
+                          <form role="form" class="form-pro" style="margin-top: 15px;">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Loại sản phẩm</label>
+                                  <select class="form-control input-large blue">
+                                    <option value="type-1">Đồ gia dụng</option>
+                                    <option value="type-2">Đồ chơi</option>
+                                    <option value="type-3">Đồ nhựa</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label>Số lượng
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="number" required="" class="form-control input-large">
+                                </div>
+                                <div class="form-group">
+                                  <label>Barcode</label>
+                                  <input type="text" required="" class="form-control input-large">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tên sản phẩm
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large">
+                                </div>
+                                <div class="form-group">
+                                  <label>Giá</label>
+                                  <input type="number" required="" class="form-control input-large">
+                                </div>
                               </div>
-                              <div class="col-xs-2 value">
-                                10
-                              </div>
-                            </div>
-                            <div class="row static-info">
-                              <div class="col-xs-2 name">
-                                Mã số kho:
-                              </div>
-                              <div class="col-xs-2 value">
-                                10
-                              </div>
-                            </div>
-                            <div class="row static-info">
-                              <div class="col-xs-2 name">
-                                Hãng:
-                              </div>
-                              <div class="col-xs-2 value">
-                                Gucci
-                              </div>
-                            </div>
-                            <!-- Tab History -->
-                            <div class="tabbable tabbable-line" id="tab-history">
-                              <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
-                                <li class="active">
-                                  <a data-target="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
-                                </li>
-                                <li class="">
-                                  <a data-target="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
-                                </li>
-                              </ul>
-                              <div class="tab-content">
-                                <div class="tab-pane active" id="sale">
-                                  <div class="table-responsive table-hover" id="sales_list">
-                                    <table class="table">
-                                      <thead>
-                                        <tr>
-                                          <th>Số Hóa đơn</th>
-                                          <th> Ngày </th>
-                                          <th> Loại giao dịch </th>
-                                          <th> Số lượng </th>
-                                          <th> Tổng tiền </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td>Số Hóa đơn</td>
-                                          <td> Ngày </td>
-                                          <td> Loại giao dịch </td>
-                                          <td> Số lượng </td>
-                                          <td> Tiền </td>
-                                        </tr>
-
-                                      </tbody>
-                                    </table>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Giá bán lẻ
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="number" required="" class="form-control input-large">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tags
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large">
+                                </div>
+                                <div class="form-group">
+                                  <label>Mô tả</label>
+                                  <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL ít nhất</label>
+                                      <input type="number" required="" class="form-control input-small">
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL nhiểu nhất</label>
+                                      <input type="number" required="" class="form-control input-small">
+                                    </div>
                                   </div>
                                 </div>
-                                <!-- End Tab Sale -->
-                                <div class="tab-pane" id="import">
-                                  <div class="table-responsive table-hover" id="trans_list">
-                                    <table class="table">
-                                      <thead>
-                                        <tr>
-                                          <th>Số hóa đơn</th>
-                                          <th> Ngày </th>
-                                          <th> Loại </th>
-                                          <th> Party </th>
-                                          <th> Effect on Qty </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td>Số Hóa đơn</td>
-                                          <td> Ngày </td>
-                                          <td> Loại giao dịch </td>
-                                          <td> Số lượng </td>
-                                          <td> Amount </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                                <!-- End Tab Import -->
                               </div>
                             </div>
-                            <!-- End Tab History -->
-                          </div>
-                          <!-- end modal body -->
-                          <div class="modal-footer">
-                            <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
-                              <i class="fa fa-print"></i> In
-                            </button>
-                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                          </div>
+                          </form>
                         </div>
-                        <!-- end modal content -->
+                        <!-- End Tab Info -->
+                        <div class="tab-pane" id="image">
+                          <form role="form" class="form-pro">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group margin-top-15">
+                                  <label>Ảnh minh họa</label>
+                                  <input type="file">
+                                  <p class="help-block">Tải lên file ảnh</p>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- End Tab Image -->
                       </div>
-                      <!-- end modal dialog -->
                     </div>
-                    <!-- end modal history  -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Table Wrap-->
-          </div>
-          <!-- End Tab Pane 2 -->
-          <div class="tab-pane" id="tab-3">
-            <!-- Form -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="portlet light bordered">
-                  <div class="portlet-body">
-                    <form role="form">
-                      <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                          <label>Loại:</label>
-                          <select class="form-control input-medium blue" id="select-type">
-                            <option value="all">Tất cả</option>
-                            <option value="regular">SP thường xuyên</option>
-                            <option value="unit">SP Theo Lô</option>
-                          </select>
-                        </div>
-                        <div class="col-lg-2 col-md-2">
-                          <label>Từ ngày:</label>
-                          <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
-                            <input type="text" class="form-control" readonly="" name="datepicker">
-                            <span class="input-group-btn">
-                              <button class="btn default" type="button">
-                                <i class="fa fa-calendar"></i>
-                              </button>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2">
-                          <label>Đến ngày:</label>
-                          <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
-                            <input type="text" class="form-control" readonly="" name="datepicker">
-                            <span class="input-group-btn">
-                              <button class="btn default" type="button">
-                                <i class="fa fa-calendar"></i>
-                              </button>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="col-lg-1 col-md-2">
-                          <label style="display: block;">Lọc SP:</label>
-                          <button type="button" class="btn btn-danger">Lọc</button>
-                        </div>
-                        <div class="col-lg-2 col-lg-offset-1 col-md-12">
-                          <label style="display: block;">Thêm giao dịch:</label>
-                          <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Thêm giao dịch</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Table Wrap -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="portlet light bordered">
-                  <div class="portlet-title">
-                    <div class="caption">
-                      <i class="icon-list font-red"></i>
-                      <span class="caption-subject font-red bold uppercase">Danh Sách</span>
-                    </div>
-                    <div class="actions">
-                      <button type="button" class="btn green" id="print-inventor" onclick="printDiv('trans_list')">
-                        <i class="fa fa-print"></i> In
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green">
+                        Lưu
                       </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
                     </div>
                   </div>
-                  <div class="portlet-body">
-                    <div class="table-scrollable" id="trans_list">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th> STT </th>
-                            <th> Reference </th>
-                            <th> Ngày </th>
-                            <th> Loại giao dịch </th>
-                            <th> Tình trạng </th>
-                            <th> User </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr ng-repeat="invoice in invoices">
-                            <td> {{ invoice.invoice_id }} </td>
-                            <td> {{ invoice.invoice_ref}} </td>
-                            <td> {{invoice.invoice_date}} </td>
-                            <td> {{invoice.invoice_transaction}} </td>
-                            <td>
-                              {{invoice.invoice_status}}
-                            </td>
-                            <td>
-                              ok
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                  <!-- End modal content -->
                 </div>
+                <!-- End modal dialog -->
               </div>
-            </div>
-            <!-- End Table Wrap -->
-            <!-- Modal add trans-->
-            <div class="modal fade bs-modal-lg" id="add-trans" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Thêm Giao Dịch</h4> 
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-6 col-md-offset-3">
-                        <form role="form">
-                          <label>Chọn loại giao dịch</label>
-                          <select class="form-control input-xlarge" id="type1">
-                            <option value="receive">Nhập về</option>
-                            <option value="return">Trả lại nhà CC</option>
-                            <option value="trs-out">Transfer Out</option>
-                            <option value="adj-in">Adjustment In</option>
-                            <option value="adj-out">Adjustment Out</option>
-                            <option value="phy-count">Physical Count</option>
-                          </select>
-                        </form>
-                      </div>
+              <!-- End modal add product -->  
+              <!-- modal history -->
+              <div class="modal fade bs-modal-lg" id="history" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
                     </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn green" id="btn-add-trans">
-                      Thêm
-                    </button>
-                  </div>
-                </div>
-                <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-            </div>
-            <!-- End modal add trans -->
-            <!-- modal receive -->
-            <div class="modal fade bs-modal-lg" id="receive" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Receive</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>
+                    <div class="modal-body">
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Trong kho:
                         </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                        <div class="col-xs-2 value">
+                          10
+                        </div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Mã số kho:
+                        </div>
+                        <div class="col-xs-2 value">
+                          10
+                        </div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Hãng:
+                        </div>
+                        <div class="col-xs-2 value">
+                          Gucci
+                        </div>
+                      </div>
+                      <!-- Tab History -->
+                      <div class="tabbable tabbable-line" id="tab-history">
+                        <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
+                          <li class="active">
+                            <a href="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
+                          </li>
+                          <li class="">
+                            <a href="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="sale">
+                            <div class="table-responsive table-hover" id="sales_list">
+                              <table class="table">
                                 <thead>
                                   <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
+                                    <th>Số Hóa đơn</th>
+                                    <th> Ngày </th>
+                                    <th> Loại giao dịch </th>
                                     <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
+                                    <th> Tổng tiền </th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
+                                    <td>Số Hóa đơn</td>
+                                    <td> Ngày </td>
+                                    <td> Loại giao dịch </td>
+                                    <td> Số lượng </td>
+                                    <td> Tiền </td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <!-- End Tab Sale -->
+                          <div class="tab-pane" id="import">
+                            <div class="table-responsive table-hover" id="trans_list">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Số hóa đơn</th>
+                                    <th> Ngày </th>
+                                    <th> Loại </th>
+                                    <th> Party </th>
+                                    <th> Effect on Qty </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Số Hóa đơn</td>
+                                    <td> Ngày </td>
+                                    <td> Loại giao dịch </td>
+                                    <td> Số lượng </td>
+                                    <td> Amount </td>
                                   </tr>
                                 </tbody>
                               </table>
                             </div>
                           </div>
+                          <!-- End Tab Import -->
                         </div>
-                        <!-- END Portlet PORTLET-->  
                       </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Nhập về 
+                      <!-- End Tab History -->
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
+                        <i class="fa fa-print"></i> In
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <!-- end modal history  -->
+              <!-- Modal barcode -->
+              <div class="modal fade bs-modal-lg" id="barcode" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title"> Barcode: <span>Tên mặt hàng</span></h4>
+                    </div>
+                    <div class="modal-body" id="print-barcode">
+                      Điền barcode ở đây
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" onclick="printDiv('print-barcode');">
+                        <i class="fa fa-print"></i> In
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <!-- End modal barcode -->                  
+            </div>
+            <!-- End Tab Pane 1 -->
+            <div class="tab-pane" id="tab-2">
+              <!-- Form -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-body">
+                      <form role="form">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-lg-offset-8 col-md-offset-8">
+                            <label style="display: block;">Tìm SP: </label>
+                            <div class="input-group">
+                              <input type="text" class="form-control">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
                             </div>
                           </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-receive" role="form" class="form-trans">
-                              <div class="form-group">
-                                <label class="control-label">Tên người cung cấp</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Form  -->
+              <!-- Table Wrap -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        <i class="icon-list font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Danh Sách</span>
+                      </div>
+                      <div class="actions">
+                        <button type="button" class="btn green" id="print-inventor" onclick="printDiv('inventor_list')">
+                          <i class="fa fa-print"></i> In
+                        </button>
+                      </div>
+                    </div>
+                    <div class="portlet-body">
+                      <div class="table-scrollable" id="inventor_list">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> STT </th>
+                              <th> Mã Kho </th>
+                              <th> Tên SP </th>
+                              <th> Giá bán lẻ </th>
+                              <th> On Hand </th>
+                              <th> Giá TB </th>
+                              <th> Tổng số </th>
+                              <th class="hidden-print">Lịch sử</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="invoice in invoices">
+                              <td> {{ invoice.invoice_id }} </td>
+                              <td> {{ invoice.invoice_ref}} </td>
+                              <td> {{invoice.invoice_date}} </td>
+                              <td> {{invoice.invoice_transaction}} </td>
+                              <td>
+                                {{invoice.invoice_status}}
+                              </td>
+                              <td>
+                                ok
+                              </td>
+                              <td>
+                                10.4
+                              </td>
+                              <td class="hidden-print">
+                                <a data-toggle="modal" data-target="#history1">Lịch sử</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- modal history -->
+                      <div class="modal fade bs-modal-lg" id="history1" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                              <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row static-info">
+                                <div class="col-xs-2 name">
+                                  Trong kho:
+                                </div>
+                                <div class="col-xs-2 value">
+                                  10
+                                </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
+                              <div class="row static-info">
+                                <div class="col-xs-2 name">
+                                  Mã số kho:
+                                </div>
+                                <div class="col-xs-2 value">
+                                  10
+                                </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
+                              <div class="row static-info">
+                                <div class="col-xs-2 name">
+                                  Hãng:
+                                </div>
+                                <div class="col-xs-2 value">
+                                  Gucci
+                                </div>
                               </div>
-                              <div class="div-btn">
+                              <!-- Tab History -->
+                              <div class="tabbable tabbable-line" id="tab-history">
+                                <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
+                                  <li class="active">
+                                    <a data-target="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
+                                  </li>
+                                  <li class="">
+                                    <a data-target="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
+                                  </li>
+                                </ul>
+                                <div class="tab-content">
+                                  <div class="tab-pane active" id="sale">
+                                    <div class="table-responsive table-hover" id="sales_list">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th>Số Hóa đơn</th>
+                                            <th> Ngày </th>
+                                            <th> Loại giao dịch </th>
+                                            <th> Số lượng </th>
+                                            <th> Tổng tiền </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Số Hóa đơn</td>
+                                            <td> Ngày </td>
+                                            <td> Loại giao dịch </td>
+                                            <td> Số lượng </td>
+                                            <td> Tiền </td>
+                                          </tr>
+
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <!-- End Tab Sale -->
+                                  <div class="tab-pane" id="import">
+                                    <div class="table-responsive table-hover" id="trans_list">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th>Số hóa đơn</th>
+                                            <th> Ngày </th>
+                                            <th> Loại </th>
+                                            <th> Party </th>
+                                            <th> Effect on Qty </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Số Hóa đơn</td>
+                                            <td> Ngày </td>
+                                            <td> Loại giao dịch </td>
+                                            <td> Số lượng </td>
+                                            <td> Amount </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <!-- End Tab Import -->
+                                </div>
+                              </div>
+                              <!-- End Tab History -->
+                            </div>
+                            <!-- end modal body -->
+                            <div class="modal-footer">
+                              <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
+                                <i class="fa fa-print"></i> In
+                              </button>
+                              <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                            </div>
+                          </div>
+                          <!-- end modal content -->
+                        </div>
+                        <!-- end modal dialog -->
+                      </div>
+                      <!-- end modal history  -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Table Wrap-->
+            </div>
+            <!-- End Tab Pane 2 -->
+            <div class="tab-pane" id="tab-3">
+              <!-- Form -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-body">
+                      <form role="form">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-6">
+                            <label>Loại:</label>
+                            <select class="form-control input-medium blue" id="select-type">
+                              <option value="all">Tất cả</option>
+                              <option value="regular">SP thường xuyên</option>
+                              <option value="unit">SP Theo Lô</option>
+                            </select>
+                          </div>
+                          <div class="col-lg-2 col-md-2">
+                            <label>Từ ngày:</label>
+                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                              <input type="text" class="form-control" readonly="" name="datepicker">
+                              <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                  <i class="fa fa-calendar"></i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2">
+                            <label>Đến ngày:</label>
+                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                              <input type="text" class="form-control" readonly="" name="datepicker">
+                              <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                  <i class="fa fa-calendar"></i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-1 col-md-2">
+                            <label style="display: block;">Lọc SP:</label>
+                            <button type="button" class="btn btn-danger">Lọc</button>
+                          </div>
+                          <div class="col-lg-2 col-lg-offset-1 col-md-12">
+                            <label style="display: block;">Thêm giao dịch:</label>
+                            <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Thêm giao dịch</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Table Wrap -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        <i class="icon-list font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Danh Sách</span>
+                      </div>
+                      <div class="actions">
+                        <button type="button" class="btn green" id="print-inventor" onclick="printDiv('trans_list')">
+                          <i class="fa fa-print"></i> In
+                        </button>
+                      </div>
+                    </div>
+                    <div class="portlet-body">
+                      <div class="table-scrollable" id="trans_list">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th> STT </th>
+                              <th> Reference </th>
+                              <th> Ngày </th>
+                              <th> Loại giao dịch </th>
+                              <th> Tình trạng </th>
+                              <th> User </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="invoice in invoices">
+                              <td> {{ invoice.invoice_id }} </td>
+                              <td> {{ invoice.invoice_ref}} </td>
+                              <td> {{invoice.invoice_date}} </td>
+                              <td> {{invoice.invoice_transaction}} </td>
+                              <td>
+                                {{invoice.invoice_status}}
+                              </td>
+                              <td>
+                                ok
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Table Wrap -->
+              <!-- Modal add trans-->
+              <div class="modal fade bs-modal-lg" id="add-trans" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Thêm Giao Dịch</h4> 
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <form role="form">
+                            <label>Chọn loại giao dịch</label>
+                            <select class="form-control input-xlarge" id="type1">
+                              <option value="receive">Nhập về</option>
+                              <option value="return">Trả lại nhà CC</option>
+                              <option value="trs-out">Transfer Out</option>
+                              <option value="adj-in">Adjustment In</option>
+                              <option value="adj-out">Adjustment Out</option>
+                              <option value="phy-count">Physical Count</option>
+                            </select>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" id="btn-add-trans">
+                        Thêm
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- End modal add trans -->
+              <!-- modal receive -->
+              <div class="modal fade bs-modal-lg" id="receive" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Receive</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->  
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Nhập về 
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-receive" role="form" class="form-trans">
+                                <div class="form-group">
+                                  <label class="control-label">Tên người cung cấp</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                <div class="div-btn">
+                                  <button type="button" class="btn btn-success btn-block">Thêm</button>
+                                  <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- end modal receive -->
+              <!-- modal return -->
+              <div class="modal fade bs-modal-lg" id="return" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Return</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>  
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->    
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Return
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-return" class="form-trans">
+                                <div class="form-group">
+                                  <label class="control-label">Tên người cung cấp</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Parent Doc</label>
+                                  <select class="form-control input-medium">
+                                    <option value="all">Tất cả</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                
                                 <button type="button" class="btn btn-success btn-block">Thêm</button>
                                 <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                              </div>
-                            </form>
+                              </form>
+                            </div>
                           </div>
+                          <!-- END Portlet PORTLET-->
                         </div>
-                        <!-- END Portlet PORTLET-->
                       </div>
                     </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
                   </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
+                  <!-- end modal content -->
                 </div>
-                <!-- /.modal-content -->
+                <!-- end modal dialog -->
               </div>
-              <!-- /.modal-dialog -->
+              <!-- /.end modal return -->
+              <!-- /.modal trans-out -->
+              <div class="modal fade bs-modal-lg" id="trs-out" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Transfer Out</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>  
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->          
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Transfer Out
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-trans-out" class="form-trans">
+                                <div class="form-group">
+                                  <label class="control-label">Tên người cung cấp</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-success btn-block">Thêm</button>
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
+                              </form>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div> 
+              <!-- /.end modal trans out -->
+              <!-- /.modal Adj In -->
+              <div class="modal fade bs-modal-lg" id="adj-in" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Adj In</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>  
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Adj In
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-adj-in" class="form-trans">
+                                <div class="form-group">
+                                  <label class="control-label">Related party</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                
+                                <button type="button" class="btn btn-success btn-block">Thêm</button>
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal-content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <!-- end modal Adj In -->
+              <!-- /.modal Adj Out -->
+              <div class="modal fade bs-modal-lg" id="adj-out" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Adj Out</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>  
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+
+                                    </tr>
+                                    
+
+                                  </tbody>
+                                </table>
+                              </div>
+
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Adj Out
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-adj-out" class="form-trans">
+                                <div class="form-group">
+                                  <label class="control-label">Related party</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                
+                                <button type="button" class="btn btn-success btn-block">Thêm</button>
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
+                                
+                              </form>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <!-- end modal Adj Out -->
+              <!-- /.modal Physics Out -->
+              <div class="modal fade bs-modal-lg" id="phy-count" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Physic Out</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button">Tìm</button>
+                              </span>
+                            </div>
+                          </div>
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-body">
+                              <div class="scroller" style="height:300px">
+                                <table class="table table-striped table-bordered table-hover table-checkable table-trans">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        SP
+                                      </th>
+                                      <th> Gía </th>
+                                      <th> Số lượng </th>
+                                      <th> Discount </th>
+                                      <th>
+                                        Tổng số
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>  
+                                        1
+                                      </td>
+                                      <td> shuxer </td>
+                                      <td>
+                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
+                                      </td>
+                                      <td>
+                                        11.5
+                                      </td>
+                                      <td class="center"> 12 Jan 2012 </td>
+
+                                    </tr>
+                                    
+
+                                  </tbody>
+                                </table>
+                              </div>
+
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                        <div class="col-md-4 ">
+                          <!-- BEGIN Portlet PORTLET-->
+                          <div class="portlet">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                Physic count
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <form action="" id="form-phy-count" class="form-trans">
+
+                                <div class="form-group">
+                                  <label class="control-label">Reference</label>
+                                  <input type="text" class="form-control input-medium" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label">REMARKS</label>
+                                  <textarea class="form-control input-medium" rows="3"></textarea>
+                                </div>
+                                
+                                <button type="button" class="btn btn-success btn-block">Thêm</button>
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
+                                
+
+                              </form>
+                            </div>
+                          </div>
+                          <!-- END Portlet PORTLET-->
+                        </div>
+                      </div>
+                    </div>  
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <!-- end modal Physics count -->
             </div>
-            <!-- end modal receive -->
-            <!-- modal return -->
-            <div class="modal fade bs-modal-lg" id="return" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Return</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>  
-                        </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
-                                    <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->    
-                      </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Return
-                            </div>
-                          </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-return" class="form-trans">
-                              <div class="form-group">
-                                <label class="control-label">Tên người cung cấp</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Parent Doc</label>
-                                <select class="form-control input-medium">
-                                  <option value="all">Tất cả</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-success btn-block">Thêm</button>
-                              <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                            </form>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- /.end modal return -->
-            <!-- /.modal trans-out -->
-            <div class="modal fade bs-modal-lg" id="trs-out" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Transfer Out</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>  
-                        </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
-                                    <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->          
-                      </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Transfer Out
-                            </div>
-                          </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-trans-out" class="form-trans">
-                              <div class="form-group">
-                                <label class="control-label">Tên người cung cấp</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
-                              </div>
-                              <button type="button" class="btn btn-success btn-block">Thêm</button>
-                              <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                            </form>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-            </div> 
-            <!-- /.end modal trans out -->
-            <!-- /.modal Adj In -->
-            <div class="modal fade bs-modal-lg" id="adj-in" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Adj In</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>  
-                        </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
-                                    <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
-
-                                  </tr>
-
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Adj In
-                            </div>
-                          </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-adj-in" class="form-trans">
-                              <div class="form-group">
-                                <label class="control-label">Related party</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-success btn-block">Thêm</button>
-                              <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal-content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- end modal Adj In -->
-            <!-- /.modal Adj Out -->
-            <div class="modal fade bs-modal-lg" id="adj-out" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Adj Out</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>  
-                        </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
-                                    <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
-
-                                  </tr>
-                                  
-
-                                </tbody>
-                              </table>
-                            </div>
-
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Adj Out
-                            </div>
-                          </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-adj-out" class="form-trans">
-                              <div class="form-group">
-                                <label class="control-label">Related party</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-success btn-block">Thêm</button>
-                              <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                              
-                            </form>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- end modal Adj Out -->
-            <!-- /.modal Physics Out -->
-            <div class="modal fade bs-modal-lg" id="phy-count" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Physic Out</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm theo tên, barcode...">
-                            <span class="input-group-btn">
-                              <button class="btn red" type="button">Tìm</button>
-                            </span>
-                          </div>
-                        </div>
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-body">
-                            <div class="scroller" style="height:300px">
-                              <table class="table table-striped table-bordered table-hover table-checkable table-trans">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      SP
-                                    </th>
-                                    <th> Gía </th>
-                                    <th> Số lượng </th>
-                                    <th> Discount </th>
-                                    <th>
-                                      Tổng số
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>  
-                                      1
-                                    </td>
-                                    <td> shuxer </td>
-                                    <td>
-                                      <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td>
-                                      11.5
-                                    </td>
-                                    <td class="center"> 12 Jan 2012 </td>
-
-                                  </tr>
-                                  
-
-                                </tbody>
-                              </table>
-                            </div>
-
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                      <div class="col-md-4 ">
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                          <div class="portlet-title">
-                            <div class="caption">
-                              Physic count
-                            </div>
-                          </div>
-                          <div class="portlet-body">
-                            <form action="" id="form-phy-count" class="form-trans">
-
-                              <div class="form-group">
-                                <label class="control-label">Reference</label>
-                                <input type="text" class="form-control input-medium" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">REMARKS</label>
-                                <textarea class="form-control input-medium" rows="3"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-success btn-block">Thêm</button>
-                              <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Hủy bỏ</button>
-                              
-
-                            </form>
-                          </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                      </div>
-                    </div>
-                  </div>  
-                  <!-- end modal body -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                  </div>
-                </div>
-                <!-- end modal content -->
-              </div>
-              <!-- end modal dialog -->
-            </div>
-            <!-- end modal Physics count -->
+            <!-- End Tab Pane 3 -->
           </div>
-          <!-- End Tab Pane 3 -->
+          <!-- End Main Tab Content -->
         </div>
-        <!-- End Main Tab Content -->
+        <!-- END TABBALE LINE-->
       </div>
-      <!-- END TABBALE LINE-->
     </div>
   </div>
-</div>
 </div>
 <!-- END MAIN CONTENT -->
