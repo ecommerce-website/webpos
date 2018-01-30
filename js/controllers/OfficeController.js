@@ -4,6 +4,7 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
         // initialize core components
         App.initAjax();
 
+
         invoices.forEach(function(invoice) {
             Invoice.addInvoice(invoice);
             Invoice.setInvoiceSelect(invoice);
@@ -42,6 +43,19 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
             invoice_date: "10-10-1010",
         },
     ];
+
+        CallApi.callRestApiGet('products').then(function(data){
+            $scope.invoices = data.data.data;
+            console.log(data.data.data);
+            data.data.data.forEach(function(invoice) {
+                Invoice.addInvoice(invoice);
+                Invoice.setInvoiceSelect(invoice);
+            });
+        });
+
+        $scope.invoices = Invoice.listInvoice;
+    });
+
 
     $scope.openPopup = function(invoice_id){
         $scope.invoicePopup = Invoice.getInvoice(invoice_id);  
