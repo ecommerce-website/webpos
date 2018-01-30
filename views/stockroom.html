@@ -66,7 +66,7 @@
               <!-- End Form  -->
               <!-- List Product -->
               <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" ng-repeat="pro in list_product">
                   <div class="portlet box green">
                     <div class="portlet-title">
                       <div class="actions">
@@ -79,7 +79,7 @@
                           <img src="">
                         </div>
                         <div class="col-md-7 value">
-                          Tên sản phẩm 
+                          {{ pro.product_name }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -87,7 +87,7 @@
                           Mã số kho: 
                         </div>
                         <div class="col-md-7 value">
-                          2 
+                          {{ pro.product_stock }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -95,15 +95,15 @@
                           Giá:
                         </div>
                         <div class="col-md-7 value">
-                         21.0
-                       </div>
+                          {{ pro.product_cost }}
+                        </div>
                       </div>
                       <div class="row static-info">
                         <div class="col-md-5 name">
                           Số Lượng:
                         </div>
                         <div class="col-md-7 value">
-                          2
+                          {{ pro.product_unit_quantity }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -111,7 +111,7 @@
                           Mô tả:
                         </div>
                         <div class="col-md-7 value">
-                          This is a product
+                          {{ pro.product_description }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -119,7 +119,7 @@
                           Tags:
                         </div>
                         <div class="col-md-7 value">
-                          This is a tag
+                          {{ pro.product_tag }}
                         </div>
                       </div>
                       <hr class="hr-bottom">
@@ -165,7 +165,7 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label>Loại sản phẩm</label>
-                                  <select class="form-control input-large blue">
+                                  <select class="form-control input-large blue" ng-model="pro_type">
                                     <option value="type-1">Đồ gia dụng</option>
                                     <option value="type-2">Đồ chơi</option>
                                     <option value="type-3">Đồ nhựa</option>
@@ -175,21 +175,17 @@
                                   <label>Số lượng
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large">
-                                </div>
-                                <div class="form-group">
-                                  <label>Barcode</label>
-                                  <input type="text" required="" class="form-control input-large">
+                                  <input type="number" required="" class="form-control input-large" ng-model="pro_stock">
                                 </div>
                                 <div class="form-group">
                                   <label>Tên sản phẩm
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="text" required="" class="form-control input-large">
+                                  <input type="text" required="" class="form-control input-large" ng-model="pro_name">
                                 </div>
                                 <div class="form-group">
                                   <label>Giá</label>
-                                  <input type="number" required="" class="form-control input-large">
+                                  <input type="number" required="" class="form-control input-large" ng-model="pro_cost">
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -197,28 +193,28 @@
                                   <label>Giá bán lẻ
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large">
+                                  <input type="number" required="" class="form-control input-large" ng-model="pro-retail-price">
                                 </div>
                                 <div class="form-group">
                                   <label>Tags
                                   </label>
-                                  <input type="text" required="" class="form-control input-large">
+                                  <input type="text" required="" class="form-control input-large" ng-model="pro_tag">
                                 </div>
                                 <div class="form-group">
                                   <label>Mô tả</label>
-                                  <textarea class="form-control" rows="3"></textarea>
+                                  <textarea class="form-control" rows="3" ng-model="pro-description"></textarea>
                                 </div>
                                 <div class="row">
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL ít nhất</label>
-                                      <input type="number" required="" class="form-control input-small">
+                                      <input type="number" required="" class="form-control input-small" ng-model="pro_min">
                                     </div>
                                   </div>
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL nhiểu nhất</label>
-                                      <input type="number" required="" class="form-control input-small">
+                                      <input type="number" required="" class="form-control input-small" ng-model="pro_max">
                                     </div>
                                   </div>
                                 </div>
@@ -245,7 +241,7 @@
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green">
+                      <button type="button" class="btn green" ng-click="addNewPro()">
                         Lưu
                       </button>
                       <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -293,10 +289,10 @@
                       <div class="tabbable tabbable-line" id="tab-history">
                         <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
                           <li class="active">
-                            <a href="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
+                            <a data-target="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
                           </li>
                           <li class="">
-                            <a href="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
+                            <a data-target="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
                           </li>
                         </ul>
                         <div class="tab-content">
