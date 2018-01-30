@@ -1,5 +1,5 @@
 angular.module('WebposApp').service('BuildUrl', function() {
-    this.token = "931e54c126cfca6e31b0c905d36d6614";
+    this.token = "";
     this.guard = "api";
     this.method = "rest";
     this.version = "v1";
@@ -11,9 +11,9 @@ angular.module('WebposApp').service('BuildUrl', function() {
         params.method = self.method;
         params.version = self.version;
         params.url = url;
-        var part = '';
+        var part = 'http://localhost/backend-webpos/';
         $.each(params, function(key, value) {
-            if (value != undefined && key != 'baseUrl' && key != 'guard') {
+            if (value != undefined && key != 'guard') {
                 part += "/";
             }
             part += value;

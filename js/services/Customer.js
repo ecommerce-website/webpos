@@ -17,74 +17,74 @@ angular.module('WebposApp').service('Invoice',function(){
 		
 	];
 	/*
-		list invoice
+		list Customer
 	*/
-	this.listInvoice = [];
+	this.listCustomer = [];
 	/*
-		Invoice select
+		Customer select
 	*/
-	this.invoiceSelect = {};
+	this.customerSelect = {};
 	/*
-		create init invoice
+		create init Customer
 	*/
-	this.invoiceInit = function(){
-		var invoice = {};
+	this.customerInit = function(){
+		var customer = {};
 		$.each(this.initField, function(key, value){
-			product[value]  = value != null ? null : "";
+			customer[value]  = value != null ? null : "";
 		});
-		return invoice;
+		return customer;
 	};
 
 	/*
-		list invoice empty
+		list customer empty
 	*/
-	this.setListInvoiceEmpty = function(){
+	this.setListCustomerEmpty = function(){
 		var self = this;
-		if(self.listInvoice.constructor === Array){
-			self.listInvoice = [];
+		if(self.listCustomer.constructor === Array){
+			self.listCustomer = [];
 		}
 	}
 	/*
-		add invoice to list invoice
+		add customer to list Customer
 	*/
-	this.addInvoice = function(data){
+	this.addCustomer = function(data){
 		var self = this;
-		var invoice = {};
+		var customer = {};
 		$.each(this.initField, function(key, value){
-			invoice[value] = data[value] != null ? data[value]: '';
+			customer[value] = data[value] != null ? data[value]: '';
 		});
-		self.listInvoice.push(invoice);
+		self.listCustomer.push(customer);
 	};
 
 	/*
-		get invoice in list invoice
+		get customer in list customer
 	*/
-	this.getInvoice = function(invoiceId){
+	this.getCustomer = function(customerId){
 		var self  = this;
-		return this.listInvoice.find(i => i.invoice_id === invoiceId) ? this.listInvoice.find(p => p.invoice_id === invoiceId ) : null;	
+		return this.listCustomer.find(i => i.customer_id === customerId) ? this.listCustomer.find(p => p.customer_id === customerId ) : null;	
 	};
 
 	/*
 		get Value => key of invoice
 	*/
-	this.getValueInvoice = function(invoiceId, key){
+	this.getValueCustomer = function(customerId, key){
 		var self = this;
-		var invoice = self.listInvoice.find(i => i.invoice_id === invoiceId);
-		return invoice[key];
+		var customer = self.listCustomer.find(i => i.customer_id === customerId);
+		return customer[key];
 	};
 
 	/*
 		set value => key of product
 	*/
-	this.setValueInvoice = function(invoiceId, key){
+	this.setValueCustomer = function(customerId, key){
 		var self = this;
-		var invoice = self.listInvoice.find(i => i.invoice_id === invoiceId);
+		var customer = self.listCustomer.find(i => i.customer_id === customerId);
 	};
 
-	this.setInvoiceSelectEmpty = function(){
+	this.setCustomerSelectEmpty = function(){
 		var self = this;
-		if(self.invoiceSelect.constructor === Object){
-			self.invoiceSelect = {};
+		if(self.customerSelect.constructor === Object){
+			self.customerSelect = {};
 		}
 	};
 
@@ -92,13 +92,13 @@ angular.module('WebposApp').service('Invoice',function(){
      * set product select to data
      * @param {*} data 
      */
-    this.setInvoiceSelect = function(data) {
+    this.setCustomerSelect = function(data) {
         var self = this;
-        var invoice = {};
+        var customer = {};
         $.each(this.initField, function(key, value) {
-            invoice[value] = data[value] != null ? data[value] : '';
+            customerr[value] = data[value] != null ? data[value] : '';
         });
-        self.invoiceSelect = invoice;
+        self.customerSelect = customer;
     };
 
 });

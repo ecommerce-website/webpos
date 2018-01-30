@@ -6,7 +6,7 @@ angular.module('WebposApp').service('CallApi', ['$http', '$httpParamSerializerJQ
      */
     this.callRestApiGet = function callRestApiGet(apiUrl) {
         var url = BuildUrl.bindParams(apiUrl);
-        return $http.post(url, params);
+        return $http.get(url);
     };
     /**
      * Call api rest POST
