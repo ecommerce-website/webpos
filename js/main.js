@@ -133,6 +133,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'assets/global/plugins/jquery.sparkline.min.js',
                             'assets/pages/scripts/dashboard.min.js',
                             'js/print.js',
+                            'js/trans.js',
                             'js/services/Product.js',
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',

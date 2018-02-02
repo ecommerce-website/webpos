@@ -60,4 +60,4 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
     $scope.openPopup = function(invoice_id){
         $scope.invoicePopup = Invoice.getInvoice(invoice_id);  
     };
-});
+};
