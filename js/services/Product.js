@@ -17,7 +17,8 @@ angular.module('WebposApp').service('Product', function() {
         'product_unit_string',
         'product_unit_quantity',
         'product_barcode',
-        'product_tag'
+        'product_tag',
+        'product_count'
     ];
     /**
      * list product

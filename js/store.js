@@ -33,4 +33,8 @@ $(document).ready(function() {
 		wme.close();
 	});
 
+	// $("input[name='demo3_21']").TouchSpin({
+	//     initval: 40
+	// }); 
+
 });
