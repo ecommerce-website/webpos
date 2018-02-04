@@ -390,7 +390,7 @@
               <!-- End modal barcode -->                  
             </div>
             <!-- End Tab Pane 1 -->
-            <div class="tab-pane" id="tab-2">
+            <div class="tab-pane" id="tab-2" ng-controller="InventoryController">
               <!-- Form -->
               <div class="row">
                 <div class="col-md-12">
@@ -445,13 +445,14 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr ng-repeat="invoice in invoices">
-                              <td> {{ invoice.invoice_id }} </td>
-                              <td> {{ invoice.invoice_ref}} </td>
-                              <td> {{invoice.invoice_date}} </td>
-                              <td> {{invoice.invoice_transaction}} </td>
+                            <tr ng-repeat="inventory in inventories">
+                              <td> 1</td>
+                              <td> {{ inventory.producte_id }} </td>
+                              <td> {{ inventory.product_stock_number}} </td>
+                              <td> {{inventory.product_name}} </td>
+                              <td> {{inventory.product_on_hand}} </td>
                               <td>
-                                {{invoice.invoice_status}}
+                                {{inventory.product_retail_price}}
                               </td>
                               <td>
                                 ok
