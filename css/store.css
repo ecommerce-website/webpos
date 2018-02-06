@@ -1,3 +1,39 @@
+#main_train{
+    padding-top: 50px;
+}
+.dropdown-menu>li>button {
+    padding: 8px 16px;
+    color: #6f6f6f;
+    text-decoration: none;
+    display: block;
+    clear: both;
+    font-weight: 300;
+    line-height: 18px;
+    white-space: nowrap;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.bounceOutRight {
+  -webkit-animation-name: bounceOutRight;
+  animation-name: bounceOutRight;
+}
+
 .invoice-subtotal{
     padding-left: 15px;
 }
@@ -29,9 +65,9 @@
 
 #right_bar_buttons {
     position: fixed;
-    bottom: 10px;
-    width: 22%;
-    right: 1%;
+    bottom: 15px;
+    width: 20%;
+    right: 3%;
 }
 
 #green_button {
@@ -117,7 +153,7 @@
 }
 
 #invoice_summary {
-    /*height: 100vh;*/
+    height: 93.5vh;
     border-right: 1px solid #d8d8d8;
 }
 
@@ -155,7 +191,7 @@
 }
 
 #payment_wrapper {
-    /*height: 100vh;*/
+    height: 93.5vh;
     padding: 0px;
     background-color: #FFFFFF;
 }
@@ -186,18 +222,13 @@
     border-radius: 15px;
     font-size: 30pt;
 }
-/*label {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: bold;
-}*/
+
 
 #right_buttons {
     position: fixed;
     bottom: 10px;
-    right: 2%;
-    width: 75%;
+    right: 0%;
+    width: 73%;
 }
 
 #payment_button_green {

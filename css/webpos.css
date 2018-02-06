@@ -1,5 +1,9 @@
-.page-content-wrapper .page-content {
-    min-height: 519px!important;
+.page-content-wrapper{
+    min-height: 93.5vh!important;
+
+}
+.page-content {
+    min-height: 93.5vh!important;
     overflow: hidden;
     padding:0px!important;
 }

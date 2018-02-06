@@ -1,207 +1,207 @@
 
 <div ng-controller="WebposController">
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0px">
         <!-- <div class="row">
             Checkout
         </div> -->
         <div id="checkout_summary" class="col-md-3 col-sm-12 col-xs-12">
-                    <div id="invoice_summary" class="col-md-12 col-xs-12 col-sm-12" style="padding: 0px;">
-                        <div id="payment_summary" style="padding: 15px;">
-            
-                            <div class="col-md-10">
-                                <div id="total_label">
-                                    <small> <div id="orange_text"> TOTAL </div> </small>
-                                </div>
-                                <div id="invoice_total_summary">$32.00</div> <br>
-                            </div>
-                            <div class="col-md-2 text-right">
-                                <a id="show_payment_details" class="toggle-class" href="#invoice_payment_details" data-toggle="collapse" aria-expanded="true"><span class="chevron glyphicon"></span></a>
-                            </div>
-
-                            <div id="invoice_payment_details" class="col-md-12 collapse in" aria-expanded="true">
-                                <br>
-                                <small>TAX BREAKDOWN</small>
-                                <div id="tax_list_summary"></div>
-                
-                                <br><br><br><br>
-                                <small>PAYMENTS MADE</small>
-                                <div id="payment_list"></div>
-                            </div>
-        
+            <div id="invoice_summary" class="col-md-12 col-xs-12 col-sm-12" style="padding: 0px;">
+                <div id="payment_summary" style="padding: 15px;">
+    
+                    <div class="col-md-10">
+                        <div id="total_label">
+                            <small> <div id="orange_text"> TOTAL </div> </small>
                         </div>
-        
-                        <div id="invoice_lines_summary">
-                            <div class="item_line">
-                                <div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px">
-                                    <span>Sample Item 1 x 5</span>
-                                </div>
+                        <div id="invoice_total_summary">{{total() | currency }}</div> <br>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <a id="show_payment_details" class="toggle-class" href="#invoice_payment_details" data-toggle="collapse" aria-expanded="true"><span class="chevron glyphicon"></span></a>
+                    </div>
 
-                                <div class="col-md-4 col-sm4 col-xs-4" style="padding: 0px">
-                                    <span>$32.00</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="invoice_payment_details" class="col-md-12 collapse in" aria-expanded="true">
+                        <br>
+                        <small>TAX BREAKDOWN</small>
+                        <div id="tax_list_summary"></div>
         
+                        <br><br><br><br>
+                        <small>PAYMENTS MADE</small>
+                        <div id="payment_list"></div>
+                    </div>
+
+                </div>
+
+                <div id="invoice_lines_summary">
+                    <div class="item_line">
+                        <div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px">
+                            <span>Sample Item 1 x 5</span>
+                        </div>
+
+                        <div class="col-md-4 col-sm4 col-xs-4" style="padding: 0px">
+                            <span>$32.00</span>
+                        </div>
                     </div>
                 </div>
-                <div id="payment_container" class="col-md-9 col-sm-12 col-xs-12">
-                    <div id="payment_wrapper" class="col-md-12 col-xs-12 col-sm-12" style="">
-                        <div id="payment_input">
-                            <div id="payment_back" class="col-md-3 col-xs-3 col-sm-3" style="padding-top: 20px; color: #FFF;">
-                                <a id="payment_back_href" onclick="hideCheckout( event );">
-                                    <span class="glyphicon glyphicon-chevron-left"></span> BACK 
-                                </a>
-                            </div>
-            
-                            <div class="col-md-9 col-xs-9 col-sm-9" style="padding-top: 20px; color: #FFF;">
-                                <label>AMOUNT TENDERED</label>
-                                <input id="amount_tendered" type="text" class="big-input text-right" style="color: #000">
-                            </div>
-                        </div>
-                
-                        <div id="payment_types" style="padding: 20px;">
-                            <center>
-                                <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="1" class="btn red btn-outline btn-block"> CASH </a></div>
-                                <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="2" class="btn red btn-outline btn-block"> CREDIT </a></div>
-                                <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="3" class="btn red btn-outline btn-block"> DEBIT </a></div>
-                
-                                <div class="btn-group col-md-3 col-xs-3 col-sm-3">
-                                  <button id="payment_button_drop" type="button" class="btn red btn-outline btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MORE &nbsp; <span class="caret"></span></button>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#basic" data-toggle="modal" >POINTS</a></li>
-                                    <li><a id="check">CHECK</a></li>
-                                    <li><a id="gift">GIFT CERTIFICATE</a></li>
-                                    <li><a id="other">OTHERS</a></li>
-                                  </ul>
-                                </div>
-                            </center>
 
-                            
+            </div>
+        </div>
+        <div id="payment_container" class="col-md-9 col-sm-12 col-xs-12">
+            <div id="payment_wrapper" class="col-md-12 col-xs-12 col-sm-12" style="">
+                <div id="payment_input">
+                    <div id="payment_back" class="col-md-3 col-xs-3 col-sm-3" style="padding-top: 20px; color: #FFF;">
+                        <a id="payment_back_href" onclick="hideCheckout( event );">
+                            <span class="glyphicon glyphicon-chevron-left"></span> BACK 
+                        </a>
+                    </div>
+    
+                    <div class="col-md-9 col-xs-9 col-sm-9" style="padding-top: 20px; color: #FFF;">
+                        <label>AMOUNT TENDERED</label>
+                        <input id="amount_tendered" type="text" class="big-input text-right" style="color: #000">
+                    </div>
+                </div>
+        
+                <div id="payment_types" style="padding: 20px;">
+                    <center>
+                        <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="1" class="btn red btn-outline btn-block"> CASH </a></div>
+                        <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="2" class="btn red btn-outline btn-block"> CREDIT </a></div>
+                        <div class="col-md-3 col-xs-3 col-sm-3"><a href="#" id="payment_button" onclick="selectPaymentType(event, this);" data-payment_type="3" class="btn red btn-outline btn-block"> DEBIT </a></div>
+        
+                        <div class="btn-group col-md-3 col-xs-3 col-sm-3">
+                          <button id="payment_button_drop" type="button" class="btn red btn-outline btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MORE &nbsp; <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#basic" data-toggle="modal" >POINTS</a></li>
+                            <li><a id="check">CHECK</a></li>
+                            <li><a id="gift">GIFT CERTIFICATE</a></li>
+                            <li><a id="other">OTHERS</a></li>
+                          </ul>
                         </div>
+                    </center>
+
+                    
+                </div>
+
+
+                <div id="payment_details" style="padding: 10px;">
+                    <hr>
         
-        
-                        <div id="payment_details" style="padding: 10px;">
-                            <hr>
-                
-                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                <label>Customer Name</label>
-                                <input id="checkout_customer_name" type="text" class="form-control" disabled="">
-                            </div>
-            
-                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                <label>Email</label>
-                                <input id="checkout_customer_email" type="text" class="form-control">
-                            </div>
-            
-        
-                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                <br>
-                                <label>Membership</label>
-                                <input id="checkout_customer_membership" type="text" class="form-control" disabled="">
-                            </div>
-            
-                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                <br>
-                                <input id="email_invoice" type="checkbox"> Email invoice
-                            </div>
-            
-                        </div>
-        
-                        <div id="other_payment_details_wrapper" style="padding: 10px;" class="col-md-12 col-xs-12 col-sm-12">
-                            <hr>
-                            <div id="other_payment_details">
-                                
-                            </div>
-                        </div>
-        
-        
-                        <div id="right_buttons" style="padding: 10px;">
-                            <hr>
-                            <a  id="payment_button_green" class="btn btn-success btn-outline pull-right" data-target="#full-width" data-toggle="modal"> PAY </a><br><br>
-                        </div>
-            
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <label>Customer Name</label>
+                        <input id="checkout_customer_name" type="text" class="form-control" disabled="">
+                    </div>
+    
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <label>Email</label>
+                        <input id="checkout_customer_email" type="text" class="form-control">
+                    </div>
+    
+
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <br>
+                        <label>Membership</label>
+                        <input id="checkout_customer_membership" type="text" class="form-control" disabled="">
+                    </div>
+    
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <br>
+                        <input id="email_invoice" type="checkbox"> Email invoice
+                    </div>
+    
+                </div>
+
+                <div id="other_payment_details_wrapper" style="padding: 10px;" class="col-md-12 col-xs-12 col-sm-12">
+                    <hr>
+                    <div id="other_payment_details">
                         
-        
                     </div>
-
-                    <!-- modal -->
-
-                    <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                    <h4 class="modal-title"><strong>Error</strong></h4>
-                                </div>
-                                <div class="modal-body"> There is no customer selected!</div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn blue btn-outline" data-dismiss="modal">OK</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-
-                    <div id="full-width" class="modal fade" role="full-width" tabindex="-1" onload="window.print();">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                    <h4 class="modal-title">TRANSACTION SUMMARY</h4>
-                                </div>
-                                <div class="modal-body" id="in" style="height: 600px">
-                                    <div class="header">
-                                        <div class="logo col-md-4"><img src="http://tuyendungvietnam.com.vn/images/user/2329.jpg"/></div>
-                                        <div class="company col-md-4" >May Boutique</div>
-                                    </div>
-                                    <br/>
-                                    <div class="title">
-                                        HÓA ĐƠN THANH TOÁN
-                                        <br/>
-                                        -------oOo-------
-                                    </div>
-                                    <br/>
-                                    <br/>
-                                    <table class="TableData">
-                                        <tr>
-                                          <th>STT</th>
-                                          <th>Tên</th>
-                                          <th>Đơn giá</th>
-                                          <th>Số</th>
-                                          <th>Thành tiền</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>vay</td>
-                                            <td>169000</td>
-                                            <td>5</td>
-                                            <td>6000000</td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan="4" class="tong">Tổng cộng</td>
-                                          <td class="cotSo">1600000</td>
-                                        </tr>
-
-                                    </table>
-                                    <br>
-                                    <div class="footer-left"> , ngày 16 tháng 12 năm 2014<br/>
-                                        Khách hàng 
-                                    </div>
-                                    <div class="footer-right"> , ngày 16 tháng 12 năm 2014<br/>
-                                        Nhân viên 
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" id="print" class="btn green">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end-modal -->
                 </div>
+
+
+                <div id="right_buttons" style="padding: 10px;">
+                    <hr>
+                    <a  id="payment_button_green" class="btn btn-success btn-outline pull-right" data-target="#full-width" data-toggle="modal"> PAY </a><br><br>
+                </div>
+    
+                
+
+            </div>
+
+            <!-- modal -->
+
+            <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title"><strong>Error</strong></h4>
+                        </div>
+                        <div class="modal-body"> There is no customer selected!</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn blue btn-outline" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
+            <div id="full-width" class="modal fade" role="full-width" tabindex="-1" onload="window.print();">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">TRANSACTION SUMMARY</h4>
+                        </div>
+                        <div class="modal-body" id="in" style="height: 600px">
+                            <div class="header">
+                                <div class="logo col-md-4"><img src="http://tuyendungvietnam.com.vn/images/user/2329.jpg"/></div>
+                                <div class="company col-md-4" >May Boutique</div>
+                            </div>
+                            <br/>
+                            <div class="title">
+                                HÓA ĐƠN THANH TOÁN
+                                <br/>
+                                -------oOo-------
+                            </div>
+                            <br/>
+                            <br/>
+                            <table class="TableData">
+                                <tr>
+                                  <th>STT</th>
+                                  <th>Tên</th>
+                                  <th>Đơn giá</th>
+                                  <th>Số</th>
+                                  <th>Thành tiền</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>vay</td>
+                                    <td>169000</td>
+                                    <td>5</td>
+                                    <td>6000000</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="4" class="tong">Tổng cộng</td>
+                                  <td class="cotSo">1600000</td>
+                                </tr>
+
+                            </table>
+                            <br>
+                            <div class="footer-left"> , ngày 16 tháng 12 năm 2014<br/>
+                                Khách hàng 
+                            </div>
+                            <div class="footer-right"> , ngày 16 tháng 12 năm 2014<br/>
+                                Nhân viên 
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" id="print" class="btn green">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end-modal -->
+        </div>
     </div>
 </div>
 
