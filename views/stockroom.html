@@ -1,4 +1,4 @@
-<!-- BEGIN MAIN CONTENT -->
+<!--BEGIN MAIN CONTENT -->
 <div ng-controller="StockroomController">
   <div class="container-fluid">
     <div class="row">
@@ -396,14 +396,14 @@
                 <div class="col-md-12">
                   <div class="portlet light bordered">
                     <div class="portlet-body">
-                      <form role="form">
+                      <form role="form" id="searchInventory">
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-lg-offset-8 col-md-offset-8">
                             <label style="display: block;">Tìm SP: </label>
                             <div class="input-group">
-                              <input type="text" class="form-control">
+                              <input type="text" name="searchInventory" class="form-control">
                               <span class="input-group-btn">
-                                <button class="btn red" type="button">Tìm</button>
+                                <button class="btn red" type="button" ng-click="searchInventory()">Tìm</button>
                               </span>
                             </div>
                           </div>
@@ -429,6 +429,7 @@
                         </button>
                       </div>
                     </div>
+
                     <div class="portlet-body">
                       <div class="table-scrollable" id="inventor_list">
                         <table class="table table-hover">
@@ -446,22 +447,21 @@
                           </thead>
                           <tbody>
                             <tr ng-repeat="inventory in inventories">
-                              <td> 1</td>
-                              <td> {{ inventory.producte_id }} </td>
+                              <td> {{ inventory.product_id }} </td>
                               <td> {{ inventory.product_stock_number}} </td>
                               <td> {{inventory.product_name}} </td>
+                              <td>
+                                {{inventory.product_retail_price }}
+                              </td>
                               <td> {{inventory.product_on_hand}} </td>
                               <td>
-                                {{inventory.product_retail_price}}
+                                1.0
                               </td>
                               <td>
-                                ok
-                              </td>
-                              <td>
-                                10.4
+                                Chua biet
                               </td>
                               <td class="hidden-print">
-                                <a data-toggle="modal" data-target="#history1">Lịch sử</a>
+                                <a data-toggle="modal" data-target="#history1" ng-click="openPopup(inventory.product_id)">Lịch sử</a>
                               </td>
                             </tr>
                           </tbody>
@@ -473,7 +473,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                              <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
+                              <h4 class="modal-title">Lịch sử mặt hàng: <span>{{saleProduct.product_name}}</span></h4>
                             </div>
                             <div class="modal-body">
                               <div class="row static-info">
@@ -481,7 +481,7 @@
                                   Trong kho:
                                 </div>
                                 <div class="col-xs-2 value">
-                                  10
+                                  {{saleProduct.product_on_hand}}
                                 </div>
                               </div>
                               <div class="row static-info">
@@ -489,15 +489,7 @@
                                   Mã số kho:
                                 </div>
                                 <div class="col-xs-2 value">
-                                  10
-                                </div>
-                              </div>
-                              <div class="row static-info">
-                                <div class="col-xs-2 name">
-                                  Hãng:
-                                </div>
-                                <div class="col-xs-2 value">
-                                  Gucci
+                                  {{saleProduct.product_stock_number}}
                                 </div>
                               </div>
                               <!-- Tab History -->
@@ -524,14 +516,13 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Số Hóa đơn</td>
-                                            <td> Ngày </td>
-                                            <td> Loại giao dịch </td>
-                                            <td> Số lượng </td>
-                                            <td> Tiền </td>
+                                          <tr ng-repeat = "product in listSale">
+                                            <td>{{product.invoices.invoice_id}}</td>
+                                            <td>{{product.invoices.invoice_date}}</td>
+                                            <td>{{product.invoices.invoice_transaction_type}}</td>
+                                            <td>{{product.invoices.invoice_quantity_bought}}</td>
+                                            <td>{{product.invoices.invoice_total}}</td>
                                           </tr>
-
                                         </tbody>
                                       </table>
                                     </div>
@@ -546,16 +537,14 @@
                                             <th> Ngày </th>
                                             <th> Loại </th>
                                             <th> Party </th>
-                                            <th> Effect on Qty </th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Số Hóa đơn</td>
-                                            <td> Ngày </td>
-                                            <td> Loại giao dịch </td>
-                                            <td> Số lượng </td>
-                                            <td> Amount </td>
+                                          <tr ng-repeat="import in nhapProduct">
+                                            <td>{{import.product_id}}</td>
+                                            <td>{{import.transaction_date}}</td>
+                                            <td>{{import.transaction_type}}</td>
+                                            <td>{{import.transaction_related_party}}</td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -580,13 +569,14 @@
                       </div>
                       <!-- end modal history  -->
                     </div>
+
                   </div>
                 </div>
               </div>
               <!-- End Table Wrap-->
             </div>
             <!-- End Tab Pane 2 -->
-            <div class="tab-pane" id="tab-3">
+            <div class="tab-pane" id="tab-3" ng-controller= "TransactionController">
               <!-- Form -->
               <div class="row">
                 <div class="col-md-12">
@@ -667,17 +657,13 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr ng-repeat="invoice in invoices">
-                              <td> {{ invoice.invoice_id }} </td>
-                              <td> {{ invoice.invoice_ref}} </td>
-                              <td> {{invoice.invoice_date}} </td>
-                              <td> {{invoice.invoice_transaction}} </td>
-                              <td>
-                                {{invoice.invoice_status}}
-                              </td>
-                              <td>
-                                ok
-                              </td>
+                            <tr ng-repeat="tran in transactions">
+                              <td> {{ tran.transaction_id }} </td>
+                              <td> {{ tran.transaction_ref}} </td>
+                              <td> {{ tran.transaction_date}} </td>
+                              <td> {{ tran.transaction_type}} </td>
+                              <td> {{ tran.transaction_status}} </td>
+                              <td> {{ tran.transaction_user}}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1349,4 +1335,4 @@
     </div>
   </div>
 </div>
-<!-- END MAIN CONTENT -->
+<!-- END MAIN CONTENT

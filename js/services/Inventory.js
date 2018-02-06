@@ -1,11 +1,12 @@
 angular.module('WebposApp').service('Inventory',function(){
 	this.initField= [
 		'product_id',
-		'product_name',
-		'product_cost',
-		'product_retail_price',
-		'product_on_hand',
 		'product_stock_number',
+		'product_name',
+		'product_unit_string',
+		'product_unit_quantity',
+		'product_on_hand',
+		'product_retail_price',
 	];
 	/*
 		list inventory
@@ -38,7 +39,7 @@ angular.module('WebposApp').service('Inventory',function(){
 	/*
 		add Inventory to list Inventory
 	*/
-	this.addInvoice = function(data){
+	this.addInventory = function(data){
 		var self = this;
 		var inventory = {};
 		$.each(this.initField, function(key, value){

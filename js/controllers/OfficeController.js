@@ -10,11 +10,9 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
             Invoice.setInvoiceSelect(invoice);
         });
 
-        // Invoice.setValueInvoiceSelect("name", "Regularrrrr");
 
         $log.info(Invoice); 
         $scope.invoices = Invoice.listInvoice;
-        // console.log($scope.invoice);
 
     });
 

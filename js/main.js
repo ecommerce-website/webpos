@@ -134,9 +134,13 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'assets/pages/scripts/dashboard.min.js',
                             'js/print.js',
                             'js/services/Product.js',
+                            'js/services/Inventory.js',
+                            'js/services/Transaction.js',
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
-                            'js/controllers/StockroomController.js'
+                            'js/controllers/StockroomController.js',
+                            'js/controllers/InventoryController.js',
+                            'js/controllers/TransactionController.js',
                         ]
                     });
                 }]
@@ -157,7 +161,6 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'assets/global/plugins/morris/morris.min.js',
                             'assets/global/plugins/morris/raphael-min.js',
                             'assets/global/plugins/jquery.sparkline.min.js',
-
                             'assets/pages/scripts/dashboard.min.js',
                             'js/services/Invoice.js',
                             'js/services/BuildUrl.js',
