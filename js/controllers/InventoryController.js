@@ -43,6 +43,9 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
 
     $scope.searchInventory = function(){
         var text = $('#searchInventory input').val();
-        
+        console.log(text);
+        CallApi.callRestApiGet("inventories/filter?product_name=" + text).then(function(data){
+            $scope.inventories = data.data.data;
+        });
     };
 });
