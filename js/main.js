@@ -141,6 +141,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/controllers/StockroomController.js',
                             'js/controllers/InventoryController.js',
                             'js/controllers/TransactionController.js',
+                            'js/controllers/ProductController.js',
                         ]
                     });
                 }]
