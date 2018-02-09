@@ -1,4 +1,4 @@
-angular.module('WebposApp').service('Invoice',function(){
+angular.module('WebposApp').service('Customer',function(){
 	this.initField= [
 		'customer_id',
 		'customer_group_id',
@@ -13,8 +13,7 @@ angular.module('WebposApp').service('Invoice',function(){
 		'customer_street',
 		'customer_address',
 		'customer_note',
-		'customer_birthday',
-		
+		'customer_birthday',	
 	];
 	/*
 
@@ -28,154 +27,5 @@ angular.module('WebposApp').service('Invoice',function(){
 	/*
 		create init invoice
 	*/
-	this.invoiceInit = function(){
-		var invoice = {};
-		$.each(this.initField, function(key, value){
-			product[value]  = value != null ? null : "";
-		});
-		return invoice;
-	};
-
-	/*
-		list invoice empty
-	*/
-	this.setListInvoiceEmpty = function(){
-		var self = this;
-		if(self.listInvoice.constructor === Array){
-			self.listInvoice = [];
-		}
-	}
-	/*
-		add invoice to list invoice
-	*/
-	this.addInvoice = function(data){
-		var self = this;
-		var invoice = {};
-		$.each(this.initField, function(key, value){
-			invoice[value] = data[value] != null ? data[value]: '';
-		});
-		self.listInvoice.push(invoice);
-	};
-
-	/*
-		get invoice in list invoice
-	*/
-	this.getInvoice = function(invoiceId){
-		var self  = this;
-		return this.listInvoice.find(i => i.invoice_id === invoiceId) ? this.listInvoice.find(p => p.invoice_id === invoiceId ) : null;	
-
-		list Customer
-	*/
-	this.listCustomer = [];
-	/*
-		Customer select
-	*/
-	this.customerSelect = {};
-	/*
-		create init Customer
-	*/
-	this.customerInit = function(){
-		var customer = {};
-		$.each(this.initField, function(key, value){
-			customer[value]  = value != null ? null : "";
-		});
-		return customer;
-	};
-
-	/*
-		list customer empty
-	*/
-	this.setListCustomerEmpty = function(){
-		var self = this;
-		if(self.listCustomer.constructor === Array){
-			self.listCustomer = [];
-		}
-	}
-	/*
-		add customer to list Customer
-	*/
-	this.addCustomer = function(data){
-		var self = this;
-		var customer = {};
-		$.each(this.initField, function(key, value){
-			customer[value] = data[value] != null ? data[value]: '';
-		});
-		self.listCustomer.push(customer);
-	};
-
-	/*
-		get customer in list customer
-	*/
-	this.getCustomer = function(customerId){
-		var self  = this;
-		return this.listCustomer.find(i => i.customer_id === customerId) ? this.listCustomer.find(p => p.customer_id === customerId ) : null;	
-
-	};
-
-	/*
-		get Value => key of invoice
-	*/
-
-	this.getValueInvoice = function(invoiceId, key){
-		var self = this;
-		var invoice = self.listInvoice.find(i => i.invoice_id === invoiceId);
-		return invoice[key];
-
-	this.getValueCustomer = function(customerId, key){
-		var self = this;
-		var customer = self.listCustomer.find(i => i.customer_id === customerId);
-		return customer[key];
-
-	};
-
-	/*
-		set value => key of product
-	*/
-
-	this.setValueInvoice = function(invoiceId, key){
-		var self = this;
-		var invoice = self.listInvoice.find(i => i.invoice_id === invoiceId);
-	};
-
-	this.setInvoiceSelectEmpty = function(){
-		var self = this;
-		if(self.invoiceSelect.constructor === Object){
-			self.invoiceSelect = {};
-
-	this.setValueCustomer = function(customerId, key){
-		var self = this;
-		var customer = self.listCustomer.find(i => i.customer_id === customerId);
-	};
-
-	this.setCustomerSelectEmpty = function(){
-		var self = this;
-		if(self.customerSelect.constructor === Object){
-			self.customerSelect = {};
-
-		}
-	};
-
-	/**
-     * set product select to data
-     * @param {*} data 
-     */
-
-    this.setInvoiceSelect = function(data) {
-        var self = this;
-        var invoice = {};
-        $.each(this.initField, function(key, value) {
-            invoice[value] = data[value] != null ? data[value] : '';
-        });
-        self.invoiceSelect = invoice;
-
-    this.setCustomerSelect = function(data) {
-        var self = this;
-        var customer = {};
-        $.each(this.initField, function(key, value) {
-            customerr[value] = data[value] != null ? data[value] : '';
-        });
-        self.customerSelect = customer;
-
-    };
-
+	
 });
