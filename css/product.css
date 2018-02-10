@@ -7,3 +7,15 @@
 	border: 0;
 	border-top: 1px solid #eee;
 }
+.barcode{
+	height: 50px;
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid #cccccc;
+	margin: 10px;
+}
+.barcode h5{
+	margin-top: 15px;
+	margin-bottom: 0;
+}
