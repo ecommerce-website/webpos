@@ -70,7 +70,7 @@
                   <div class="portlet box green">
                     <div class="portlet-title">
                       <div class="actions">
-                        <button class="btn btn-md btn-danger">Xóa</button>
+                        <button class="btn btn-md btn-danger" ng-click="delProduct(pro.product_id)">Xóa</button>
                       </div>
                     </div>
                     <div class="portlet-body">
@@ -128,10 +128,10 @@
                           <a data-target="#history" class="btn green btn-md" data-toggle="modal">Lịch sử</a>
                         </div>
                         <div class="col-md-4">
-                          <a data-target="#barcode" class="btn green btn-md" data-toggle="modal">Barcode</a>
+                          <a data-target="#barcode" class="btn green btn-md" data-toggle="modal" ng-click="showPro(pro.product_id)">Barcode</a>
                         </div>
                         <div class="col-md-4">
-                          <a data-target="#add-pro" class="btn green btn-md" data-toggle="modal">Sửa</a>
+                          <a data-target="#edit-pro" class="btn green btn-md" data-toggle="modal" ng-click="editPro(pro.product_id)">Sửa</a>
                         </div>
                       </div>
                     </div>
@@ -242,7 +242,113 @@
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" ng-click="addProduct()">
+                      <button type="button" class="btn green" ng-click="addProduct()" data-dismiss="modal">
+                        Lưu
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- End modal content -->
+                </div>
+                <!-- End modal dialog -->
+              </div>
+              <!-- End modal add product --> 
+
+              <!-- Modal edit product -->
+              <div class="modal fade bs-modal-lg" id="edit-pro" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title"> Sửa sản phẩm </h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="tabbable tabbable-line">
+                        <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
+                          <li class="active">
+                            <a data-target="#info" data-toggle="tab" aria-expanded="false">Thông tin</a>
+                          </li> 
+                          <li class="">
+                            <a data-target="#image" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                          <form role="form" class="form-pro" style="margin-top: 15px;">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Số Kho Hàng
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="number" required="" class="form-control input-large" ng-model="edit_product_stock_number">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tên sản phẩm
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large" ng-model="edit_product_name">
+                                </div>
+                                <div class="form-group">
+                                  <label>Giá bán lẻ</label>
+                                  <input type="number" class="form-control input-large" ng-model="edit_product_retail_price">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Giá
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="text" class="form-control input-large" ng-model="edit_product_cost">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tags
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
+                                </div>
+                                <div class="form-group">
+                                  <label>Mô tả</label>
+                                  <textarea class="form-control" rows="3" ng-model="edit_product_description"></textarea>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL ít nhất</label>
+                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_min_quantity">
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL nhiểu nhất</label>
+                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_max_quantity">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- End Tab Info -->
+                        <div class="tab-pane" id="image">
+                          <form role="form" class="form-pro">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group margin-top-15">
+                                  <label>Ảnh minh họa</label>
+                                  <input type="file">
+                                  <p class="help-block">Tải lên file ảnh</p>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- End Tab Image -->
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" ng-click="updateProduct(id_product)" data-dismiss="modal">
                         Lưu
                       </button>
                       <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -253,6 +359,7 @@
                 <!-- End modal dialog -->
               </div>
               <!-- End modal add product -->  
+
               <!-- modal history -->
               <div class="modal fade bs-modal-lg" id="history" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -371,10 +478,17 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h4 class="modal-title"> Barcode: <span>Tên mặt hàng</span></h4>
+                      <h4 class="modal-title"> Barcode: <span>{{product_detail.product_name}}</span></h4>
                     </div>
                     <div class="modal-body" id="print-barcode">
-                      Điền barcode ở đây
+                      <div class="row">
+                        <div class="barcode" ng-repeat="barcode in barcode">
+                          <div>
+                            <img src="data:image/png;base64,{{barcode.barcode_img}}" alt="">
+                          </div>
+                          <h5>{{barcode.barcode_name}}</h5>
+                        </div>
+                      </div>
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
