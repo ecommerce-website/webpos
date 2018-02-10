@@ -25,16 +25,7 @@
                                             <form role="form">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <label>Filter by type</label>
-                                                        <select class="form-control input-medium blue">
-                                                            <option>All</option>
-                                                            <option>Normal</option>
-                                                            <option>Layaway</option>
-                                                            <option>Return</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label>Filter by status</label>
+                                                        <label>Ti</label>
                                                         <select class="form-control input-medium blue">
                                                             <option>All</option>
                                                             <option>Voided</option>
@@ -44,7 +35,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-4 col-md-offset-2">
-                                                        <label>Search Invoice</label>
+                                                        <label>Tìm Hóa Đơn</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" placeholder="Search Invoice ...">
                                                             <span class="input-group-btn">
@@ -86,12 +77,12 @@
                                                 <table class="table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th> # </th>
-                                                            <th> Reference </th>
-                                                            <th> Date </th>
-                                                            <th> Transaction Type </th>
-                                                            <th> Status </th>
-                                                            <th> View </th>
+                                                            <th> STT </th>
+                                                            <th> Mã tham khảo </th>
+                                                            <th> Ngày giao dịch </th>
+                                                            <th> Loại giao dịch </th>
+                                                            <th> Trạng Thái </th>
+                                                            <th> Lịch Sử </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -99,7 +90,7 @@
                                                             <td> {{ invoice.invoice_id }} </td>
                                                             <td> {{ invoice.invoice_ref}} </td>
                                                             <td> {{invoice.invoice_date}} </td>
-                                                            <td> {{invoice.invoice_transaction}} </td>
+                                                            <td> {{invoice.invoice_transaction_type}} </td>
                                                             <td>
                                                                 <span class="label label-sm label-success"> {{invoice.invoice_status}} </span>
                                                             </td>
@@ -115,26 +106,26 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                        <h4 class="modal-title">Nomal Invoice {{invoicePopup.invoice_id}}</h4>
+                                                        <h4 class="modal-title">Mã giao dịch : {{inv.invoice_id}}</h4>
                                                     </div>
                                                     <div class="modal-body">
 
                                                         <div class="row invoice-cust-add">
                                                             <div class="col-xs-3">
-                                                                <h5 class="invoice-title uppercase">Customer</h2>
-                                                                <p class="invoice-desc">Lorem Tech Co.</p>
+                                                                <h5 class="invoice-title uppercase">Khách Hàng</h2>
+                                                                <p class="invoice-desc">{{inv.invoice_customer.customer_fname + inv.invoice_customer.customer_lname}}</p>
                                                             </div>
                                                             <div class="col-xs-3">
-                                                                <h5 class="invoice-title uppercase">Date</h2>
-                                                                <p class="invoice-desc">Nov 12, 2015</p>
+                                                                <h5 class="invoice-title uppercase">Ngày</h2>
+                                                                <p class="invoice-desc">{{inv.invoice_date}}</p>
                                                             </div>
                                                             <div class="col-xs-3">
-                                                                <h5 class="invoice-title uppercase">Saleman</h2>
-                                                                <p class="invoice-desc">KKK Tech Co.</p>
+                                                                <h5 class="invoice-title uppercase">Người Bán</h2>
+                                                                <p class="invoice-desc"></p>
                                                             </div>
                                                             <div class="col-xs-3">
-                                                                <h5 class="invoice-title uppercase">Payment</h2>
-                                                                <p class="invoice-desc">Cash</p>
+                                                                <h5 class="invoice-title uppercase">Phương thức TT</h2>
+                                                                <p class="invoice-desc">{{inv.invoice_payment}}</p>
                                                             </div>
                                                         </div>
 
@@ -143,39 +134,24 @@
                                                                 <table class="table table-striped table-hover">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th> # </th>
-                                                                            <th> Item </th>
-                                                                            <th class="hidden-xs"> Description </th>
-                                                                            <th class="hidden-xs"> Quantity </th>
-                                                                            <th class="hidden-xs"> Unit Cost </th>
-                                                                            <th> Total </th>
+                                                                            <th> Mã Sản Phẩm </th>
+                                                                            <th> Sản phẩm </th>
+                                                                            <th class="hidden-xs"> Miêu tả </th>
+                                                                            <th class="hidden-xs"> Số lượng </th>
+                                                                            <th class="hidden-xs">  Giá sản phẩm </th>
+                                                                            <th> Tổng tiền </th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <tr>
-                                                                            <td> 1 </td>
-                                                                            <td> Hardware </td>
-                                                                            <td class="hidden-xs"> Server hardware purchase </td>
-                                                                            <td class="hidden-xs"> 32 </td>
-                                                                            <td class="hidden-xs"> $75 </td>
-                                                                            <td> $2152 </td>
+                                                                        <tr ng-repeat="product in invoiceListProduct">
+                                                                            <td>{{product.products.product_id}}</td>
+                                                                            <td>{{product.products.product_name}}</td>
+                                                                            <td>{{product.ql_invoices_line_note}}</td>
+                                                                            <td>{{product.quantity_bought}}</td>
+                                                                            <td>{{product.products.product_price}}</td>
+                                                                            <td>{{product.products.product_id}}</td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td> 2 </td>
-                                                                            <td> Furniture </td>
-                                                                            <td class="hidden-xs"> Office furniture purchase </td>
-                                                                            <td class="hidden-xs"> 15 </td>
-                                                                            <td class="hidden-xs"> $169 </td>
-                                                                            <td> $4169 </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td> 3 </td>
-                                                                            <td> Foods </td>
-                                                                            <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                                                                            <td class="hidden-xs"> 69 </td>
-                                                                            <td class="hidden-xs"> $49 </td>
-                                                                            <td> $1260 </td>
-                                                                        </tr>
+                                                                       
                                                                     </tbody>
                                                                 </table>
                                                             </div>

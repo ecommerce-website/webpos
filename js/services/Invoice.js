@@ -4,7 +4,7 @@ angular.module('WebposApp').service('Invoice',function(){
 		'invoice_customer_id',
 		'invoice_total',
 		'invoice_quantity_bought',
-		'invoice_transaction',
+		'invoice_transaction_type',
 		'invoice_ref',
 		'invoice_remark',
 		'invoice_payment_term',

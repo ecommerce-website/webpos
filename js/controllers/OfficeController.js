@@ -4,34 +4,31 @@ angular.module('WebposApp').controller('OfficeController', function($rootScope, 
         // initialize core components
         App.initAjax();
 
-
-        invoices.forEach(function(invoice) {
-            Invoice.addInvoice(invoice);
-            Invoice.setInvoiceSelect(invoice);
-        });
-
-        // Invoice.setValueInvoiceSelect("name", "Regularrrrr");
-
         $log.info(Invoice); 
         $scope.invoices = Invoice.listInvoice;
-        // console.log($scope.invoice);
 
     });
 
 
-    CallApi.callRestApiGet('products').then(function(data){
+    CallApi.callRestApiGet('invoices').then(function(data){
         $scope.invoices = data.data.data;
         console.log(data.data.data);
         data.data.data.forEach(function(invoice) {
             Invoice.addInvoice(invoice);
             Invoice.setInvoiceSelect(invoice);
+
         });
 
         $scope.invoices = Invoice.listInvoice;
     });
 
-
     $scope.openPopup = function(invoice_id){
-        $scope.invoicePopup = Invoice.getInvoice(invoice_id);  
+        var url = 'invoices/show/' + invoice_id;
+        CallApi.callRestApiGet(url).then(function(data){
+            $scope.inv = data.data;
+            console.log($scope.inv);
+            $scope.invoiceListProduct = data.data.invoice_products;
+            console.log($scope.invoiceListProduct);
+        });
     };
 });

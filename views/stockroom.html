@@ -1,4 +1,4 @@
-<!-- BEGIN MAIN CONTENT -->
+<!--BEGIN MAIN CONTENT -->
 <div ng-controller="StockroomController">
   <div class="container-fluid">
     <div class="row">
@@ -17,7 +17,7 @@
             </li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="tab-1" ng->
+            <div class="tab-pane active" id="tab-1" ng-controller="ProductController">
               <!-- Form -->
               <div class="row">
                 <div class="col-md-12">
@@ -66,11 +66,11 @@
               <!-- End Form  -->
               <!-- List Product -->
               <div class="row">
-                <div class="col-lg-4 col-md-6" ng-repeat="pro in list_product">
+                <div class="col-lg-4 col-md-6" ng-repeat="pro in products">
                   <div class="portlet box green">
                     <div class="portlet-title">
                       <div class="actions">
-                        <button class="btn btn-md btn-danger">Xóa</button>
+                        <button class="btn btn-md btn-danger" ng-click="delProduct(pro.product_id)">Xóa</button>
                       </div>
                     </div>
                     <div class="portlet-body">
@@ -84,10 +84,10 @@
                       </div>
                       <div class="row static-info">
                         <div class="col-md-5 name">
-                          Mã số kho: 
+                          Mã số kho:
                         </div>
                         <div class="col-md-7 value">
-                          {{ pro.product_stock }}
+                          {{ pro.product_stock_number }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -95,7 +95,7 @@
                           Giá:
                         </div>
                         <div class="col-md-7 value">
-                          {{ pro.product_cost }}
+                          {{ pro.product_retail_price }}
                         </div>
                       </div>
                       <div class="row static-info">
@@ -128,13 +128,22 @@
                           <a data-target="#history" class="btn green btn-md" data-toggle="modal">Lịch sử</a>
                         </div>
                         <div class="col-md-4">
-                          <a data-target="#barcode" class="btn green btn-md" data-toggle="modal">Barcode</a>
+                          <a data-target="#barcode" class="btn green btn-md" data-toggle="modal" ng-click="showPro(pro.product_id)">Barcode</a>
                         </div>
                         <div class="col-md-4">
-                          <a data-target="#add-pro" class="btn green btn-md" data-toggle="modal">Sửa</a>
+                          <a data-target="#edit-pro" class="btn green btn-md" data-toggle="modal" ng-click="editPro(pro.product_id)">Sửa</a>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="btn-toolbar text-center margin-bottom-10">
+                      <div class="btn-group" style="float: none;">
+                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)">Trang trước</a>
+                          <button type="diable" class="btn btn-default">{{panigation.current_page}}</button>
+                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)">Trang sau</button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -164,57 +173,49 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>Loại sản phẩm</label>
-                                  <select class="form-control input-large blue" ng-model="pro_type">
-                                    <option value="type-1">Đồ gia dụng</option>
-                                    <option value="type-2">Đồ chơi</option>
-                                    <option value="type-3">Đồ nhựa</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                  <label>Số lượng
+                                  <label>Số Kho Hàng
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="pro_stock">
+                                  <input type="number" required="" class="form-control input-large" ng-model="product_stock_number">
                                 </div>
                                 <div class="form-group">
                                   <label>Tên sản phẩm
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" ng-model="pro_name">
+                                  <input type="text" required="" class="form-control input-large" ng-model="product_name">
                                 </div>
                                 <div class="form-group">
-                                  <label>Giá</label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="pro_cost">
+                                  <label>Giá bán lẻ</label>
+                                  <input type="number" required="" class="form-control input-large" ng-model="product_retail_price">
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>Giá bán lẻ
+                                  <label>Giá
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="pro-retail-price">
+                                  <input type="number" required="" class="form-control input-large" ng-model="product_cost">
                                 </div>
                                 <div class="form-group">
                                   <label>Tags
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" ng-model="pro_tag">
+                                  <input type="text" required="" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
                                 </div>
                                 <div class="form-group">
                                   <label>Mô tả</label>
-                                  <textarea class="form-control" rows="3" ng-model="pro-description"></textarea>
+                                  <textarea class="form-control" rows="3" ng-model="product_description"></textarea>
                                 </div>
                                 <div class="row">
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL ít nhất</label>
-                                      <input type="number" required="" class="form-control input-small" ng-model="pro_min">
+                                      <input type="number" required="" class="form-control input-small" ng-model="product_min_quantity">
                                     </div>
                                   </div>
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL nhiểu nhất</label>
-                                      <input type="number" required="" class="form-control input-small" ng-model="pro_max">
+                                      <input type="number" required="" class="form-control input-small" ng-model="product_max_quantity">
                                     </div>
                                   </div>
                                 </div>
@@ -241,7 +242,113 @@
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" ng-click="addNewPro()">
+                      <button type="button" class="btn green" ng-click="addProduct()" data-dismiss="modal">
+                        Lưu
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- End modal content -->
+                </div>
+                <!-- End modal dialog -->
+              </div>
+              <!-- End modal add product --> 
+
+              <!-- Modal edit product -->
+              <div class="modal fade bs-modal-lg" id="edit-pro" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title"> Sửa sản phẩm </h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="tabbable tabbable-line">
+                        <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
+                          <li class="active">
+                            <a data-target="#info" data-toggle="tab" aria-expanded="false">Thông tin</a>
+                          </li> 
+                          <li class="">
+                            <a data-target="#image" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                          <form role="form" class="form-pro" style="margin-top: 15px;">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Số Kho Hàng
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="number" required="" class="form-control input-large" ng-model="edit_product_stock_number">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tên sản phẩm
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large" ng-model="edit_product_name">
+                                </div>
+                                <div class="form-group">
+                                  <label>Giá bán lẻ</label>
+                                  <input type="number" class="form-control input-large" ng-model="edit_product_retail_price">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Giá
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="text" class="form-control input-large" ng-model="edit_product_cost">
+                                </div>
+                                <div class="form-group">
+                                  <label>Tags
+                                  </label>
+                                  <input type="text" required="" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
+                                </div>
+                                <div class="form-group">
+                                  <label>Mô tả</label>
+                                  <textarea class="form-control" rows="3" ng-model="edit_product_description"></textarea>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL ít nhất</label>
+                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_min_quantity">
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-6">
+                                    <div class="form-group">
+                                      <label>SL nhiểu nhất</label>
+                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_max_quantity">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- End Tab Info -->
+                        <div class="tab-pane" id="image">
+                          <form role="form" class="form-pro">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group margin-top-15">
+                                  <label>Ảnh minh họa</label>
+                                  <input type="file">
+                                  <p class="help-block">Tải lên file ảnh</p>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- End Tab Image -->
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" ng-click="updateProduct(id_product)" data-dismiss="modal">
                         Lưu
                       </button>
                       <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -252,6 +359,7 @@
                 <!-- End modal dialog -->
               </div>
               <!-- End modal add product -->  
+
               <!-- modal history -->
               <div class="modal fade bs-modal-lg" id="history" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -370,10 +478,17 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h4 class="modal-title"> Barcode: <span>Tên mặt hàng</span></h4>
+                      <h4 class="modal-title"> Barcode: <span>{{product_detail.product_name}}</span></h4>
                     </div>
                     <div class="modal-body" id="print-barcode">
-                      Điền barcode ở đây
+                      <div class="row">
+                        <div class="barcode" ng-repeat="barcode in barcode">
+                          <div>
+                            <img src="data:image/png;base64,{{barcode.barcode_img}}" alt="">
+                          </div>
+                          <h5>{{barcode.barcode_name}}</h5>
+                        </div>
+                      </div>
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
@@ -396,14 +511,14 @@
                 <div class="col-md-12">
                   <div class="portlet light bordered">
                     <div class="portlet-body">
-                      <form role="form">
+                      <form role="form" id="searchInventory">
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-lg-offset-8 col-md-offset-8">
                             <label style="display: block;">Tìm SP: </label>
                             <div class="input-group">
-                              <input type="text" class="form-control">
+                              <input type="text" name="searchInventory" class="form-control">
                               <span class="input-group-btn">
-                                <button class="btn red" type="button">Tìm</button>
+                                <button class="btn red" type="button" ng-click="searchInventory()">Tìm</button>
                               </span>
                             </div>
                           </div>
@@ -429,6 +544,7 @@
                         </button>
                       </div>
                     </div>
+
                     <div class="portlet-body">
                       <div class="table-scrollable" id="inventor_list">
                         <table class="table table-hover">
@@ -446,22 +562,21 @@
                           </thead>
                           <tbody>
                             <tr ng-repeat="inventory in inventories">
-                              <td> 1</td>
-                              <td> {{ inventory.producte_id }} </td>
+                              <td> {{ inventory.product_id }} </td>
                               <td> {{ inventory.product_stock_number}} </td>
                               <td> {{inventory.product_name}} </td>
+                              <td>
+                                {{inventory.product_retail_price }}
+                              </td>
                               <td> {{inventory.product_on_hand}} </td>
                               <td>
-                                {{inventory.product_retail_price}}
+                                1.0
                               </td>
                               <td>
-                                ok
-                              </td>
-                              <td>
-                                10.4
+                                Chua biet
                               </td>
                               <td class="hidden-print">
-                                <a data-toggle="modal" data-target="#history1">Lịch sử</a>
+                                <a data-toggle="modal" data-target="#history1" ng-click="openPopup(inventory.product_id)">Lịch sử</a>
                               </td>
                             </tr>
                           </tbody>
@@ -473,7 +588,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                              <h4 class="modal-title">Lịch sử mặt hàng: <span>Tên mặt hàng</span></h4>
+                              <h4 class="modal-title">Lịch sử mặt hàng: <span>{{saleProduct.product_name}}</span></h4>
                             </div>
                             <div class="modal-body">
                               <div class="row static-info">
@@ -481,7 +596,7 @@
                                   Trong kho:
                                 </div>
                                 <div class="col-xs-2 value">
-                                  10
+                                  {{saleProduct.product_on_hand}}
                                 </div>
                               </div>
                               <div class="row static-info">
@@ -489,15 +604,7 @@
                                   Mã số kho:
                                 </div>
                                 <div class="col-xs-2 value">
-                                  10
-                                </div>
-                              </div>
-                              <div class="row static-info">
-                                <div class="col-xs-2 name">
-                                  Hãng:
-                                </div>
-                                <div class="col-xs-2 value">
-                                  Gucci
+                                  {{saleProduct.product_stock_number}}
                                 </div>
                               </div>
                               <!-- Tab History -->
@@ -524,14 +631,13 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Số Hóa đơn</td>
-                                            <td> Ngày </td>
-                                            <td> Loại giao dịch </td>
-                                            <td> Số lượng </td>
-                                            <td> Tiền </td>
+                                          <tr ng-repeat = "product in listSale">
+                                            <td>{{product.invoices.invoice_id}}</td>
+                                            <td>{{product.invoices.invoice_date}}</td>
+                                            <td>{{product.invoices.invoice_transaction_type}}</td>
+                                            <td>{{product.invoices.invoice_quantity_bought}}</td>
+                                            <td>{{product.invoices.invoice_total}}</td>
                                           </tr>
-
                                         </tbody>
                                       </table>
                                     </div>
@@ -546,16 +652,14 @@
                                             <th> Ngày </th>
                                             <th> Loại </th>
                                             <th> Party </th>
-                                            <th> Effect on Qty </th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Số Hóa đơn</td>
-                                            <td> Ngày </td>
-                                            <td> Loại giao dịch </td>
-                                            <td> Số lượng </td>
-                                            <td> Amount </td>
+                                          <tr ng-repeat="import in nhapProduct">
+                                            <td>{{import.product_id}}</td>
+                                            <td>{{import.transaction_date}}</td>
+                                            <td>{{import.transaction_type}}</td>
+                                            <td>{{import.transaction_related_party}}</td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -580,13 +684,14 @@
                       </div>
                       <!-- end modal history  -->
                     </div>
+
                   </div>
                 </div>
               </div>
               <!-- End Table Wrap-->
             </div>
             <!-- End Tab Pane 2 -->
-            <div class="tab-pane" id="tab-3">
+            <div class="tab-pane" id="tab-3" ng-controller= "TransactionController">
               <!-- Form -->
               <div class="row">
                 <div class="col-md-12">
@@ -667,17 +772,13 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr ng-repeat="invoice in invoices">
-                              <td> {{ invoice.invoice_id }} </td>
-                              <td> {{ invoice.invoice_ref}} </td>
-                              <td> {{invoice.invoice_date}} </td>
-                              <td> {{invoice.invoice_transaction}} </td>
-                              <td>
-                                {{invoice.invoice_status}}
-                              </td>
-                              <td>
-                                ok
-                              </td>
+                            <tr ng-repeat="tran in transactions">
+                              <td> {{ tran.transaction_id }} </td>
+                              <td> {{ tran.transaction_ref}} </td>
+                              <td> {{ tran.transaction_date}} </td>
+                              <td> {{ tran.transaction_type}} </td>
+                              <td> {{ tran.transaction_status}} </td>
+                              <td> {{ tran.transaction_user}}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1349,4 +1450,4 @@
     </div>
   </div>
 </div>
-<!-- END MAIN CONTENT -->
+<!-- END MAIN CONTENT
