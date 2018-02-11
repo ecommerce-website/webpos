@@ -149,7 +149,7 @@
               </div>
               <!-- End List Product -->
               <!-- Modal add product -->
-              <div class="modal fade bs-modal-lg" id="add-pro" role="dialog" aria-hidden="true">
+              <form class="modal fade bs-modal-lg" id="add-pro" role="dialog" aria-hidden="true" name="addForm">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -176,48 +176,36 @@
                                   <label>Số Kho Hàng
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="product_stock_number">
+                                  <input type="number" class="form-control input-large" ng-model="product_stock_number" required disabled>
                                 </div>
                                 <div class="form-group">
                                   <label>Tên sản phẩm
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" ng-model="product_name">
+                                  <input type="text" class="form-control input-large" ng-model="product_name" required>
                                 </div>
                                 <div class="form-group">
-                                  <label>Giá bán lẻ</label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="product_retail_price">
+                                  <label>Giá bán lẻ
+                                    <span class="required" aria-required="true">*</span>
+                                  </label>
+                                  <input type="number" class="form-control input-large" ng-model="product_retail_price" required>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>Giá
+                                  <label>Giá nhập
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="product_cost">
+                                  <input type="number" class="form-control input-large" ng-model="product_cost" required>
                                 </div>
                                 <div class="form-group">
                                   <label>Tags
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
+                                  <input type="text" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
                                 </div>
                                 <div class="form-group">
                                   <label>Mô tả</label>
                                   <textarea class="form-control" rows="3" ng-model="product_description"></textarea>
-                                </div>
-                                <div class="row">
-                                  <div class="col-xs-6">
-                                    <div class="form-group">
-                                      <label>SL ít nhất</label>
-                                      <input type="number" required="" class="form-control input-small" ng-model="product_min_quantity">
-                                    </div>
-                                  </div>
-                                  <div class="col-xs-6">
-                                    <div class="form-group">
-                                      <label>SL nhiểu nhất</label>
-                                      <input type="number" required="" class="form-control input-small" ng-model="product_max_quantity">
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -242,7 +230,7 @@
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" ng-click="addProduct()" data-dismiss="modal">
+                      <button type="button" class="btn green" ng-disabled="addForm.$invalid" ng-click="addProduct()" data-dismiss="modal">
                         Lưu
                       </button>
                       <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -251,7 +239,7 @@
                   <!-- End modal content -->
                 </div>
                 <!-- End modal dialog -->
-              </div>
+              </form>
               <!-- End modal add product --> 
 
               <!-- Modal edit product -->
@@ -481,7 +469,7 @@
                       <h4 class="modal-title"> Barcode: <span>{{product_detail.product_name}}</span></h4>
                     </div>
                     <div class="modal-body" id="print-barcode">
-                      <div class="row">
+                      <div class="row text-center">
                         <div class="barcode" ng-repeat="barcode in barcode">
                           <div>
                             <img src="data:image/png;base64,{{barcode.barcode_img}}" alt="">

@@ -46,6 +46,7 @@ angular.module('WebposApp').service('Product', function() {
             if (self.listProduct.constructor === Array) {
                 self.listProduct = [];
             }
+            self.listProduct = [];
         };
 
         /**
@@ -67,7 +68,21 @@ angular.module('WebposApp').service('Product', function() {
      */
     this.getProduct = function(productId) {
         var self = this;
-        return this.listProduct.find(p => p.id === productId) ? this.listProduct.find(p => p.id === productId) : null;
+        return this.listProduct.find(p => p.product_id === productId) ? this.listProduct.find(p => p.product_id === productId) : null;
+    };
+    /**
+     * set product in list product
+     * @param {*} productId 
+     * @param {*} product 
+     */
+    this.setProduct = function(productId, product) {
+        var self = this;
+        var tmpProduct = self.listProduct.find(p => p.product_id === productId);
+        $.each(this.initField, function(key, value) {
+            if(value in tmpProduct && value in product){
+                tmpProduct[value] = product[value];
+            }
+        });
     };
     /**
      * get value => key of product 
@@ -76,7 +91,7 @@ angular.module('WebposApp').service('Product', function() {
      */
     this.getValueProduct = function(productId, key) {
         var self = this;
-        var product = self.listProduct.find(p => p.id === productId);
+        var product = self.listProduct.find(p => p.product_id === productId);
         return product[key];
     };
     /**
@@ -87,7 +102,7 @@ angular.module('WebposApp').service('Product', function() {
      */
     this.setValueProduct = function(productId, key, value) {
         var self = this;
-        self.listProduct.find(p => p.id === productId)[key] = value;
+        self.listProduct.find(p => p.product_id === productId)[key] = value;
     };
     /**
      * product select empty

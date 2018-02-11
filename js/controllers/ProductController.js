@@ -3,23 +3,36 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
-
         $log.info(Product); 
         $scope.products = Product.listProduct;
-
     });
 
 
     CallApi.callRestApiGet('products').then(function(data){
         $scope.products = data.data.data;
         $scope.panigation = data.data;
+        Product.setListProductEmpty();
         data.data.data.forEach(function(product) {
+            // console.log(JSON.stringify(product))
             Product.addProduct(product);
             Product.setProductSelect(product);
         });
 
         $scope.products = Product.listProduct;
+        console.log($scope.panigation);
     });
+
+    $scope.resetPopup = function(){
+        $scope.product_stock_number = 1;
+        $scope.product_name = "";
+        $scope.product_retail_price = null;
+        $scope.product_cost = null;
+        $scope.product_description = "";
+        $scope.product_min_quantity = 0;
+        $scope.product_max_quantity = 0;
+        $scope.product_tags = "";
+    }
+    $scope.resetPopup();
 
     $scope.openPopup = function(product_id){
         var url = 'invoices/show/' + invoice_id;
@@ -35,6 +48,27 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
         CallApi.callApiGet(url).then(function(data){
             $scope.products = data.data.data;
             $scope.panigation = data.data;
+            Product.setListProductEmpty();
+            data.data.data.forEach(function(product) {
+                // console.log(JSON.stringify(product))
+                Product.addProduct(product);
+                Product.setProductSelect(product);
+            });
+
+            $scope.products = Product.listProduct;
+        });
+    }
+
+    $scope.changeRestPage = function(url){
+        CallApi.callRestApiGet(url).then(function(data){
+            $scope.products = data.data.data;
+            $scope.panigation = data.data;
+            Product.setListProductEmpty();
+            data.data.data.forEach(function(product) {
+                Product.addProduct(product);
+                Product.setProductSelect(product);
+            });
+            $scope.products = Product.listProduct;
         });
     }
 
@@ -45,13 +79,20 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
                     product_name : $scope.product_name,
                     product_retail_price: $scope.product_retail_price,
                     product_cost: $scope.product_cost,
-                    product_description: $scope.product_description,
-                    product_min_quantity: $scope.product_min_quantity,
-                    product_max_quantity: $scope.product_max_quantity,
-                    product_tags: $scope.product_tags
+                    product_description: $scope.product_description || "Chưa có mô tả nào",
+                    product_min_quantity: $scope.product_min_quantity || 0,
+                    product_max_quantity: $scope.product_max_quantity || 0,
+                    product_tags: $scope.product_tags || ""
                 }
             };
         CallApi.callRestApiPost('products/store',product).then(function(data){
+            if(data['status'] == 200){
+                $scope.changeRestPage('products?page=1');
+                $scope.resetPopup();
+                console.log("Thêm sp thành công");
+            } else {
+                console.log("Thêm sp thất bại");
+            }
         });
     }
     $scope.showPro = function(id){
@@ -67,37 +108,41 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
                     product_name : $scope.edit_product_name,
                     product_retail_price: parseInt($scope.edit_product_retail_price),
                     product_cost: parseInt($scope.edit_product_cost),
-                    product_description: $scope.edit_product_description,
-                    product_min_quantity: parseInt($scope.edit_product_min_quantity),
-                    product_max_quantity: parseInt($scope.edit_product_max_quantity),
-                    product_barcodes: "",
-                    product_tags: $scope.edit_product_tags
+                    product_description: $scope.edit_product_description || "Chưa có mô tả nào",
+                    product_min_quantity: parseInt($scope.edit_product_min_quantity || 0),
+                    product_max_quantity: parseInt($scope.edit_product_max_quantity || 0),
+                    product_tags: $scope.product_tags || ""
                 }
             };
-            console.log(eProduct);
-            CallApi.callRestApiPost('products/edit/'+id,eProduct).then(function(data){});
+            CallApi.callRestApiPost('products/edit/'+id,eProduct).then(function(data){
+                editedProduct = data.data.editedProduct;
+                Product.setProduct(editedProduct.product_id, editedProduct);
+            });
     }
 
     $scope.editPro = function(id){
-        CallApi.callRestApiGet('products/show/' + id).then(function(data){
-            var result = data.data.data[0];
-            console.log(result);
-            $scope.id_product = id;
-            $scope.edit_product_stock_number = parseInt(result.product_stock_number);
-            $scope.edit_product_name = result.product_name;
-            $scope.edit_product_retail_price = result.product_retail_price;
-            $scope.edit_product_cost = result.product_cost;
-            $scope.edit_product_description = result.product_description;
-            $scope.edit_product_min_quantity = result.product_min_quantity;
-            $scope.edit_product_max_quantity = result.product_max_quantity;
-        });
+        var result = Product.getProduct(id);
+        $scope.id_product = id;
+        $scope.edit_product_stock_number = parseInt(result.product_stock_number);
+        $scope.edit_product_name = result.product_name;
+        $scope.edit_product_retail_price = result.product_retail_price;
+        $scope.edit_product_cost = result.product_cost;
+        $scope.edit_product_description = result.product_description;
+        $scope.edit_product_min_quantity = result.product_min_quantity;
+        $scope.edit_product_max_quantity = result.product_max_quantity;
     }
 
     $scope.delProduct = function(id){
-        var product = [id,id];
-        console.log(product);
+        var product = {
+                product: [id]
+            };
         CallApi.callRestApiPost('products/delete',product).then(function(data){
-
+            if(data['status'] == 200){
+                $scope.changeRestPage('products?page=' + $scope.panigation.current_page);
+                console.log("Xóa sp thành công");
+            } else {
+                console.log("Xóa sp thất bại");
+            }
         });
     }
 });
