@@ -73,52 +73,52 @@
                         <button class="btn btn-md btn-danger" ng-click="delProduct(pro.product_id)">Xóa</button>
                       </div>
                     </div>
-                    <div class="portlet-body">
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
-                          <img src="">
+                    <div class="portlet-body product-box">
+                      <div class="row static-info product-img">
+                        <div class="col-md-4 name">
+                          <img src="{{ pro.product_img }}">
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_name }}
                         </div>
                       </div>
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
+                      <div class="row static-info product-stock-number">
+                        <div class="col-md-4 name">
                           Mã số kho:
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_stock_number }}
                         </div>
                       </div>
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
+                      <div class="row static-info product-retail-price">
+                        <div class="col-md-4 name">
                           Giá:
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_retail_price }}
                         </div>
                       </div>
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
+                      <div class="row static-info product-unit-quantity">
+                        <div class="col-md-4 name">
                           Số Lượng:
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_unit_quantity }}
                         </div>
                       </div>
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
+                      <div class="row static-info product-description">
+                        <div class="col-md-4 name">
                           Mô tả:
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_description }}
                         </div>
                       </div>
-                      <div class="row static-info">
-                        <div class="col-md-5 name">
+                      <div class="row static-info product-tag">
+                        <div class="col-md-4 name">
                           Tags:
                         </div>
-                        <div class="col-md-7 value">
+                        <div class="col-md-8 value">
                           {{ pro.product_tag }}
                         </div>
                       </div>
@@ -160,19 +160,19 @@
                       <div class="tabbable tabbable-line">
                         <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
                           <li class="active">
-                            <a data-target="#info" data-toggle="tab" aria-expanded="false">Thông tin</a>
+                            <a data-target="#addInfo" data-toggle="tab" aria-expanded="false">Thông tin</a>
                           </li> 
                           <li class="">
-                            <a data-target="#image" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
+                            <a data-target="#addImage" data-toggle="tab" aria-expanded="true">Hình ảnh</a>
                           </li>
                         </ul>
                       </div>
                       <div class="tab-content">
-                        <div class="tab-pane active" id="info">
+                        <div class="tab-pane active" id="addInfo">
                           <form role="form" class="form-pro" style="margin-top: 15px;">
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group margin-top-15">
                                   <label>Số Kho Hàng
                                     <span class="required" aria-required="true">*</span>
                                   </label>
@@ -212,13 +212,13 @@
                           </form>
                         </div>
                         <!-- End Tab Info -->
-                        <div class="tab-pane" id="image">
+                        <div class="tab-pane" id="addImage">
                           <form role="form" class="form-pro">
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group margin-top-15">
                                   <label>Ảnh minh họa</label>
-                                  <input type="file">
+                                  <input type="file" fileread="product_img">
                                   <p class="help-block">Tải lên file ảnh</p>
                                 </div>
                               </div>
@@ -324,8 +324,8 @@
                               <div class="col-md-12">
                                 <div class="form-group margin-top-15">
                                   <label>Ảnh minh họa</label>
-                                  <input type="file">
-                                  <p class="help-block">Tải lên file ảnh</p>
+                                  <input type="file" fileread="product_img">
+                                  <p class="help-block">Tải lên file ảnh nếu muốn thay đổi</p>
                                 </div>
                               </div>
                             </div>

@@ -19,3 +19,10 @@
 	margin-top: 15px;
 	margin-bottom: 0;
 }
+.product-box .product-img .name img{
+	width: 100px;
+}
+.product-box .product-img .value{
+	font-size: 20px;
+	line-height: 100px;
+}

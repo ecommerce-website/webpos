@@ -1,12 +1,31 @@
-angular.module('WebposApp').controller('ProductController', function($rootScope, $scope, $http, $timeout, $log, Product, CallApi, BuildUrl) {
+angular.module('WebposApp').directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element, attributes) {
+            element.bind("change", function (changeEvent) {
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                }
+                if(changeEvent.target.files.length > 0){
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                }
+            });
+        }
+    }
+}])
+.controller('ProductController', function($rootScope, $scope, $http, $timeout, $log, Product, CallApi, BuildUrl) {
 
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
         $log.info(Product); 
         $scope.products = Product.listProduct;
-    });
-
+    }); 
 
     CallApi.callRestApiGet('products').then(function(data){
         $scope.products = data.data.data;
@@ -19,7 +38,6 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
         });
 
         $scope.products = Product.listProduct;
-        console.log($scope.panigation);
     });
 
     $scope.resetPopup = function(){
@@ -31,6 +49,8 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
         $scope.product_min_quantity = 0;
         $scope.product_max_quantity = 0;
         $scope.product_tags = "";
+        $scope.product_img = null;
+        angular.element("input[type='file']").val(null);
     }
     $scope.resetPopup();
 
@@ -38,9 +58,7 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
         var url = 'invoices/show/' + invoice_id;
         CallApi.callRestApiGet(url).then(function(data){
             $scope.inv = data.data;
-            console.log($scope.inv);
             $scope.invoiceListProduct = data.data.invoice_products;
-            console.log($scope.invoiceListProduct);
         });
     };
 
@@ -82,7 +100,8 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
                     product_description: $scope.product_description || "Chưa có mô tả nào",
                     product_min_quantity: $scope.product_min_quantity || 0,
                     product_max_quantity: $scope.product_max_quantity || 0,
-                    product_tags: $scope.product_tags || ""
+                    product_tags: $scope.product_tags || "",
+                    product_img: $scope.product_img
                 }
             };
         CallApi.callRestApiPost('products/store',product).then(function(data){
@@ -111,7 +130,8 @@ angular.module('WebposApp').controller('ProductController', function($rootScope,
                     product_description: $scope.edit_product_description || "Chưa có mô tả nào",
                     product_min_quantity: parseInt($scope.edit_product_min_quantity || 0),
                     product_max_quantity: parseInt($scope.edit_product_max_quantity || 0),
-                    product_tags: $scope.product_tags || ""
+                    product_tags: $scope.product_tags || "",
+                    product_img: $scope.product_img
                 }
             };
             CallApi.callRestApiPost('products/edit/'+id,eProduct).then(function(data){
