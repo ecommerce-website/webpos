@@ -17,13 +17,20 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     $scope.tmp = 0;
     $scope.subTotal = 0;
     $scope.discountAll = 0;
+    $scope.amount = 0;
 
     $scope.bought = 0;
+
+    $scope.discountAllProduct = function(){
+        for (var i = 0; i < $scope.carts.length; i++) {
+            $scope.carts[i].product_discount = $scope.discountAll;
+        }
+    };
 
     $scope.addProductToCart = function(product) {
         if(product){
 
-            product.product_discount = 0;
+            product.product_discount = $scope.discountAll;
 
             if ($scope.carts.length === 0){
                 product['product_count'] = 1;
@@ -77,8 +84,8 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     $scope.updateStock = function () {
         for (var i = 0; i < $scope.carts.length; i++) {
             $scope.carts[i].product_stock_number -= $scope.carts[i].product_count;
-            // console.log($scope.carts[i].product_stock_number);
         }
+        $scope.amount = $scope.getTotal();
     }
 // checkout xong thì về lại trang tính toán
     $scope.backUpStore = function () {
@@ -99,9 +106,6 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
 // giá sau khi giảm giá  của 1 sp
 
     $scope.getCost = function (product) {
-        if ($scope.discountAll != 0) {
-            product.product_discount = $scope.discountAll;
-        }
         $scope.x = product.product_retail_price * product.product_count;
         $scope.y = product.product_retail_price * product.product_count * product.product_discount /100;
         
@@ -122,11 +126,6 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         
         return $scope.subTotal() - $scope.getTotal();
     }
-
-
-
-    $scope.amount = $scope.getTotal();
-    console.log($scope.amount);
 
 // tính toán tiền thừa
     $scope.getChange = function() {
@@ -189,13 +188,13 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         });
     }
 
-    $scope.print = function(invoice) {
-        var innerContents = document.getElementById('invoice').innerHTML;
-        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+    $scope.print = function() {
+        var innerContents = document.getElementById('print-invoice').innerHTML;
+        var popupWinindow = window.open('', '_blank', 'width=400,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
         popupWinindow.document.open();
         popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/print.css" /></head><body onload="window.print()">' + innerContents + '</html>');
         popupWinindow.document.close();
-      }
+    }
     
 
 

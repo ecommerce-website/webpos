@@ -1,13 +1,97 @@
-table {
-	width: 100%;
-	border-collapse: collapse;
+body {
+	font-family: 'Arial';
+	margin: 0;
+	padding: 0;
+}
+.invoice-container {
+	width: 360px;
+	padding: 20px;
+}
+.invoice-store {
+	position: relative;
+	margin-bottom: 20px;
+}
+.invoice-store .name {
+	font-size: 17px;
+	font-weight: bold;
 	text-align: center;
 }
-th,td {
-	border: 1px solid #333;
+.invoice-store .address {
 	text-align: center;
 }
-ul,li{
-	padding-left: 35%;
-	list-style: none;
+
+.invoice-title {
+	position: relative;
+	margin-bottom: 20px;
+}
+.invoice-title .title{
+	font-weight: bold;
+}
+.invoice-title .title {
+	text-align: center;
+}
+.invoice-title .info .date{
+	width: 50%;
+	float: left;
+	text-align: left;
+}
+.invoice-title .info .invoice-id{
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+
+.invoice-cart{
+	position: relative;
+	margin-bottom: 10px;
+}
+.invoice-cart .code{
+	float:left;
+	width: 30%;
+}
+.invoice-cart .unit-price{
+	float:left;
+	width: 40%;
+	text-align: center;
+}
+.invoice-cart .total-price{
+	float:left;
+	width: 30%;
+	text-align: right;
+}
+.invoice-cart .discount-title{
+	float: left;
+	width: 50%;
+}
+.invoice-cart .discount-value{
+	float: left;
+	width: 50%;
+	text-align: right;
+}
+
+.invoice-bill {
+	position: relative;
+	margin-bottom: 10px;
+}
+.invoice-bill .title{
+	width: 50%;
+	float: left;
+}
+.invoice-bill .value{
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+.invoice-bill .total, .invoice-bill .amount, .invoice-bill .change{
+	font-weight: bold;
+	font-size: 20px;
+}
+.invoice-bill .note{
+	font-size: 13px;
+	text-align: center;
+}
+
+.invoice-footer {
+	text-align: center;
+	font-size: 17px;
 }
