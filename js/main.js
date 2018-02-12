@@ -57,7 +57,7 @@ WebposApp.filter("formatPrice", function() {
     bdisplayprice = (typeof bdisplayprice === "undefined") ? true : bdisplayprice;
     thoSeperator = (typeof thoSeperator === "undefined") ? "." : thoSeperator;
     decSeperator = (typeof decSeperator === "undefined") ? "," : decSeperator;
-    price = price.toString();
+    price = "" + price;
     var _temp = price.split(".");
     var dig = (typeof _temp[1] === "undefined") ? "00" : _temp[1];
     if (bdisplayprice && parseInt(dig,10)===0) {

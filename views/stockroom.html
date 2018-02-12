@@ -25,35 +25,29 @@
                     <div class="portlet-body">
                       <form role="form">
                         <div class="row">
-                          <div class="col-lg-3 col-md-6">
-                            <label>Loại</label>
-                            <select class="form-control input-medium blue" id="select-type">
-                              <option value="all">Tất cả</option>
-                              <option value="regular">SP thường xuyên</option>
-                              <option value="unit">SP Theo Lô</option>
-                            </select>
+                          <div class="col-lg-4 col-md-4">
+                            <label style="display: block;">Tìm SP: </label>
+                            <div class="input-group">
+                              <input type="text" class="form-control" ng-model="searchText" ng-change="searchProduct(searchText)">
+                              <span class="input-group-btn">
+                                <button class="btn red" type="button" ng-click="searchProduct(searchText)">Tìm</button>
+                              </span>
+                            </div>
                           </div>
-                          <div class="col-lg-3 col-md-6">
+                          <div class="col-xs-offset-1 col-lg-3 col-md-6">
                             <label>Tình Trạng</label>
-                            <select class="form-control input-medium blue" id="select-status">
-                              <option value="all">Tất cả</option>
-                              <option value="active">Còn Hàng</option>
-                              <option value="disactive">Hết Hàng</option>    
-                            </select>
+                            <div class="input-group">
+                              <select class="form-control input-medium blue" id="select-status">
+                                <option value="all">Tất cả</option>
+                                <option value="active">Còn Hàng</option>
+                                <option value="disactive">Hết Hàng</option>    
+                              </select>
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-danger">Lọc</button>
+                              </span>
+                            </div>
                           </div>
-                          <div class="col-lg-3 col-md-6">
-                            <label>Tags</label>
-                            <select class="form-control input-medium blue">
-                              <option value="all">Tất cả</option>
-                              <option value="active">Còn Hàng</option>
-                              <option value="disactive">Hết Hàng</option>    
-                            </select>
-                          </div>
-                          <div class="col-lg-1 col-md-6">
-                            <label style="display: block;">Lọc SP</label>
-                            <button type="button" class="btn btn-danger">Lọc</button>
-                          </div>
-                          <div class="col-lg-2 col-md-6">
+                          <div class="col-xs-offset-1 col-lg-2 col-md-6">
                             <label style="display: block;">Thêm SP</label>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add-pro">Thêm SP</button>
                           </div>
@@ -95,7 +89,7 @@
                           Giá:
                         </div>
                         <div class="col-md-8 value">
-                          {{ pro.product_retail_price }}
+                          {{ pro.product_retail_price | formatPrice }} VND
                         </div>
                       </div>
                       <div class="row static-info product-unit-quantity">
@@ -103,7 +97,7 @@
                           Số Lượng:
                         </div>
                         <div class="col-md-8 value">
-                          {{ pro.product_unit_quantity }}
+                          {{ pro.product_on_hand }}
                         </div>
                       </div>
                       <div class="row static-info product-description">
@@ -563,7 +557,7 @@
                               <td> {{ inventory.product_stock_number}} </td>
                               <td> {{inventory.product_name}} </td>
                               <td>
-                                {{inventory.product_retail_price }}
+                                {{inventory.product_retail_price | formatPrice }}
                               </td>
                               <td> {{inventory.product_on_hand}} </td>
                               <td>
@@ -753,25 +747,96 @@
                           <thead>
                             <tr>
                               <th> STT </th>
-                              <th> Reference </th>
                               <th> Ngày </th>
                               <th> Loại giao dịch </th>
+                              <th> Nhà cung cấp </th>
                               <th> Tình trạng </th>
                               <th> User </th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr ng-repeat="tran in transactions">
+                            <tr ng-repeat="tran in transactions" class="transaction-line">
                               <td> {{ tran.transaction_id }} </td>
-                              <td> {{ tran.transaction_ref}} </td>
                               <td> {{ tran.transaction_date}} </td>
                               <td> {{ tran.transaction_type}} </td>
+                              <td> {{ tran.transaction_supplier}} </td>
                               <td> {{ tran.transaction_status}} </td>
                               <td> {{ tran.transaction_user}}</td>
+                              <td>
+                                <a data-target="#transaction-detail" class="btn green btn-md" data-toggle="modal" ng-click="detailTransaction(tran.transaction_id)">Chi tiết</a>
+                              </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
+                    </div>
+                    <div class="modal fade bs-modal-lg" id="transaction-detail" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Chi tiết đơn hàng nhập: <span>{{saleProduct.product_name}}</span></h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row static-info">
+                              <div class="col-xs-2 name">
+                                Nhà cung cấp
+                              </div>
+                              <div class="col-xs-10 value">
+                                {{transaction.transaction_supplier}}
+                              </div>
+                            </div>
+                            <div class="row static-info">
+                              <div class="col-xs-2 name">
+                                Ngày nhập hàng:
+                              </div>
+                              <div class="col-xs-10 value">
+                                {{transaction.transaction_date}}
+                              </div>
+                            </div>
+                            <div class="row static-info">
+                              <div class="col-xs-2 name">
+                                Tổng tiền:
+                              </div>
+                              <div class="col-xs-10 value">
+                                {{transaction.totalCost | formatPrice}} VND
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th> Sản phẩm </th>
+                                      <th> Giá nhập </th>
+                                      <th> Số lượng </th>
+                                      <th> Tổng tiền </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr ng-repeat = "qlTransaction in transaction.qltransactions">
+                                      <td>{{qlTransaction.products.product_name}}</td>
+                                      <td>{{qlTransaction.ql_transactions_cost | formatPrice}}</td>
+                                      <td>{{qlTransaction.ql_transactions_quantity_bought}}</td>
+                                      <td>{{qlTransaction.totalCost | formatPrice}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end modal body -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
+                              <i class="fa fa-print"></i> In
+                            </button>
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                          </div>
+                        </div>
+                        <!-- end modal content -->
+                      </div>
+                      <!-- end modal dialog -->
                     </div>
                   </div>
                 </div>
@@ -786,54 +851,65 @@
                       <h4 class="modal-title">Nhập đơn hàng</h4> 
                     </div>
                     <div class="modal-body">
-                      <div class="row">
-                        <label class="col-md-3 control-label">Nhập sản phẩm:</label>
-                        <div class="col-md-6">
-                          <div class="input-group">
-                            <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 300px;" title="Choose a product" on-select="addProductLine(selectedProduct)">
-                              <ui-select-match placeholder="Tìm sp theo tên hoặc mã...">Tìm sp theo tên hoặc mã...</ui-select-match>
-                              <ui-select-choices repeat="pro in products"
-                                       refresh="searchProduct($select.search)"
-                                       refresh-delay="0">
-                                <span ng-bind-html="pro.product_id | highlight: $select.search"></span>
-                                -
-                                <span ng-bind-html="pro.product_name | highlight: $select.search"></span>
-                              </ui-select-choices
-                            </ui-select>
+                      <form action="" name="addTransactionForm">
+                        <div class="row form-group">
+                          <label class="col-md-3 control-label">
+                            Nhà cung cấp
+                            <span class="required" aria-required="true">*</span>
+                          </label>
+                          <div class="col-md-6">
+                            <input type="text" ng-model="supplier" class="form-control" required>
                           </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th class="col-md-1">Mã</th>
-                                <th class="col-md-4">Tên sp</th>
-                                <th class="col-md-3">Giá nhập</th>
-                                <th class="col-md-3">Số lượng</th>
-                                <th class="col-md-1"></th>
-                              </tr>
-                            </thead>
-                            <tbody ng-repeat="pro in addProduct">
-                              <tr class="product-line">
-                                <td>{{ pro.product_id }}</td>
-                                <td>{{ pro.product_name }}</td>
-                                <td><input type="number" ng-model="pro.product_cost" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
-                                <td><input type="number" ng-model="pro.quantity" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
-                                <td><a class="glyphicon glyphicon-trash" ng-click="removeProductLine(pro)"></a><i ></i></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div class="row">
+                          <label class="col-md-3 control-label">Nhập sản phẩm:</label>
+                          <div class="col-md-6">
+                            <div class="input-group">
+                              <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 300px;" title="Choose a product" on-select="addProductLine(selectedProduct)">
+                                <ui-select-match placeholder="Tìm sp theo tên hoặc mã...">Tìm sp theo tên hoặc mã...</ui-select-match>
+                                <ui-select-choices repeat="pro in products"
+                                         refresh="searchProduct($select.search)"
+                                         refresh-delay="0">
+                                  <span ng-bind-html="pro.product_id | highlight: $select.search"></span>
+                                  -
+                                  <span ng-bind-html="pro.product_name | highlight: $select.search"></span>
+                                </ui-select-choices
+                              </ui-select>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-12 text-right" refresh="calcTotalCost()" refresh-delay="0">
-                          <h3 class="bold">Tổng tiền: {{ totalCost | formatPrice }} VND</h3>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-1">Mã</th>
+                                  <th class="col-md-4">Tên sp</th>
+                                  <th class="col-md-3">Giá nhập</th>
+                                  <th class="col-md-3">Số lượng</th>
+                                  <th class="col-md-1"></th>
+                                </tr>
+                              </thead>
+                              <tbody ng-repeat="pro in addProduct">
+                                <tr class="product-line">
+                                  <td>{{ pro.product_id }}</td>
+                                  <td>{{ pro.product_name }}</td>
+                                  <td><input type="number" ng-model="pro.product_cost" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
+                                  <td><input type="number" ng-model="pro.product_quantity_bought" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
+                                  <td><a class="glyphicon glyphicon-trash" ng-click="removeProductLine(pro)"></a><i ></i></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col-md-12 text-right" refresh="calcTotalCost()" refresh-delay="0">
+                            <h3 class="bold">Tổng tiền: {{ totalCost | formatPrice }} VND</h3>
+                          </div>
                         </div>
-                      </div>
+                      </form>
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" id="btn-add-trans" >
+                      <button type="button" class="btn green" id="btn-add-trans" ng-disabled="addTransactionForm.$invalid" data-dismiss="modal" ng-click="addTransaction()">
                         Nhập
                       </button>
                     </div>

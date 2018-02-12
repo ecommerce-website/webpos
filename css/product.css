@@ -26,6 +26,6 @@
 	font-size: 20px;
 	line-height: 100px;
 }
-.product-line td {
+.product-line td, .transaction-line td {
 	line-height: 35px !important;
 }

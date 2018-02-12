@@ -116,8 +116,8 @@ angular.module('WebposApp').directive("fileread", [function () {
     }
     $scope.showPro = function(id){
         CallApi.callRestApiGet('products/show/' + id).then(function(data){
-            $scope.product_detail = data.data.data[0];
-            $scope.barcode = data.data.data[0].product_barcodes;
+            $scope.product_detail = data.data;
+            $scope.barcode = data.data.barcodes;
         });
     }
     $scope.updateProduct = function(id){
@@ -164,6 +164,24 @@ angular.module('WebposApp').directive("fileread", [function () {
             } else {
                 console.log("Xóa sp thất bại");
             }
+        });
+    }
+
+    $scope.searchProduct = function(Query){
+        var data = {
+            query : Query
+        };
+        CallApi.callRestApiPost('products/query', data).then(function(data){
+            $scope.products = data.data.data;
+            $scope.panigation = data.data;
+            Product.setListProductEmpty();
+            data.data.data.forEach(function(product) {
+                // console.log(JSON.stringify(product))
+                Product.addProduct(product);
+                Product.setProductSelect(product);
+            });
+
+            $scope.products = Product.listProduct;
         });
     }
 });

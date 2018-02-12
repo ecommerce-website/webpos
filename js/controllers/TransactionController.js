@@ -38,7 +38,7 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
     }
 
     $scope.addProductLine = function(product){
-        product.quantity = 0;
+        product.product_quantity_bought = 0;
         $scope.addProduct = $scope.addProduct.concat(product);
         $scope.calcTotalCost();
     }
@@ -52,8 +52,32 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
     $scope.calcTotalCost = function(){
         var tmp = 0;
         angular.forEach($scope.addProduct, function(value, key){
-            tmp += value.product_cost * value.quantity;
+            tmp += value.product_cost * value.product_quantity_bought;
         });
         $scope.totalCost = tmp;
+    }
+
+    $scope.addTransaction = function(){
+        var transaction = {
+            transaction: {
+                transaction_type: "Nhập hàng",
+                transaction_ref: "",
+                transaction_remark: "",
+                transaction_supplier: $scope.supplier,
+                transaction_product: $scope.addProduct
+            }
+        };
+        console.log(JSON.stringify(transaction));
+    }
+
+    $scope.detailTransaction = function(transactionId){
+        CallApi.callRestApiGet('transactions/show/'+transactionId).then(function(data){
+            $scope.transaction = data.data;
+            $scope.transaction.totalCost = 0;
+            angular.forEach($scope.transaction.qltransactions, function(value, key){
+                value.totalCost = value.ql_transactions_cost * value.ql_transactions_quantity_bought;
+                $scope.transaction.totalCost += value.totalCost;
+            });
+        });
     }
 });
