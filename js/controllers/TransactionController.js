@@ -18,6 +18,8 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
             Transaction.setTransactionSelect(transaction);
         });
     });
+    $scope.addProduct = [];
+    $scope.totalCost = 0;
 
 
     $scope.openPopup = function(productId){
@@ -35,7 +37,23 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
         });
     }
 
-    $scope.addProductLine = function(productId){
-        console.log(productId);
+    $scope.addProductLine = function(product){
+        product.quantity = 0;
+        $scope.addProduct = $scope.addProduct.concat(product);
+        $scope.calcTotalCost();
+    }
+
+    $scope.removeProductLine = function(product){
+        var index = $scope.addProduct.indexOf(product);
+        $scope.addProduct.splice(index, 1);
+        $scope.calcTotalCost();   
+    }
+
+    $scope.calcTotalCost = function(){
+        var tmp = 0;
+        angular.forEach($scope.addProduct, function(value, key){
+            tmp += value.product_cost * value.quantity;
+        });
+        $scope.totalCost = tmp;
     }
 });

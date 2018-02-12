@@ -723,8 +723,8 @@
                             <button type="button" class="btn btn-danger">Lọc</button>
                           </div>
                           <div class="col-lg-2 col-md-12">
-                            <label style="display: block;">Thêm giao dịch:</label>
-                            <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Thêm giao dịch</button>
+                            <label style="display: block;">Nhập đơn hàng:</label>
+                            <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Nhập đơn hàng:</button>
                           </div>
                         </div>
                       </form>
@@ -783,14 +783,14 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h4 class="modal-title">Thêm Giao Dịch</h4> 
+                      <h4 class="modal-title">Nhập đơn hàng</h4> 
                     </div>
                     <div class="modal-body">
                       <div class="row">
-                        <label class="col-md-3 control-label">With a clear button:</label>
+                        <label class="col-md-3 control-label">Nhập sản phẩm:</label>
                         <div class="col-md-6">
                           <div class="input-group">
-                            <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 300px;" title="Choose a product" on-select="addProductLine(product.selected.product_id)">
+                            <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 300px;" title="Choose a product" on-select="addProductLine(selectedProduct)">
                               <ui-select-match placeholder="Tìm sp theo tên hoặc mã...">Tìm sp theo tên hoặc mã...</ui-select-match>
                               <ui-select-choices repeat="pro in products"
                                        refresh="searchProduct($select.search)"
@@ -801,14 +801,40 @@
                               </ui-select-choices
                             </ui-select>
                           </div>
-                        </div>>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th class="col-md-1">Mã</th>
+                                <th class="col-md-4">Tên sp</th>
+                                <th class="col-md-3">Giá nhập</th>
+                                <th class="col-md-3">Số lượng</th>
+                                <th class="col-md-1"></th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="pro in addProduct">
+                              <tr class="product-line">
+                                <td>{{ pro.product_id }}</td>
+                                <td>{{ pro.product_name }}</td>
+                                <td><input type="number" ng-model="pro.product_cost" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
+                                <td><input type="number" ng-model="pro.quantity" ng-change="calcTotalCost()" class="form-control" style="width: 80%"></td>
+                                <td><a class="glyphicon glyphicon-trash" ng-click="removeProductLine(pro)"></a><i ></i></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-md-12 text-right" refresh="calcTotalCost()" refresh-delay="0">
+                          <h3 class="bold">Tổng tiền: {{ totalCost | formatPrice }} VND</h3>
                         </div>
                       </div>
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" id="btn-add-trans">
-                        Thêm
+                      <button type="button" class="btn green" id="btn-add-trans" >
+                        Nhập
                       </button>
                     </div>
                   </div>
