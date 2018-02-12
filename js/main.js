@@ -3,7 +3,8 @@ var WebposApp = angular.module("WebposApp", [
     "ui.router",
     "ui.bootstrap",
     "oc.lazyLoad",
-    "ngSanitize"
+    "ngSanitize",
+    'ui.select'
 ]);
 // Handle global LINK click
 WebposApp.directive('a', function() {
@@ -17,6 +18,37 @@ WebposApp.directive('a', function() {
             }
         }
     };
+});
+WebposApp.filter('propsFilter', function() {
+  return function(items, props) {
+    var out = [];
+
+    if (angular.isArray(items)) {
+      var keys = Object.keys(props);
+
+      items.forEach(function(item) {
+        var itemMatches = false;
+
+        for (var i = 0; i < keys.length; i++) {
+          var prop = keys[i];
+          var text = props[prop].toLowerCase();
+          if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+            itemMatches = true;
+            break;
+          }
+        }
+
+        if (itemMatches) {
+          out.push(item);
+        }
+      });
+    } else {
+      // Let the output be the input untouched
+      out = items;
+    }
+
+    return out;
+  };
 });
 /* Setup Layout Part - Header */
 WebposApp.controller('HeaderController', ['$scope', function($scope) {
@@ -141,7 +173,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/controllers/StockroomController.js',
                             'js/controllers/InventoryController.js',
                             'js/controllers/TransactionController.js',
-                            'js/controllers/ProductController.js',
+                            'js/controllers/ProductController.js'
                         ]
                     });
                 }]

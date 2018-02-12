@@ -130,7 +130,7 @@ angular.module('WebposApp').directive("fileread", [function () {
                     product_description: $scope.edit_product_description || "Chưa có mô tả nào",
                     product_min_quantity: parseInt($scope.edit_product_min_quantity || 0),
                     product_max_quantity: parseInt($scope.edit_product_max_quantity || 0),
-                    product_tags: $scope.product_tags || "",
+                    product_tags: $scope.edit_product_tags || "",
                     product_img: $scope.product_img
                 }
             };
@@ -150,6 +150,7 @@ angular.module('WebposApp').directive("fileread", [function () {
         $scope.edit_product_description = result.product_description;
         $scope.edit_product_min_quantity = result.product_min_quantity;
         $scope.edit_product_max_quantity = result.product_max_quantity;
+        $scope.edit_product_img = result.product_img;
     }
 
     $scope.delProduct = function(id){

@@ -13,7 +13,7 @@
               <a href="#" data-toggle="tab" data-target="#tab-2" aria-expanded="false">Kho Hàng</a>
             </li>
             <li class="">
-              <a href="#" data-toggle="tab" data-target="#tab-3" aria-expanded="false">Giao dịch</a>
+              <a href="#" data-toggle="tab" data-target="#tab-3" aria-expanded="false">Nhập hàng</a>
             </li>
           </ul>
           <div class="tab-content">
@@ -114,6 +114,7 @@
                           {{ pro.product_description }}
                         </div>
                       </div>
+                      <!--
                       <div class="row static-info product-tag">
                         <div class="col-md-4 name">
                           Tags:
@@ -122,6 +123,7 @@
                           {{ pro.product_tag }}
                         </div>
                       </div>
+                      -->
                       <hr class="hr-bottom">
                       <div class="row">
                         <div class="col-md-4">
@@ -192,17 +194,19 @@
                                 </div>
                               </div>
                               <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group margin-top-15">
                                   <label>Giá nhập
                                     <span class="required" aria-required="true">*</span>
                                   </label>
                                   <input type="number" class="form-control input-large" ng-model="product_cost" required>
                                 </div>
+                                <!--
                                 <div class="form-group">
                                   <label>Tags
                                   </label>
                                   <input type="text" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
                                 </div>
+                                -->
                                 <div class="form-group">
                                   <label>Mô tả</label>
                                   <textarea class="form-control" rows="3" ng-model="product_description"></textarea>
@@ -270,17 +274,17 @@
                                   <label>Số Kho Hàng
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="number" required="" class="form-control input-large" ng-model="edit_product_stock_number">
+                                  <input type="number" class="form-control input-large" ng-model="edit_product_stock_number" disabled="" required>
                                 </div>
                                 <div class="form-group">
                                   <label>Tên sản phẩm
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" ng-model="edit_product_name">
+                                  <input type="text" class="form-control input-large" ng-model="edit_product_name" required>
                                 </div>
                                 <div class="form-group">
-                                  <label>Giá bán lẻ</label>
-                                  <input type="number" class="form-control input-large" ng-model="edit_product_retail_price">
+                                  <label>Giá bán lẻ<span class="required" aria-required="true">*</span></label>
+                                  <input type="number" class="form-control input-large" ng-model="edit_product_retail_price" required>
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -288,31 +292,35 @@
                                   <label>Giá
                                     <span class="required" aria-required="true">*</span>
                                   </label>
-                                  <input type="text" class="form-control input-large" ng-model="edit_product_cost">
+                                  <input type="text" class="form-control input-large" ng-model="edit_product_cost" required>
                                 </div>
+                                <!--
                                 <div class="form-group">
                                   <label>Tags
                                   </label>
-                                  <input type="text" required="" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
+                                  <input type="text" class="form-control input-large" placeholder="Tag theo dạng abc,cde" ng-model="product_tags">
                                 </div>
+                                -->
                                 <div class="form-group">
                                   <label>Mô tả</label>
                                   <textarea class="form-control" rows="3" ng-model="edit_product_description"></textarea>
                                 </div>
+                                <!--
                                 <div class="row">
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL ít nhất</label>
-                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_min_quantity">
+                                      <input type="text" class="form-control input-small" ng-model="edit_product_min_quantity">
                                     </div>
                                   </div>
                                   <div class="col-xs-6">
                                     <div class="form-group">
                                       <label>SL nhiểu nhất</label>
-                                      <input type="text" required="" class="form-control input-small" ng-model="edit_product_max_quantity">
+                                      <input type="text" class="form-control input-small" ng-model="edit_product_max_quantity">
                                     </div>
                                   </div>
                                 </div>
+                                -->
                               </div>
                             </div>
                           </form>
@@ -323,7 +331,8 @@
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group margin-top-15">
-                                  <label>Ảnh minh họa</label>
+                                  <label>Ảnh minh họa</label><br>
+                                  <img src="{{ edit_product_img }}" style="width: 75px">
                                   <input type="file" fileread="product_img">
                                   <p class="help-block">Tải lên file ảnh nếu muốn thay đổi</p>
                                 </div>
@@ -687,15 +696,7 @@
                     <div class="portlet-body">
                       <form role="form">
                         <div class="row">
-                          <div class="col-lg-3 col-md-6">
-                            <label>Loại:</label>
-                            <select class="form-control input-medium blue" id="select-type">
-                              <option value="all">Tất cả</option>
-                              <option value="regular">SP thường xuyên</option>
-                              <option value="unit">SP Theo Lô</option>
-                            </select>
-                          </div>
-                          <div class="col-lg-2 col-md-2">
+                          <div class="col-lg-3 col-md-3">
                             <label>Từ ngày:</label>
                             <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
                               <input type="text" class="form-control" readonly="" name="datepicker">
@@ -706,7 +707,7 @@
                               </span>
                             </div>
                           </div>
-                          <div class="col-lg-2 col-md-2">
+                          <div class="col-lg-3 col-md-3">
                             <label>Đến ngày:</label>
                             <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
                               <input type="text" class="form-control" readonly="" name="datepicker">
@@ -721,7 +722,7 @@
                             <label style="display: block;">Lọc SP:</label>
                             <button type="button" class="btn btn-danger">Lọc</button>
                           </div>
-                          <div class="col-lg-2 col-lg-offset-1 col-md-12">
+                          <div class="col-lg-2 col-md-12">
                             <label style="display: block;">Thêm giao dịch:</label>
                             <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Thêm giao dịch</button>
                           </div>
@@ -786,18 +787,21 @@
                     </div>
                     <div class="modal-body">
                       <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                          <form role="form">
-                            <label>Chọn loại giao dịch</label>
-                            <select class="form-control input-xlarge" id="type1">
-                              <option value="receive">Nhập về</option>
-                              <option value="return">Trả lại nhà CC</option>
-                              <option value="trs-out">Transfer Out</option>
-                              <option value="adj-in">Adjustment In</option>
-                              <option value="adj-out">Adjustment Out</option>
-                              <option value="phy-count">Physical Count</option>
-                            </select>
-                          </form>
+                        <label class="col-md-3 control-label">With a clear button:</label>
+                        <div class="col-md-6">
+                          <div class="input-group">
+                            <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 300px;" title="Choose a product" on-select="addProductLine(product.selected.product_id)">
+                              <ui-select-match placeholder="Tìm sp theo tên hoặc mã...">Tìm sp theo tên hoặc mã...</ui-select-match>
+                              <ui-select-choices repeat="pro in products"
+                                       refresh="searchProduct($select.search)"
+                                       refresh-delay="0">
+                                <span ng-bind-html="pro.product_id | highlight: $select.search"></span>
+                                -
+                                <span ng-bind-html="pro.product_name | highlight: $select.search"></span>
+                              </ui-select-choices
+                            </ui-select>
+                          </div>
+                        </div>>
                         </div>
                       </div>
                     </div>

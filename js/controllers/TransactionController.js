@@ -25,4 +25,17 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
             // $scope.
         });
     }
+
+    $scope.searchProduct = function(Query){
+        var data = {
+            query : Query
+        };
+        CallApi.callRestApiPost('products/query', data).then(function(data){
+            $scope.products = data.data.data;
+        });
+    }
+
+    $scope.addProductLine = function(productId){
+        console.log(productId);
+    }
 });
