@@ -5,6 +5,7 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         App.initAjax();
         CallApi.callRestApiGet('products').then(function(data){
             $scope.products =data.data.data;
+            Product.setListProductEmpty();
             data.data.data.forEach(function(product) {
                 Product.addProduct(product);
                 Product.setProductSelect(product);

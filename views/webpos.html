@@ -43,17 +43,6 @@
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12">
                                 <a class=" btn btn-default" data-target="#stack1" data-toggle="modal"> Discount All</a>
-                                
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    TOOLS
-                                    <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                    <li>
-                                        <a >Retrieve Layaway</a>
-                                    </li>
-                                    <li><a href="#">Return Items</a></li>
-                                    </ul>
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#draggable">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
@@ -119,11 +108,11 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="mt-overlay-1">
-                                                                    <img src="../assets/pages/img/page_general_search/01.jpg">
+                                                                    <img src="{{ item.product_img }}">
                                                                     <div class="mt-overlay">
                                                                         <ul class="mt-info">
                                                                             <li>
-                                                                                <a class="btn default btn-outline" href="" ng-click="addProductToCart(item)">
+                                                                                <a class="btn default btn-outline" href="" ng-click="addProductToCart(item)"  data-dismiss="modal">
                                                                                     <i class=" glyphicon glyphicon-plus"></i>
                                                                                 </a>
                                                                             </li>
@@ -134,13 +123,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="portlet-title">
-                                                    <div class="caption" style="text-align: center;">
-                                                        <i class=" icon-layers font-green"></i>
-                                                        <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">{{ item.product_type }}</span>
-                                                        <div class="caption-desc font-grey-cascade"> RRRSSS</div>
-                                                        <p style="font-weight: bold">{{ item.product_retail_price }}</p>
+                                                <div class="row">
+                                                    <div class="col-md-12 caption text-center">
+                                                        <div style="font-weight: bold">{{ item.product_name }}</div>
+                                                        <div class="caption-desc font-grey-cascade">{{ item.product_retail_price }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,45 +148,30 @@
                         
                         <div class="portlet-body" style="padding-left: 15px">
                             <div class="table-scrollable">
-                                <table class="table table-striped table-bordered table-advance table-hover" style="text-align: center;">
+                                <table class="table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <i class="fa fa-briefcase"></i> Items </th>
-                                            <th class="hidden-xs">
-                                                <i class="fa fa-user"></i> Quantity </th>
-                                            <th>
-                                                <i class="fa fa-usd"></i>  Price </th>
-                                            <th class="hidden-xs">
-                                                <span>&percnt; &nbsp;   Discount </span></th>
-                                            <th>
-                                                <i class="fa fa-shopping-cart"></i>  Total </th>
-                                            <th></th>
+                                            <th class="col-md-3"><i class="fa fa-briefcase"></i> Items</th>
+                                            <th class="col-md-2"><i class="fa fa-usd"></i> Price </th>
+                                            <th class="col-md-2"><i class="fa fa-user"></i> Quantity</th>
+                                            <th class="col-md-2"><span>&percnt; &nbsp;Discount</span></th>
+                                            <th class="col-md-2"><i class="fa fa-shopping-cart"></i> Total </th>
+                                            <th class="col-md-1"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="cart in carts">
+                                        <tr ng-repeat="cart in carts" class="product-line">
                                             <td class="highlight">
-                                                <div class="success"></div>
-                                                <a href="javascript:;"> {{cart.product_type}} </a>
+                                                {{cart.product_name}} </a>
                                             </td>
-                                            <td class="hidden-xs"> 
-                                                
-                                                <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" ng-click="removeProductFromCart(cart)">-</button>
-                                                    </span>
-                                                    <input ng-model="cart.product_count" type="text" class="form-control" value="{{cart.product_count}}">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" ng-click="addProductToCart(cart)">+</button>
-                                                    
-                                                    </span>
-                                                </div>
-
-                                            </td>
-                                            <td>{{cart.product_retail_price | currency}}</td>
                                             <td>
-                                                <input type="text" name="" ng-model="cart.product_discount">
+                                                <input ng-model="cart.product_retail_price" type="number" class="form-control">
+                                            </td>
+                                            <td>                          
+                                                <input ng-model="cart.product_count" type="number" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" ng-model="cart.product_discount" step="1" min="0" max="100">
                                             </td>
                                             <td> {{ getCost(cart) | currency}} </td>
                                             <td>
