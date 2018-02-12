@@ -117,3 +117,7 @@
     text-align: center;
     padding: 5px;
 }
+
+.product-line td {
+    line-height: 35px ! important;
+}

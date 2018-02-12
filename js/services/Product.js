@@ -19,7 +19,8 @@ angular.module('WebposApp').service('Product', function() {
         'product_on_hand',  
         'product_barcode',
         'product_tag',
-        'product_count'
+        'product_count',
+        'product_discount'
     ];
     /**
      * list product
