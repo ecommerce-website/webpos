@@ -7,36 +7,62 @@
                 <div class="col-md-9 col-sm-12 col-xs-12" style="padding: 0px">
                     <div class="row" style="margin :15px 0px">
                         <div class="col-md-9 col-sm-12 col-xs-12">
-                            <form class="input-group search-form search-form-expanded" action="page_general_search_2.html" method="GET">
-                                <input type="text" class="form-control" placeholder="Scan/search item (name or barcode)" ng-model="searchtxt">
+                            <div class="input-group">
                                 <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="text" id="typeahead_example_2" name="typeahead_example_2" class="form-control" placeholder="Scan/search item (name or barcode)" ng-model="search" ng-keyup="keyUp()"/>
+                                <span class="input-group-addon" data-target="#large" data-toggle="modal">
                                     <i class="glyphicon glyphicon-th"></i>
                                 </span>
-                             </form>
+                            </div>
 
-                        </div >
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <a class=" btn btn-default" data-target="#stack1" data-toggle="modal"> Discount All</a>
+                            <div class=" product_search">
+                                <div class="scroller" style="margin-top: 20px; height: 180px " data-always-visible="1" data-rail-visible="0">
+                                    <div class="mt-element-list">
+                                        <div class="mt-list-container list-simple ext-1" ng-repeat="item in listSearch ">
+                                            <ul>
+                                                <li class="mt-list-item">
+                                                    <div class="list-icon-container">
+                                                        <i class="icon-close"></i>
+                                                    </div>
+                                                    <div class="list-datetime"> {{item.product_stock_number}} </div>
+                                                    <div class="list-item-content">
+                                                        <h3 class="uppercase">
+                                                            <a href="javascript:;">{{ item.product_type }}</a>
+                                                        </h3>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div >
+                            </div>
                             
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                TOOLS
-                                <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                <li>
-                                    <a >Retrieve Layaway</a>
-                                </li>
-                                <li><a href="#">Return Items</a></li>
-                                </ul>
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#draggable">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </button>
                         </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                <a class=" btn btn-default" data-target="#stack1" data-toggle="modal"> Discount All</a>
+                                
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    TOOLS
+                                    <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    <li>
+                                        <a >Retrieve Layaway</a>
+                                    </li>
+                                    <li><a href="#">Return Items</a></li>
+                                    </ul>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#draggable">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
                     </div>
 
                     <!-- modal -->
 
-                    <div class="modal fade draggable-modal" id="draggable" tabindex="-1" role="basic" aria-hidden="true">
+                    <div class="modal fade bs-modal-lg" id="draggable" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -52,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                <!-- end/modal -->
+
                     <div id="stack1" class="modal fade" tabindex="-1" data-width="400">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -65,7 +91,7 @@
                                         <div class="col-md-12">
                                             <h5>Enter discount value</h5>
                                             <p>
-                                                <input type="text" class="col-md-12 form-control" ng-model="tax"> </p>
+                                                <input type="text" class="col-md-12 form-control" ng-model="discountAll"> </p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,38 +103,113 @@
                         </div>
                     </div>
 
-                    <div class="scroller" style="margin-top: 20px; height: 600px " data-always-visible="1" data-rail-visible="0">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="item in products | filter: searchtxt">
-                            <div class="portlet light portlet-fit bordered">
-                                <div class="portlet-body">
-                                    <div class="mt-element-overlay">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="mt-overlay-1">
-                                                    <img src="../assets/pages/img/page_general_search/01.jpg">
-                                                    <div class="mt-overlay">
-                                                        <ul class="mt-info">
-                                                            <li>
-                                                                <a class="btn default btn-outline" href="" ng-click="addProductToCart(item)">
-                                                                    <i class=" glyphicon glyphicon-plus"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                    <div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Modal Title</h4>
+                                </div>
+                                <div class="modal-body row">
+                                    <div class="scroller" style="margin-top: 20px; height: 550px " data-always-visible="1" data-rail-visible="0">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-repeat="item in products">
+                                            <div class="portlet light portlet-fit bordered">
+                                                <div class="portlet-body">
+                                                    <div class="mt-element-overlay">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="mt-overlay-1">
+                                                                    <img src="../assets/pages/img/page_general_search/01.jpg">
+                                                                    <div class="mt-overlay">
+                                                                        <ul class="mt-info">
+                                                                            <li>
+                                                                                <a class="btn default btn-outline" href="" ng-click="addProductToCart(item)">
+                                                                                    <i class=" glyphicon glyphicon-plus"></i>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="portlet-title">
+                                                    <div class="caption" style="text-align: center;">
+                                                        <i class=" icon-layers font-green"></i>
+                                                        <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">{{ item.product_type }}</span>
+                                                        <div class="caption-desc font-grey-cascade"> RRRSSS</div>
+                                                        <p style="font-weight: bold">{{ item.product_retail_price }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="portlet-title">
-                                    <div class="caption" style="text-align: center;">
-                                        <i class=" icon-layers font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase" style="cursor: pointer;">{{ item.product_type }}</span>
-                                        <div class="caption-desc font-grey-cascade"> RRRSSS</div>
-                                        <p style="font-weight: bold">{{ item.product_retail_price }}</p>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                                 </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                <!-- end/modal -->
+
+                    <div class="scroller" style="margin-top: 20px; height: 600px " data-always-visible="1" data-rail-visible="0">
+                        
+                        <div class="portlet-body" style="padding-left: 15px">
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-advance table-hover" style="text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <i class="fa fa-briefcase"></i> Items </th>
+                                            <th class="hidden-xs">
+                                                <i class="fa fa-user"></i> Quantity </th>
+                                            <th>
+                                                <i class="fa fa-usd"></i>  Price </th>
+                                            <th class="hidden-xs">
+                                                <span>&percnt; &nbsp;   Discount </span></th>
+                                            <th>
+                                                <i class="fa fa-shopping-cart"></i>  Total </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="cart in carts">
+                                            <td class="highlight">
+                                                <div class="success"></div>
+                                                <a href="javascript:;"> {{cart.product_type}} </a>
+                                            </td>
+                                            <td class="hidden-xs"> 
+                                                
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" ng-click="removeProductFromCart(cart)">-</button>
+                                                    </span>
+                                                    <input ng-model="cart.product_count" type="text" class="form-control" value="{{cart.product_count}}">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" ng-click="addProductToCart(cart)">+</button>
+                                                    
+                                                    </span>
+                                                </div>
+
+                                            </td>
+                                            <td>{{cart.product_retail_price | currency}}</td>
+                                            <td>
+                                                <input type="text" name="" ng-model="cart.product_discount">
+                                            </td>
+                                            <td> {{ getCost(cart) | currency}} </td>
+                                            <td>
+                                                <a ng-click="removeAllProductFromCart(cart)" class="btn btn-outline btn-circle btn-sm purple">
+                                                    <i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -218,87 +319,33 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="portlet">
-                                        <div class="portlet-title" style="padding: 10px">
-                                            <div class="caption">
-                                                <i class="glyphicon glyphicon-shopping-cart"></i>
-                                                <strong style="font-size: 15px; font-weight: 700">&nbsp; &nbsp; Cart item</strong> 
-                                            </div>
-                                        </div>
-                                        <div class="scroller" style="height: 280px; padding: 0px" data-always-visible="1" data-rail-visible="0">
-                                            <div class="portlet-body">
-                                                <div class="table-scrollable">
-                                                    <table class="table table-striped table-bordered table-advance table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>
-                                                                    <i class="fa fa-briefcase"></i> Items </th>
-                                                                <th class="hidden-xs">
-                                                                    <i class="fa fa-user"></i> Quantity </th>
-                                                                <th>
-                                                                    <i class="fa fa-shopping-cart"></i> Total </th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="cart in carts">
-                                                                <td class="highlight">
-                                                                    <div class="success"></div>
-                                                                    <a href="javascript:;"> {{cart.product_type}} </a>
-                                                                </td>
-                                                                <td class="hidden-xs"> 
-                                                                    
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-btn">
-                                                                            <button class="btn btn-default" type="button" ng-click="removeProductFromCart(cart)">-</button>
-                                                                        </span>
-                                                                        <input ng-model="cart.product_count" type="text" class="form-control" value="{{cart.product_count}}">
-                                                                        <span class="input-group-btn">
-                                                                            <button class="btn btn-default" type="button" ng-click="addProductToCart(cart)">+</button>
-                                                                        
-                                                                        </span>
-                                                                    </div>
-                 
-                                                                </td>
-                                                                <td> {{cart.product_retail_price * cart.product_count | currency}} </td>
-                                                                <td>
-                                                                    <a ng-click="removeAllProductFromCart(cart)" class="btn btn-outline btn-circle btn-sm purple">
-                                                                        <i class="fa fa-trash-o"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row invoice-subtotal">
-                                        <div class="col-xs-4">
-                                            <h2 class="invoice-title uppercase">Subtotal</h2>
-                                            <p class="invoice-desc" >{{subTotal() | currency}}</p>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <h2 class="invoice-title uppercase">Tax (0%)</h2>
-                                            <p class="invoice-desc">{{tax * 100}} %</p>
-                                        </div>
-                                        <div class="col-xs-4">
+                                <!-- <div class="row"> -->
+                                    <div class="invoice-subtotal">
+                                        <div class="row">
                                             <h2 class="invoice-title uppercase">Total</h2>
-                                            <p class="invoice-desc grand-total">{{total() | currency}}</p>
+                                            <p class="invoice-desc grand-total">{{ getTotal() | currency}}</p>
                                         </div>
+                                        <div class="row">
+                                            <h2 class="invoice-title uppercase col-md-6" style="padding-left: 0px">Subtotal</h2>
+                                            <p class="invoice-desc col-md-6" >{{subTotal() | currency}}</p>
+                                        </div>
+                                        <div class="row">
+                                            <h2 class="invoice-title uppercase col-md-6" style="padding-left: 0px">Giảm giá: </h2>
+                                            <p class="invoice-desc col-md-6">{{getDiscount() | currency }} </p>
+                                        </div>
+                                        
                                     </div>
 
                                     <div id="right_bar_buttons">
                                         <center>
                                             <hr>
                                             <div id="normal_buttons">
-                                                <a id="green_button" class="btn btn-default btn-md checkout"> CHECKOUT </a></strong><br><br>
+                                                <a id="green_button" class="btn btn-default btn-md checkout" ng-click="updateStock()" onclick=""> CHECKOUT </a></strong><br><br>
                                                 <a href="#" id="grey_button"  class="btn btn-default btn-md layaway_menu" onclick="showCheckout( event, 'L' );"> LAYAWAY </a></strong><br><br>
                                             </div>
                                         </center>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -361,7 +408,7 @@
             </div>
         
             <div id="main_trans_2" style="display: none;">
-                <div id="checkout_summary" class="col-md-3 col-sm-12 col-xs-12">
+                <div id="checkout_summary" class="col-md-4 col-sm-12 col-xs-12">
                     <div id="invoice_summary" class="col-md-12 col-xs-12 col-sm-12" style="padding: 0px;">
                         <div id="payment_summary" style="padding: 15px;">
             
@@ -369,7 +416,7 @@
                                 <div id="total_label">
                                     <small> <div id="orange_text"> TOTAL </div> </small>
                                 </div>
-                                <div id="invoice_total_summary">{{total() | currency }}</div> <br>
+                                <div id="invoice_total_summary">{{ getTotal() | currency}}</div> <br>
                             </div>
                             <div class="col-md-2 text-right">
                                 <a id="show_payment_details" class="toggle-class" href="#invoice_payment_details" data-toggle="collapse" aria-expanded="true"><span class="chevron glyphicon"></span></a>
@@ -389,18 +436,20 @@
 
                         <div id="invoice_lines_summary">
                             <div class="scroller" style="height: 300px; padding: 0px" data-always-visible="1" data-rail-visible="0">
-                                <div class="portlet-body">
+
+                                <div class="portlet-body" style="padding-left: 15px">
                                     <div class="table-scrollable">
-                                        <table class="table table-striped table-bordered table-advance table-hover">
+                                        <table class="table table-striped table-bordered table-advance table-hover" style="text-align: center;">
                                             <thead>
                                                 <tr>
                                                     <th>
                                                         <i class="fa fa-briefcase"></i> Items </th>
                                                     <th class="hidden-xs">
                                                         <i class="fa fa-user"></i> Quantity </th>
+                                                    <th class="hidden-xs">
+                                                        <span>&percnt; &nbsp;   Discount </span></th>
                                                     <th>
-                                                        <i class="fa fa-shopping-cart"></i> Total 
-                                                    </th>
+                                                        <i class="fa fa-shopping-cart"></i>  Total </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -412,7 +461,11 @@
                                                     <td class="hidden-xs"> 
                                                         {{cart.product_count}}
                                                     </td>
-                                                    <td> {{cart.product_retail_price * cart.product_count | currency}} </td>
+                                                    <td>
+                                                        {{cart.product_discount}}
+                                                    </td>
+                                                    <td> {{ getCost(cart) | currency}} </td>
+                                                    <td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -423,7 +476,7 @@
 
                     </div>
                 </div>
-                <div id="payment_container" class="col-md-9 col-sm-12 col-xs-12">
+                <div id="payment_container" class="col-md-8 col-sm-12 col-xs-12">
                     <div id="payment_wrapper" class="col-md-12 col-xs-12 col-sm-12" style="">
                         <div id="payment_input">
                             <div id="payment_back" class="col-md-3 col-xs-3 col-sm-3" style="padding-top: 20px; color: #FFF;">
@@ -434,7 +487,7 @@
             
                             <div class="col-md-9 col-xs-9 col-sm-9" style="padding-top: 20px; color: #FFF;">
                                 <label>AMOUNT TENDERED</label>
-                                <input id="amount_tendered" type="text" class="big-input text-right" style="color: #000">
+                                <input id="amount_tendered" type="text" class="big-input text-right" style="color: #000" ng-model="amount" value="">
                             </div>
                         </div>
                 
@@ -498,7 +551,7 @@
 
                         <div id="right_buttons" style="padding: 10px;">
                             <hr>
-                            <a  id="payment_button_green" class="btn btn-success btn-outline pull-right" data-target="#full-width" data-toggle="modal"> PAY </a><br><br>
+                            <button  id="payment_button_green" class="btn btn-success btn-outline pull-right" data-toggle="modal" href="#draggable2" ng-click="getInvoice()"> PAY </button><br><br>
                         </div>
             
                         
@@ -521,64 +574,102 @@
                         </div>
                         <!-- /.modal-dialog -->
                     </div>
+                    <!-- end-modal -->
 
-                    <div id="full-width" class="modal fade" role="full-width" tabindex="-1" onload="window.print();">
+                    <div class="modal fade draggable-modal" id="draggable2" tabindex="-1" role="basic" aria-hidden="true" ng-if="getChange() >=0 ">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                     <h4 class="modal-title">TRANSACTION SUMMARY</h4>
                                 </div>
-                                <div class="modal-body" id="in" style="height: 600px">
-                                    <div class="header">
-                                        <div class="logo col-md-4"><img src="http://tuyendungvietnam.com.vn/images/user/2329.jpg"/></div>
-                                        <div class="company col-md-4" >May Boutique</div>
-                                    </div>
-                                    <br/>
-                                    <div class="title">
-                                        HÓA ĐƠN THANH TOÁN
-                                        <br/>
-                                        -------oOo-------
-                                    </div>
-                                    <br/>
-                                    <br/>
-                                    <table class="TableData">
-                                        <tr>
-                                          <th>STT</th>
-                                          <th>Tên</th>
-                                          <th>Đơn giá</th>
-                                          <th>Số</th>
-                                          <th>Thành tiền</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>vay</td>
-                                            <td>169000</td>
-                                            <td>5</td>
-                                            <td>6000000</td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan="4" class="tong">Tổng cộng</td>
-                                          <td class="cotSo">1600000</td>
-                                        </tr>
+                                <div class="modal-body">
 
-                                    </table>
-                                    <br>
-                                    <div class="footer-left"> , ngày 16 tháng 12 năm 2014<br/>
-                                        Khách hàng 
+                                    <div id="invoice">
+                                        <div class="row invoice-logo">
+                                            <div class="col-xs-6 invoice-logo-space">
+                                                <img src="../assets/pages/media/invoice/walmart.png" class="img-responsive" alt="" /> </div>
+                                            <div class="col-xs-6">
+                                                <p> #5652256 / 28 Feb 2013
+                                                    <span class="muted"> Consectetuer adipiscing elit </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <hr/>
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="portlet-body">
+                                                    <div class="table-scrollable">
+                                                        <table class="table table-striped table-bordered table-advance table-hover" style="text-align: center;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        <i class="fa fa-briefcase"></i> Items </th>
+                                                                    <th class="hidden-xs">
+                                                                        <i class="fa fa-user"></i> Quantity </th>
+                                                                    <th class="hidden-xs">
+                                                                        <span>&percnt; &nbsp;   Discount </span>
+                                                                    </th>
+                                                                    <th>
+                                                                        <i class="fa fa-shopping-cart"></i>  Total 
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="cart in carts">
+                                                                    <td class="highlight">
+                                                                        <div class="success"></div>
+                                                                        <a href="javascript:;"> {{cart.product_type}} </a>
+                                                                    </td>
+                                                                    <td class="hidden-xs"> 
+                                                                        {{cart.product_count}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{cart.product_discount}}
+                                                                    </td>
+                                                                    <td> {{ getCost(cart) | currency}} </td>
+                                                                    <td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-xs-4 invoice-block pull-right total">
+                                                <ul class="list-unstyled amounts">
+                                                    <li>
+                                                        <strong>Sub - Total amount:&nbsp; &nbsp;  {{subTotal() | currency}}</strong></li>
+                                                    <li>
+                                                        <strong>Grand Total:&nbsp; &nbsp;  {{getTotal() | currency}}</strong></li>
+                                                    <li ng-if="discountAll != 0">
+                                                        <strong>Discount:&nbsp; &nbsp;  {{discountAll | currency}} %</strong> </li>
+                                                    <li ng-if="discountAll == 0">
+                                                        <strong>Giảm giá:&nbsp; &nbsp;  {{getDiscount() | currency}}</strong>  </li>
+                                                    
+                                                    <li>
+                                                        <strong>Khách trả:&nbsp; &nbsp; {{amount | currency}}</strong></li>
+                                                    <li>
+                                                        <strong>Dư trả lại:&nbsp; &nbsp; {{getChange() | currency}}</strong></li>
+                                                </ul>
+                                                <br/>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="footer-right"> , ngày 16 tháng 12 năm 2014<br/>
-                                        Nhân viên 
-                                    </div>
+
                                 </div>
-
                                 <div class="modal-footer">
-                                    <button type="button" id="print" class="btn green">Save</button>
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn green" ng-click="backUpStore(); saveInvoice(); printDiv(invoice)" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
+                            <!-- /.modal-content -->
                         </div>
+                        <!-- /.modal-dialog -->
                     </div>
-                    <!-- end-modal -->
                 </div>
             </div>
         <!-- </div> -->
@@ -586,5 +677,4 @@
     </div>
 </div>
 
-</div>
 <!-- END MAIN CONTENT

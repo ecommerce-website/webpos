@@ -6,7 +6,7 @@ angular.module('WebposApp').service('Product', function() {
         'product_id',
         'product_type',
         'product_active',
-        'product_stock',
+        'product_stock_number',
         'product_name',
         'product_cost',
         'product_retail_price',
@@ -18,7 +18,8 @@ angular.module('WebposApp').service('Product', function() {
         'product_unit_quantity',
         'product_barcode',
         'product_tag',
-        'product_count'
+        'product_count',
+        'product_discount'
     ];
     /**
      * list product

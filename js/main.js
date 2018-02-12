@@ -5,6 +5,37 @@ var WebposApp = angular.module("WebposApp", [
     "oc.lazyLoad",
     "ngSanitize"
 ]);
+
+angular.module('WebposApp').filter('propsFilter', function() {
+    return function(items, props) {
+        var out = [];
+
+        if (angular.isArray(items)) {
+            items.forEach(function(item) {
+                var itemMatches = false;
+
+                var keys = Object.keys(props);
+                for (var i = 0; i < keys.length; i++) {
+                    var prop = keys[i];
+                    var text = props[prop].toLowerCase();
+                    if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                        itemMatches = true;
+                        break;
+                    }
+                }
+
+                if (itemMatches) {
+                    out.push(item);
+                }
+            });
+        } else {
+            // Let the output be the input untouched
+            out = items;
+        }
+
+        return out;
+    };
+});
 // Handle global LINK click
 WebposApp.directive('a', function() {
     return {
@@ -91,10 +122,12 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'assets/global/plugins/morris/morris.css',
+
                             'assets/global/plugins/morris/morris.min.js',
                             'assets/global/plugins/morris/raphael-min.js',
                             'assets/global/plugins/jquery.sparkline.min.js',
                             'assets/pages/scripts/dashboard.min.js',
+                            'js/print.js',
                             'js/services/Product.js',
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
