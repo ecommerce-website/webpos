@@ -172,7 +172,7 @@ WebposApp.controller('FooterController', ['$scope', function($scope) {
 
 WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard.html");
+    $urlRouterProvider.otherwise("/webpos.html");
 
     $stateProvider
     // Dashboard

@@ -8,7 +8,6 @@
 	border-top: 1px solid #eee;
 }
 .barcode{
-	height: 72px;
 	padding: 10px;
 	text-align: center;
 	display: inline-block;
@@ -19,12 +18,21 @@
 	margin-top: 15px;
 	margin-bottom: 0;
 }
+..product-box {
+	position: relative;
+}
 .product-box .product-img .name img{
 	width: 100px;
 }
-.product-box .product-img .value{
+.product-box .product-img .value {
+	height: 100px;
+}
+.product-box .product-img .value .text{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	font-size: 20px;
-	line-height: 100px;
 }
 .product-line td, .transaction-line td {
 	line-height: 35px !important;

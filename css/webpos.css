@@ -121,3 +121,6 @@
 .product-line td {
     line-height: 35px ! important;
 }
+.item_line {
+    display: inline-table;
+}

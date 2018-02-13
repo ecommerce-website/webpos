@@ -3,7 +3,7 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
-
+        Transaction.setListTransactionEmpty();
         transcations.forEach(function(transaction){
             Transaction.addTransaction(transaction);
             Transaction.setTransactionSelect(transaction);
@@ -13,6 +13,7 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
 
     CallApi.callRestApiGet('transactions').then(function(data){
         $scope.transactions = data.data.data;
+        Transaction.setListTransactionEmpty();
         data.data.data.forEach(function(transaction){
             Transaction.addTransaction(transaction);
             Transaction.setTransactionSelect(transaction);
@@ -67,7 +68,22 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
                 transaction_product: $scope.addProduct
             }
         };
-        console.log(JSON.stringify(transaction));
+        // console.log(JSON.stringify(transaction));
+        CallApi.callRestApiPost('transactions/store', transaction).then(function(data){
+            if(data['status'] == 200){
+                CallApi.callRestApiGet('transactions').then(function(data){
+                    $scope.transactions = data.data.data;
+                    Transaction.setListTransactionEmpty();
+                    data.data.data.forEach(function(transaction){
+                        Transaction.addTransaction(transaction);
+                        Transaction.setTransactionSelect(transaction);
+                    });
+                });
+                console.log('Nhập hàng thành công');
+            } else {
+                console.log('Nhập hàng thất bại');
+            }
+        });
     }
 
     $scope.detailTransaction = function(transactionId){

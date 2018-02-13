@@ -39,6 +39,7 @@ angular.module('WebposApp').directive("fileread", [function () {
 
         $scope.products = Product.listProduct;
     });
+    $scope.printCount = 0;
 
     $scope.resetPopup = function(){
         $scope.product_stock_number = 1;
@@ -104,7 +105,7 @@ angular.module('WebposApp').directive("fileread", [function () {
                     product_img: $scope.product_img
                 }
             };
-            console.log(JSON.stringify(product));
+            // console.log(JSON.stringify(product));
         CallApi.callRestApiPost('products/store',product).then(function(data){
             if(data['status'] == 200){
                 $scope.changeRestPage('products?page=1');
@@ -116,9 +117,13 @@ angular.module('WebposApp').directive("fileread", [function () {
         });
     }
     $scope.showPro = function(id){
+        $scope.product_selected = Product.getProduct(id);
+        Product.setProductSelect($scope.product_selected);
+    }
+    $scope.showHistoryPro = function(id){
         CallApi.callRestApiGet('products/show/' + id).then(function(data){
             $scope.product_detail = data.data;
-            $scope.barcode = data.data.barcodes;
+            // console.log(JSON.stringify(data.data));
         });
     }
     $scope.updateProduct = function(id){
@@ -184,5 +189,17 @@ angular.module('WebposApp').directive("fileread", [function () {
 
             $scope.products = Product.listProduct;
         });
+    }
+
+    $scope.getNumber = function(num) {
+        return new Array(num);   
+    }
+
+    $scope.print = function(){
+        var innerContents = document.getElementById('print-barcode').innerHTML;
+        var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/printBarcode.css" /></head><body><script type="text/javascript">setTimeout(function () { window.print(); }, 500);window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }</script>' + innerContents + '</body></html>');
+        popupWinindow.document.close();
     }
 });

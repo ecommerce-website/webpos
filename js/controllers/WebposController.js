@@ -22,6 +22,7 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     $scope.bought = 0;
     $scope.invoice_id = 0;
     $scope.invoice_date = 0;
+    $scope.status = 0;
 
     $scope.discountAllProduct = function(){
         for (var i = 0; i < $scope.carts.length; i++) {
@@ -91,9 +92,12 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     }
 // checkout xong thì về lại trang tính toán
     $scope.backUpStore = function () {
-        $scope.emptyCart();
-        $('#main_trans_1').css('display', 'block');
-        $('#main_trans_2').css('display', 'none');
+        if($scope.status == 200){
+            $scope.emptyCart();
+            $('#main_trans_1').css('display', 'block');
+            $('#main_trans_2').css('display', 'none');
+            $scope.status = 0;
+        }
     }
 
 // Tổng tiền trước khi giảm giá của mỗi sản phẩm
@@ -168,7 +172,7 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
                 invoice_products: $scope.carts,
             }
         };
-        console.log(JSON.stringify(qlinvoice));
+        // console.log(JSON.stringify(qlinvoice));
         CallApi.callRestApiPost('insert',qlinvoice).then(function(data){
             if(data['status'] == 200){
                 $scope.invoice_id = data.data.invoice_id;
@@ -177,6 +181,7 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
             } else {
                 console.log('Lưu hóa đơn thất bại');
             }
+            $scope.status = 200;
         });
     }
 

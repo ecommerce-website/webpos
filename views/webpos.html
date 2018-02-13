@@ -18,7 +18,7 @@
                                         <ui-select-choices repeat="pro in products"
                                                  refresh="searchProduct($select.search)"
                                                  refresh-delay="0">
-                                          <span ng-bind-html="pro.barcode_name | highlight: $select.search"></span>
+                                          <span ng-bind-html="pro.product_barcode_name | highlight: $select.search"></span>
                                           -
                                           <span ng-bind-html="pro.product_name | highlight: $select.search"></span>
                                         </ui-select-choices
@@ -503,9 +503,13 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="backUpStore()"></button>
-                                    <h4 class="modal-title">Giao dịch thành công</h4>
+                                    <h4 class="modal-title">
+                                        <div ng-if="status == 200">Giao dịch thành công</div>
+                                        <div ng-if="status == 0">Đang thực hiện giao dịch</div>
+                                        <div ng-if="status != 0 && status != 200">Giao dịch lỗi</div>
+                                    </h4>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" ng-if="status">
                                     <h2>Bạn có muốn in hóa đơn?</h2>
                                     <div id="print-invoice" style="display:none">
                                         <div class="invoice-container">
@@ -528,7 +532,7 @@
                                                     {{cart.product_name}}
                                                 </div>
                                                 <div class="code">
-                                                    {{cart.barcodes[0].barcode_name}}
+                                                    {{cart.product_barcode_name}}
                                                 </div>
                                                 <div class="unit-price">
                                                     {{cart.product_cost | formatPrice}} x {{cart.product_count}}
@@ -584,7 +588,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="backUpStore()">Hủy</button>
-                                    <button type="button" class="btn green" ng-click="print(); backUpStore();"  data-dismiss="modal">In</button>
+                                    <button type="button" class="btn green" ng-click="print(); backUpStore();"  data-dismiss="modal" ng-if="status == 200">In</button>
                                 </div>
                             </div>
                             <!-- /.modal-content -->

@@ -20,7 +20,9 @@ angular.module('WebposApp').service('Product', function() {
         'product_barcode',
         'product_tag',
         'product_count',
-        'product_discount'
+        'product_discount',
+        'product_barcode_name',
+        'product_barcode_img'
     ];
     /**
      * list product

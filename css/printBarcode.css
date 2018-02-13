@@ -1,0 +1,42 @@
+html{
+	width: 105mm;
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: 'Arial';
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+.barcode-box {
+	position: relative;
+	width: 35mm;
+	height: 21mm;
+	text-align: center;
+	float: left;
+}
+.barcode-box .name {
+	margin-top: 3mm;
+	height: 6mm;
+	padding: 0 1mm;
+}
+.barcode-box .name .text{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.barcode-box .code {
+	line-height: 12mm;
+	padding: 1mm;
+}
+.barcode-box .code img{
+	position: relative;
+	width: 30mm;
+	height: 6mm;
+}
+.barcode-box .price {
+	line-height: 3mm;
+}
+.page-break	{ display: block; page-break-before: always; }
