@@ -20,6 +20,8 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     $scope.amount = 0;
 
     $scope.bought = 0;
+    $scope.invoice_id = 0;
+    $scope.invoice_date = 0;
 
     $scope.discountAllProduct = function(){
         for (var i = 0; i < $scope.carts.length; i++) {
@@ -132,14 +134,6 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         return $scope.amount - $scope.getTotal();
     }
 
-// tim kiems
-    $scope.listSearch = [];
-    $scope.keyUp = function (argument) {
-        CallApi.callRestApiGet('products/search?search = '+ $scope.search).then(function(data){
-            $scope.listSearch = data.data.data;
-        });
-    }
-
     $('.checkout').click(function(event) {
         // $("#main_trans_1").addClass('bounceOutRight');
         if ($scope.carts.length>0) {
@@ -154,46 +148,66 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         $('#main_trans_2').css('display', 'none');
     });
 
-    $scope.listId = [];
-    $scope.quantity = [];
-
-
     $scope.getInvoice = function () {
+        $scope.quantity_bought = 0;
+        $scope.total = 0;
         for (var i = 0; i < $scope.carts.length; i++) {
-            $scope.bought += $scope.carts[i].product_count;
-            $scope.listId.push($scope.carts[i].product_id);
-            $scope.quantity[i] = $scope.carts[i].product_count;
+            $scope.quantity_bought += $scope.carts[i].product_count;
+            $scope.total += $scope.carts[i].product_count * $scope.carts[i].product_retail_price * (100-$scope.carts[i].product_discount)/100;
         }
-        // console.log($scope.listId);
     }
 
     $scope.saveInvoice = function () {
-        // console.log($scope.listId);
+        $scope.getInvoice();
         var qlinvoice= {
             qlinvoice: {
                 invoice_user_id : "1",
                 invoice_customer_id : "1",
-                invoice_total: 100,
-                invoice_quantity_bought: $scope.bought,
-                invoice_remark: "hello",
-                invoice_date: "2018-10-20 23:59:59",
-                ql_invoices_product_id: $scope.listId,
-                ql_invoices_quantity_bought: $scope.quantity,
-                ql_invoices_discount: []
+                invoice_total: $scope.total,
+                invoice_quantity_bought: $scope.quantity_bought,
+                invoice_products: $scope.carts,
             }
         };
         console.log(JSON.stringify(qlinvoice));
         CallApi.callRestApiPost('insert',qlinvoice).then(function(data){
-            alert('done');
+            if(data['status'] == 200){
+                $scope.invoice_id = data.data.invoice_id;
+                $scope.invoice_date = data.data.invoice_date;
+                console.log('Lưu hóa đơn thành công');
+            } else {
+                console.log('Lưu hóa đơn thất bại');
+            }
         });
     }
 
+    $scope.searchProduct = function(Query){
+        var data = {
+            query : Query
+        };
+        CallApi.callRestApiPost('products/query', data).then(function(data){
+            $scope.products = data.data.data;
+        });
+    }
+
+    $scope.barcodeScanned = function(barcode) {        
+        var data = {
+            barcode_name : barcode
+        };
+        CallApi.callRestApiPost('products/search', data).then(function(data){
+            if(data['status'] == 200){
+                var item = data.data;
+                $scope.addProductToCart(item);
+            }
+        });
+    }; 
+
     $scope.print = function() {
         var innerContents = document.getElementById('print-invoice').innerHTML;
-        var popupWinindow = window.open('', '_blank', 'width=400,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
         popupWinindow.document.open();
-        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/print.css" /></head><body onload="window.print()">' + innerContents + '</html>');
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/print.css" /></head><body><script type="text/javascript">setTimeout(function () { window.print(); }, 500);window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }</script>' + innerContents + '</body></html>');
         popupWinindow.document.close();
+
     }
     
 

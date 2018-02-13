@@ -1,18 +1,18 @@
-body {
+html{
+	width: 80mm;
+}
+body{
 	font-family: 'Arial';
 	margin: 0;
-	padding: 0;
-}
-.invoice-container {
-	width: 360px;
-	padding: 20px;
+	padding: 0 20px 0 10px;
+	font-size: 13px;
 }
 .invoice-store {
 	position: relative;
 	margin-bottom: 20px;
 }
 .invoice-store .name {
-	font-size: 17px;
+	font-size: 15px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -43,7 +43,7 @@ body {
 
 .invoice-cart{
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 .invoice-cart .code{
 	float:left;
@@ -84,7 +84,7 @@ body {
 }
 .invoice-bill .total, .invoice-bill .amount, .invoice-bill .change{
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 15px;
 }
 .invoice-bill .note{
 	font-size: 13px;
@@ -93,5 +93,7 @@ body {
 
 .invoice-footer {
 	text-align: center;
-	font-size: 17px;
+	font-size: 14px;
 }
+
+.page-break	{ display: block; page-break-before: always; }

@@ -7,16 +7,27 @@
                 <div class="col-md-9 col-sm-12 col-xs-12" style="padding: 0px">
                     <div class="row" style="margin :15px 0px">
                         <div class="col-md-9 col-sm-12 col-xs-12">
+                            <div data-barcode-scanner="barcodeScanned"></div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-search"></i>
                                 </span>
-                                <input type="text" id="typeahead_example_2" name="typeahead_example_2" class="form-control" placeholder="Scan hoặc tìm kiếm sản phẩm (tên hoặc barcode)" ng-model="search" ng-keyup="keyUp()"/>
+                                <div>
+                                    <ui-select ng-model="selectedProduct" theme="bootstrap" style="width: 100%;" title="Choose a product" on-select="addProductToCart(selectedProduct)">
+                                        <ui-select-match placeholder="Scan hoặc tìm kiếm sản phẩm (tên hoặc barcode)">Scan hoặc tìm kiếm sản phẩm (tên hoặc barcode)</ui-select-match>
+                                        <ui-select-choices repeat="pro in products"
+                                                 refresh="searchProduct($select.search)"
+                                                 refresh-delay="0">
+                                          <span ng-bind-html="pro.barcode_name | highlight: $select.search"></span>
+                                          -
+                                          <span ng-bind-html="pro.product_name | highlight: $select.search"></span>
+                                        </ui-select-choices
+                                    </ui-select>
+                                </div>
                                 <span class="input-group-addon" data-target="#large" data-toggle="modal">
                                     <i class="glyphicon glyphicon-th"></i>
                                 </span>
                             </div>
-
                             <div class=" product_search">
                                 <div class="scroller" style="margin-top: 20px; height: 180px " data-always-visible="1" data-rail-visible="0">
                                     <div class="mt-element-list">
@@ -108,7 +119,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="mt-overlay-1">
-                                                                    <img src="{{ item.product_img }}">
+                                                                    <img src="{{item.product_img}}">
                                                                     <div class="mt-overlay">
                                                                         <ul class="mt-info">
                                                                             <li>
@@ -476,6 +487,26 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Hủy</button>
+                                    <button type="button" class="btn green" ng-click="saveInvoice()" data-toggle="modal" href="#printBill" data-dismiss="modal">Lưu</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <div class="modal fade draggable-modal" id="printBill" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="backUpStore()"></button>
+                                    <h4 class="modal-title">Giao dịch thành công</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h2>Bạn có muốn in hóa đơn?</h2>
                                     <div id="print-invoice" style="display:none">
                                         <div class="invoice-container">
                                             <div class="invoice-store">
@@ -487,8 +518,8 @@
                                             <div class="invoice-title">
                                                 <div class="title">Hóa đơn bán lẻ</div>
                                                 <div class="info">
-                                                    <div class="date">15-06-2018 15:38</div>
-                                                    <div class="invoice-id">Mã HĐ: 1</div>
+                                                    <div class="date">{{invoice_date}}</div>
+                                                    <div class="invoice-id">Mã HĐ: {{invoice_id}}</div>
                                                     <div style="clear:both"></div>
                                                 </div>
                                             </div>
@@ -547,17 +578,17 @@
                                             <div class="invoice-footer">
                                                 CẢM ƠN QUÝ KHÁCH VÀ HẸN GẶP LẠI
                                             </div>
+                                            <div class="page-break"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Hủy</button>
-                                    <button type="button" class="btn green" ng-click="backUpStore(); saveInvoice(); print()" data-dismiss="modal">Lưu</button>
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="backUpStore()">Hủy</button>
+                                    <button type="button" class="btn green" ng-click="print(); backUpStore();"  data-dismiss="modal">In</button>
                                 </div>
                             </div>
                             <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
                 </div>
             </div>

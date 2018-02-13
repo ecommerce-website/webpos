@@ -104,6 +104,7 @@ angular.module('WebposApp').directive("fileread", [function () {
                     product_img: $scope.product_img
                 }
             };
+            console.log(JSON.stringify(product));
         CallApi.callRestApiPost('products/store',product).then(function(data){
             if(data['status'] == 200){
                 $scope.changeRestPage('products?page=1');
