@@ -4,7 +4,8 @@ var WebposApp = angular.module("WebposApp", [
     "ui.bootstrap",
     "oc.lazyLoad",
     "ngSanitize",
-    'ui.select'
+    'ui.select',
+    'ngMaterial'
 ]);
 // Handle global LINK click
 WebposApp.directive('a', function() {
@@ -168,6 +169,17 @@ WebposApp.controller('FooterController', ['$scope', function($scope) {
     });
 }]);
 
+WebposApp.run(function($rootScope, $mdToast){
+    $rootScope.showToast = function(type, msg) {
+        var toast = $mdToast.simple()
+                            .content(msg)
+                            .hideDelay(2000)
+                            .position('bottom left')
+                            .theme(type);
+        $mdToast.show(toast);
+    };
+});
+
 
 
 WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -180,7 +192,7 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",
             data: { pageTitle: 'Admin Dashboard Webpos' },
-            controller: "DashboardController",
+            controller: "ToastController",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -191,7 +203,6 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'assets/global/plugins/morris/morris.min.js',
                             'assets/global/plugins/morris/raphael-min.js',
                             'assets/global/plugins/jquery.sparkline.min.js',
-
                             'assets/pages/scripts/dashboard.min.js',
                             'js/controllers/DashboardController.js',
                         ]

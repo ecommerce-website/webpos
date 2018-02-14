@@ -40,6 +40,7 @@ angular.module('WebposApp').directive("fileread", [function () {
         $scope.products = Product.listProduct;
     });
     $scope.printCount = 0;
+    console.log($scope.product_selected);
 
     $scope.resetPopup = function(){
         $scope.product_stock_number = 1;
@@ -110,8 +111,10 @@ angular.module('WebposApp').directive("fileread", [function () {
             if(data['status'] == 200){
                 $scope.changeRestPage('products?page=1');
                 $scope.resetPopup();
+                $rootScope.showToast('success', 'Thêm thành công');
                 console.log("Thêm sp thành công");
             } else {
+                $rootScope.showToast('error', 'Thêm thất bại');
                 console.log("Thêm sp thất bại");
             }
         });
@@ -141,8 +144,15 @@ angular.module('WebposApp').directive("fileread", [function () {
                 }
             };
             CallApi.callRestApiPost('products/edit/'+id,eProduct).then(function(data){
-                editedProduct = data.data.editedProduct;
-                Product.setProduct(editedProduct.product_id, editedProduct);
+                if(data['status'] == 200){
+                    editedProduct = data.data.editedProduct;
+                    Product.setProduct(editedProduct.product_id, editedProduct);
+                    $rootScope.showToast('success', 'Sửa thành công');
+                    console.log("Sửa sp thành công");
+                } else {
+                    $rootScope.showToast('error', 'Sửa thất bại');
+                    console.log("Sửa sp thất bại");
+                }
             });
     }
 
@@ -165,9 +175,11 @@ angular.module('WebposApp').directive("fileread", [function () {
             };
         CallApi.callRestApiPost('products/delete',product).then(function(data){
             if(data['status'] == 200){
-                $scope.changeRestPage('products?page=' + $scope.panigation.current_page);
+                $scope.changeRestPage('products?page=' + $scope.panigation.current_page);    
+                $rootScope.showToast('success', 'Xóa thành công');
                 console.log("Xóa sp thành công");
             } else {
+                $rootScope.showToast('error', 'Xóa thất bại');
                 console.log("Xóa sp thất bại");
             }
         });

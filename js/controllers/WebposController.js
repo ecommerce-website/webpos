@@ -3,6 +3,7 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
+        Layout.init();  
         CallApi.callRestApiGet('products').then(function(data){
             $scope.products =data.data.data;
             Product.setListProductEmpty();
@@ -177,8 +178,10 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
             if(data['status'] == 200){
                 $scope.invoice_id = data.data.invoice_id;
                 $scope.invoice_date = data.data.invoice_date;
+                $rootScope.showToast('success', 'Lưu hóa đơn thành công');
                 console.log('Lưu hóa đơn thành công');
             } else {
+                $rootScope.showToast('error', 'Lưu hóa đơn thất bại');
                 console.log('Lưu hóa đơn thất bại');
             }
             $scope.status = 200;

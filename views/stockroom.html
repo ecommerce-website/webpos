@@ -28,10 +28,10 @@
                           <div class="col-lg-4 col-md-4">
                             <label style="display: block;">Tìm SP: </label>
                             <div class="input-group">
-                              <input type="text" class="form-control" ng-model="searchText" ng-change="searchProduct(searchText)">
-                              <span class="input-group-btn">
-                                <button class="btn red" type="button" ng-click="searchProduct(searchText)">Tìm</button>
+                              <span class="input-group-addon">
+                                  <i class="red fa fa-search"></i>
                               </span>
+                              <input type="text" class="form-control" ng-model="searchText" ng-change="searchProduct(searchText)">
                             </div>
                           </div>
                           <div class="col-xs-offset-1 col-lg-3 col-md-6">
@@ -70,7 +70,7 @@
                     <div class="portlet-body product-box">
                       <div class="row static-info product-img">
                         <div class="col-md-4 name">
-                          <img src="{{ pro.product_img }}">
+                          <img ng-src="{{ pro.product_img }}">
                         </div>
                         <div class="col-md-8 value">
                           <div class="text">{{ pro.product_name }}</div>
@@ -326,7 +326,7 @@
                               <div class="col-md-12">
                                 <div class="form-group margin-top-15">
                                   <label>Ảnh minh họa</label><br>
-                                  <img src="{{ edit_product_img }}" style="width: 75px">
+                                  <img ng-src="{{ edit_product_img }}" style="width: 75px">
                                   <input type="file" fileread="product_img">
                                   <p class="help-block">Tải lên file ảnh nếu muốn thay đổi</p>
                                 </div>
@@ -469,7 +469,7 @@
                     <div class="modal-body">
                       <div class="row text-center">
                         <div>
-                          <img src="data:image/png;base64,{{product_selected.product_barcode_img}}" alt="">
+                          <img ng-src="data:image/png;base64,{{product_selected.product_barcode_img}}" alt="">
                         </div>
                         <h5>{{product_selected.product_barcode_name}}</h5>
                       </div>
@@ -511,7 +511,7 @@
                             </div>
                           </div>
                           <div class="code">
-                            <img src="data:image/png;base64,{{product_selected.product_barcode_img}}" alt="">
+                            <img ng-src="data:image/png;base64,{{product_selected.product_barcode_img}}" alt="">
                           </div>
                           <div class="price">
                             Giá: {{product_selected.product_retail_price | formatPrice}} VND
@@ -951,6 +951,7 @@
                       <button type="button" class="btn green" id="btn-add-trans" ng-disabled="addTransactionForm.$invalid" data-dismiss="modal" ng-click="addTransaction()">
                         Nhập
                       </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
                     </div>
                   </div>
                   <!-- /.modal-content -->

@@ -79,8 +79,10 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
                         Transaction.setTransactionSelect(transaction);
                     });
                 });
+                $rootScope.showToast('success', 'Nhập hàng thành công');
                 console.log('Nhập hàng thành công');
             } else {
+                $rootScope.showToast('error', 'Nhập hàng thất bại');
                 console.log('Nhập hàng thất bại');
             }
         });

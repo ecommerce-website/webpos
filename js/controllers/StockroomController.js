@@ -1,7 +1,7 @@
 angular.module('WebposApp').controller('StockroomController', function($rootScope, $scope, $http, $timeout, $log, Product, CallApi, BuildUrl) {
 
-    $scope.$on('$viewContentLoaded', function() {
-
+    $scope.$on('$viewContentLoaded', function() {    
+        Layout.init();
         // $scope.product_stock_number = 1;
     //     // initialize core components
     //     App.initAjax();
@@ -14,6 +14,7 @@ angular.module('WebposApp').controller('StockroomController', function($rootScop
     //     $log.info(Product);
     //     // $log.info(CallApi.callApiGet("https://api.themoviedb.org/3/movie/popular?api_key=931e54c126cfca6e31b0c905d36d6614&language=en-US&page=1"));
     });
+    Layout.init();
 
     // $scope.list_product = Product.listProduct;
     // $log.info($scope.pro_quantity);
