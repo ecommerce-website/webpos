@@ -40,7 +40,6 @@ angular.module('WebposApp').directive("fileread", [function () {
         $scope.products = Product.listProduct;
     });
     $scope.printCount = 0;
-    console.log($scope.product_selected);
 
     $scope.resetPopup = function(){
         $scope.product_stock_number = 1;
