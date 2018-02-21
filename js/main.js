@@ -269,12 +269,14 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/Product.js',
                             'js/services/Inventory.js',
                             'js/services/Transaction.js',
+                            'js/services/Invoice.js',
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
                             'js/controllers/StockroomController.js',
                             'js/controllers/InventoryController.js',
                             'js/controllers/TransactionController.js',
-                            'js/controllers/ProductController.js'
+                            'js/controllers/ProductController.js',
+                            'js/controllers/InvoiceController.js'
                         ]
                     });
                 }]

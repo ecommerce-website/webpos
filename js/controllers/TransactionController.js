@@ -3,16 +3,11 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
-        Transaction.setListTransactionEmpty();
-        transcations.forEach(function(transaction){
-            Transaction.addTransaction(transaction);
-            Transaction.setTransactionSelect(transaction);
-        });
-        $scope.transcations = Transaction.listTransaction;
     });
 
     CallApi.callRestApiGet('transactions').then(function(data){
         $scope.transactions = data.data.data;
+        $scope.panigation = data.data;
         Transaction.setListTransactionEmpty();
         data.data.data.forEach(function(transaction){
             Transaction.addTransaction(transaction);
@@ -22,6 +17,29 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
     $scope.addProduct = [];
     $scope.totalCost = 0;
 
+    $scope.changePage = function(url){
+        CallApi.callApiGet(url).then(function(data){
+            $scope.transactions = data.data.data;
+            $scope.panigation = data.data;
+            Transaction.setListTransactionEmpty();
+            data.data.data.forEach(function(transaction){
+                Transaction.addTransaction(transaction);
+                Transaction.setTransactionSelect(transaction);
+            });
+        });
+    }
+
+    $scope.changeRestPage = function(url){
+        CallApi.callRestApiGet(url).then(function(data){
+            $scope.transactions = data.data.data;
+            $scope.panigation = data.data;
+            Transaction.setListTransactionEmpty();
+            data.data.data.forEach(function(transaction){
+                Transaction.addTransaction(transaction);
+                Transaction.setTransactionSelect(transaction);
+            });
+        });
+    }
 
     $scope.openPopup = function(productId){
         CallApi.callRestApiGet('transactions').then(function(data){
@@ -73,6 +91,7 @@ angular.module('WebposApp').controller('TransactionController', function($rootSc
             if(data['status'] == 200){
                 CallApi.callRestApiGet('transactions').then(function(data){
                     $scope.transactions = data.data.data;
+                    $scope.panigation = data.data;
                     Transaction.setListTransactionEmpty();
                     data.data.data.forEach(function(transaction){
                         Transaction.addTransaction(transaction);

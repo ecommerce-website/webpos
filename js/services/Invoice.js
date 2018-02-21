@@ -1,6 +1,7 @@
 angular.module('WebposApp').service('Invoice',function(){
 	this.initField= [
 		'invoice_id',
+		'invoice_user_id',
 		'invoice_customer_id',
 		'invoice_total',
 		'invoice_quantity_bought',

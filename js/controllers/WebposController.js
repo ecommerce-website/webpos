@@ -139,16 +139,16 @@ angular.module('WebposApp').controller('WebposController', function($rootScope, 
         return $scope.amount - $scope.getTotal();
     }
 
-    $('.checkout').click(function(event) {
+    $('#green_button').unbind().click(function(event) {
         // $("#main_trans_1").addClass('bounceOutRight');
-        if ($scope.carts.length>0) {
+        if ($scope.carts.length > 0) {
             $('#main_trans_1').css('display', 'none');
             $('#main_trans_2').css('display', 'block');
-        }else{
-            $.notify("Chọn mặt hàng", "error");
+        } else {
+            $rootScope.showToast('error', 'Chưa chọn mặt hàng');
         }
     });
-    $('#payment_back_href').click(function(event) {
+    $('#payment_back_href').unbind().click(function(event) {
         $('#main_trans_1').css('display', 'block');
         $('#main_trans_2').css('display', 'none');
     });

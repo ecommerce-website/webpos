@@ -535,10 +535,10 @@
                                                     {{cart.product_barcode_name}}
                                                 </div>
                                                 <div class="unit-price">
-                                                    {{cart.product_cost | formatPrice}} x {{cart.product_count}}
+                                                    {{cart.product_retail_price | formatPrice}} x {{cart.product_count}}
                                                 </div>
                                                 <div class="total-price">
-                                                    {{cart.product_cost*cart.product_count | formatPrice}}
+                                                    {{cart.product_retail_price*cart.product_count | formatPrice}}
                                                 </div>
                                                 <div style="clear:both"></div>
                                                 <div class="discount-title" ng-if="cart.product_discount > 0">

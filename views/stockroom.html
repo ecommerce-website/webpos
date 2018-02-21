@@ -10,10 +10,10 @@
               <a href="#" data-toggle="tab" data-target="#tab-1" aria-expanded="true">Sản Phẩm</a>
             </li>
             <li class="">
-              <a href="#" data-toggle="tab" data-target="#tab-2" aria-expanded="false">Kho Hàng</a>
+              <a href="#" data-toggle="tab" data-target="#tab-2" aria-expanded="false">Nhập hàng</a>
             </li>
             <li class="">
-              <a href="#" data-toggle="tab" data-target="#tab-3" aria-expanded="false">Nhập hàng</a>
+              <a href="#" data-toggle="tab" data-target="#tab-3" aria-expanded="false">Hóa đơn</a>
             </li>
           </ul>
           <div class="tab-content">
@@ -76,17 +76,9 @@
                           <div class="text">{{ pro.product_name }}</div>
                         </div>
                       </div>
-                      <div class="row static-info product-stock-number">
-                        <div class="col-md-4 name">
-                          Mã số kho:
-                        </div>
-                        <div class="col-md-8 value">
-                          {{ pro.product_stock_number }}
-                        </div>
-                      </div>
                       <div class="row static-info product-retail-price">
                         <div class="col-md-4 name">
-                          Giá:
+                          Giá bán lẻ:
                         </div>
                         <div class="col-md-8 value">
                           {{ pro.product_retail_price | formatPrice }} VND
@@ -121,12 +113,12 @@
                       <hr class="hr-bottom">
                       <div class="row">
                         <div class="col-md-4">
-                          <a data-target="#history" class="btn green btn-md" data-toggle="modal" ng-click="showHistoryPro(pro.product_id)">Lịch sử</a>
+                          <a data-target="#history" class="btn green btn-md" data-toggle="modal" ng-click="showHistoryPro(pro.product_id)">Chi tiết</a>
                         </div>
                         <div class="col-md-4">
                           <a data-target="#barcode" class="btn green btn-md" data-toggle="modal" ng-click="showPro(pro.product_id)">Barcode</a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 text-right">
                           <a data-target="#edit-pro" class="btn green btn-md" data-toggle="modal" ng-click="editPro(pro.product_id)">Sửa</a>
                         </div>
                       </div>
@@ -136,9 +128,9 @@
                 <div class="col-md-12">
                   <div class="btn-toolbar text-center margin-bottom-10">
                       <div class="btn-group" style="float: none;">
-                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)">Trang trước</a>
+                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)" ng-disabled="panigation.prev_page_url == null">Trang trước</a>
                           <button type="diable" class="btn btn-default">{{panigation.current_page}}</button>
-                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)">Trang sau</button>
+                          <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)" ng-disabled="panigation.next_page_url == null">Trang sau</button>
                       </div>
                   </div>
                 </div>
@@ -283,7 +275,7 @@
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>Giá
+                                  <label>Giá nhập
                                     <span class="required" aria-required="true">*</span>
                                   </label>
                                   <input type="text" class="form-control input-large" ng-model="edit_product_cost" required>
@@ -357,7 +349,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h4 class="modal-title">Lịch sử mặt hàng - <span>{{product_detail.product_id}}</span></h4>
+                      <h4 class="modal-title">Chi tiết mặt hàng - <span>{{product_detail.product_id}}</span></h4>
                     </div>
                     <div class="modal-body">
                       <div class="row static-info">
@@ -369,8 +361,20 @@
                         <div class="col-xs-10 value">{{product_detail.product_name}}</div>
                       </div>
                       <div class="row static-info">
-                        <div class="col-xs-2 name">Trong kho</div>
+                        <div class="col-xs-2 name">Giá nhập</div>
+                        <div class="col-xs-10 value">{{product_detail.product_cost | formatPrice}} VND</div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">Giá bán lẻ</div>
+                        <div class="col-xs-10 value">{{product_detail.product_retail_price | formatPrice}} VND</div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">SL trong kho</div>
                         <div class="col-xs-10 value">{{product_detail.product_on_hand}}</div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">Mô tả</div>
+                        <div class="col-xs-10 value">{{product_detail.product_description}}</div>
                       </div>
                       <!-- Tab History -->
                       <div class="tabbable tabbable-line" id="tab-history">
@@ -388,24 +392,22 @@
                               <table class="table">
                                 <thead>
                                   <tr class="row">
-                                    <th class="col-md-1"> Mã </th>
-                                    <th class="col-md-3"> Ngày </th>
-                                    <th class="col-md-2"> Loại </th>
-                                    <th class="col-md-2 text-right"> Đơn giá </th>
-                                    <th class="col-md-1 text-right"> SL </th>
-                                    <th class="col-md-2 text-right"> Tổng </th>
-                                    <th class="col-md-1"></th>
+                                    <th class=""> Mã </th>
+                                    <th class=""> Ngày </th>
+                                    <th class=""> Loại </th>
+                                    <th class="text-right"> Đơn giá </th>
+                                    <th class="text-right"> SL </th>
+                                    <th class="text-right"> Tổng </th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr class="row" ng-repeat="qlinvoice in product_detail.qlinvoices">
-                                    <td class="col-md-1">{{qlinvoice.invoices.invoice_id}}</td>
-                                    <td class="col-md-3">{{qlinvoice.invoices.invoice_date}}</td>
-                                    <td class="col-md-2">{{qlinvoice.invoices.invoice_transaction_type}}</td>
-                                    <td class="col-md-2 text-right">{{qlinvoice.ql_invoices_product_retail_price | formatPrice}}</td>
-                                    <td class="col-md-1 text-right">{{qlinvoice.ql_invoices_quantity_bought}}</td>
-                                    <td class="col-md-2 text-right">{{qlinvoice.ql_invoices_product_retail_price*qlinvoice.ql_invoices_quantity_bought*(100-qlinvoice.ql_invoices_discount)/100 | formatPrice}}</td>
-                                    <td class="col-md-1"><button data-target="#" class="btn green btn-md" data-toggle="modal" disabled>Chi tiết</button></td>
+                                    <td class="">{{qlinvoice.invoices.invoice_id}}</td>
+                                    <td class="">{{qlinvoice.invoices.invoice_date}}</td>
+                                    <td class="">{{qlinvoice.invoices.invoice_transaction_type}}</td>
+                                    <td class="text-right">{{qlinvoice.ql_invoices_product_retail_price | formatPrice}}</td>
+                                    <td class="text-right">{{qlinvoice.ql_invoices_quantity_bought}}</td>
+                                    <td class="text-right">{{qlinvoice.ql_invoices_product_retail_price*qlinvoice.ql_invoices_quantity_bought*(100-qlinvoice.ql_invoices_discount)/100 | formatPrice}}</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -417,24 +419,22 @@
                               <table class="table">
                                 <thead>
                                   <tr class="row">
-                                    <th class="col-md-1"> Mã </th>
-                                    <th class="col-md-3"> Ngày </th>
-                                    <th class="col-md-2"> Loại </th>
-                                    <th class="col-md-2 text-right"> Đơn giá </th>
-                                    <th class="col-md-1 text-right"> SL </th>
-                                    <th class="col-md-2 text-right"> Tổng </th>
-                                    <th class="col-md-1"></th>
+                                    <th class=""> Mã </th>
+                                    <th class=""> Ngày </th>
+                                    <th class=""> Loại </th>
+                                    <th class="text-right"> Đơn giá </th>
+                                    <th class="text-right"> SL </th>
+                                    <th class="text-right"> Tổng </th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr class="row" ng-repeat="qltransaction in product_detail.qltransactions">
-                                    <td class="col-md-1">{{qltransaction.transactions.transaction_id}}</td>
-                                    <td class="col-md-3">{{qltransaction.transactions.transaction_date}}</td>
-                                    <td class="col-md-2">{{qltransaction.transactions.transaction_type}}</td>
-                                    <td class="col-md-2 text-right">{{qltransaction.ql_transactions_cost | formatPrice}}</td>
-                                    <td class="col-md-1 text-right">{{qltransaction.ql_transactions_quantity_bought}}</td>
-                                    <td class="col-md-2 text-right">{{qltransaction.ql_transactions_cost*qltransaction.ql_transactions_quantity_bought | formatPrice}}</td>
-                                    <td class="col-md-1"><button data-target="#" class="btn green btn-md" data-toggle="modal" disabled>Chi tiết</button></td>
+                                    <td class="">{{qltransaction.transactions.transaction_id}}</td>
+                                    <td class="">{{qltransaction.transactions.transaction_date}}</td>
+                                    <td class="">{{qltransaction.transactions.transaction_type}}</td>
+                                    <td class="text-right">{{qltransaction.ql_transactions_cost | formatPrice}}</td>
+                                    <td class="text-right">{{qltransaction.ql_transactions_quantity_bought}}</td>
+                                    <td class="text-right">{{qltransaction.ql_transactions_cost*qltransaction.ql_transactions_quantity_bought | formatPrice}}</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -522,7 +522,7 @@
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer">
-                      <button type="button" class="btn green" ng-click="print()">
+                      <button type="button" class="btn green" ng-click="print()" data-dismiss="modal">
                         <i class="fa fa-print"></i> In
                       </button>
                       <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -535,193 +535,7 @@
               <!-- End modal barcode -->             
             </div>
             <!-- End Tab Pane 1 -->
-            <div class="tab-pane" id="tab-2" ng-controller="InventoryController">
-              <!-- Form -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="portlet light bordered">
-                    <div class="portlet-body">
-                      <form role="form" id="searchInventory">
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-lg-offset-8 col-md-offset-8">
-                            <label style="display: block;">Tìm SP: </label>
-                            <div class="input-group">
-                              <input type="text" name="searchInventory" class="form-control">
-                              <span class="input-group-btn">
-                                <button class="btn red" type="button" ng-click="searchInventory()">Tìm</button>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Form  -->
-              <!-- Table Wrap -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="portlet light bordered">
-                    <div class="portlet-title">
-                      <div class="caption">
-                        <i class="icon-list font-red"></i>
-                        <span class="caption-subject font-red bold uppercase">Danh Sách</span>
-                      </div>
-                      <div class="actions">
-                        <button type="button" class="btn green" id="print-inventor" onclick="printDiv('inventor_list')">
-                          <i class="fa fa-print"></i> In
-                        </button>
-                      </div>
-                    </div>
-
-                    <div class="portlet-body">
-                      <div class="table-scrollable" id="inventor_list">
-                        <table class="table table-hover">
-                          <thead>
-                            <tr>
-                              <th> STT </th>
-                              <th> Mã Kho </th>
-                              <th> Tên SP </th>
-                              <th> Giá bán lẻ </th>
-                              <th> On Hand </th>
-                              <th> Giá TB </th>
-                              <th> Tổng số </th>
-                              <th class="hidden-print">Lịch sử</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr ng-repeat="inventory in inventories">
-                              <td> {{ inventory.product_id }} </td>
-                              <td> {{ inventory.product_stock_number}} </td>
-                              <td> {{inventory.product_name}} </td>
-                              <td>
-                                {{inventory.product_retail_price | formatPrice }}
-                              </td>
-                              <td> {{inventory.product_on_hand}} </td>
-                              <td>
-                                1.0
-                              </td>
-                              <td>
-                                Chua biet
-                              </td>
-                              <td class="hidden-print">
-                                <a data-toggle="modal" data-target="#history1" ng-click="openPopup(inventory.product_id)">Lịch sử</a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <!-- modal history -->
-                      <div class="modal fade bs-modal-lg" id="history1" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                              <h4 class="modal-title">Lịch sử mặt hàng: <span>{{saleProduct.product_name}}</span></h4>
-                            </div>
-                            <div class="modal-body">
-                              <div class="row static-info">
-                                <div class="col-xs-2 name">
-                                  Trong kho:
-                                </div>
-                                <div class="col-xs-2 value">
-                                  {{saleProduct.product_on_hand}}
-                                </div>
-                              </div>
-                              <div class="row static-info">
-                                <div class="col-xs-2 name">
-                                  Mã số kho:
-                                </div>
-                                <div class="col-xs-2 value">
-                                  {{saleProduct.product_stock_number}}
-                                </div>
-                              </div>
-                              <!-- Tab History -->
-                              <div class="tabbable tabbable-line" id="tab-history">
-                                <ul class="nav nav-tabs nav-tabs-lg" style="background: #EEEFEF;">
-                                  <li class="active">
-                                    <a data-target="#sale" data-toggle="tab" aria-expanded="false" onclick="$('#print-history').attr('onclick','printDiv(\'sales_list\')')">Bán</a>
-                                  </li>
-                                  <li class="">
-                                    <a data-target="#import" data-toggle="tab" aria-expanded="true" onclick="$('#print-history').attr('onclick','printDiv(\'trans_list\')')">Nhập</a>
-                                  </li>
-                                </ul>
-                                <div class="tab-content">
-                                  <div class="tab-pane active" id="sale">
-                                    <div class="table-responsive table-hover" id="sales_list">
-                                      <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th>Số Hóa đơn</th>
-                                            <th> Ngày </th>
-                                            <th> Loại giao dịch </th>
-                                            <th> Số lượng </th>
-                                            <th> Tổng tiền </th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr ng-repeat = "product in listSale">
-                                            <td>{{product.invoices.invoice_id}}</td>
-                                            <td>{{product.invoices.invoice_date}}</td>
-                                            <td>{{product.invoices.invoice_transaction_type}}</td>
-                                            <td>{{product.invoices.invoice_quantity_bought}}</td>
-                                            <td>{{product.invoices.invoice_total}}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <!-- End Tab Sale -->
-                                  <div class="tab-pane" id="import">
-                                    <div class="table-responsive table-hover" id="trans_list">
-                                      <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th>Số hóa đơn</th>
-                                            <th> Ngày </th>
-                                            <th> Loại </th>
-                                            <th> Party </th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr ng-repeat="import in nhapProduct">
-                                            <td>{{import.product_id}}</td>
-                                            <td>{{import.transaction_date}}</td>
-                                            <td>{{import.transaction_type}}</td>
-                                            <td>{{import.transaction_related_party}}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <!-- End Tab Import -->
-                                </div>
-                              </div>
-                              <!-- End Tab History -->
-                            </div>
-                            <!-- end modal body -->
-                            <div class="modal-footer">
-                              <button type="button" class="btn green" id="print-history" onclick="printDiv('sales_list')">
-                                <i class="fa fa-print"></i> In
-                              </button>
-                              <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                            </div>
-                          </div>
-                          <!-- end modal content -->
-                        </div>
-                        <!-- end modal dialog -->
-                      </div>
-                      <!-- end modal history  -->
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <!-- End Table Wrap-->
-            </div>
-            <!-- End Tab Pane 2 -->
-            <div class="tab-pane" id="tab-3" ng-controller= "TransactionController">
+            <div class="tab-pane" id="tab-2" ng-controller= "TransactionController">
               <!-- Form -->
               <div class="row">
                 <div class="col-md-12">
@@ -757,7 +571,7 @@
                           </div>
                           <div class="col-lg-2 col-md-12">
                             <label style="display: block;">Nhập đơn hàng:</label>
-                            <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Nhập đơn hàng:</button>
+                            <button type="button" data-toggle="modal" data-target="#add-trans" class="btn green">Nhập đơn hàng</button>
                           </div>
                         </div>
                       </form>
@@ -785,29 +599,38 @@
                         <table class="table table-hover">
                           <thead>
                             <tr>
-                              <th> STT </th>
+                              <th class="text-center"> Mã </th>
                               <th> Ngày </th>
                               <th> Loại giao dịch </th>
                               <th> Nhà cung cấp </th>
                               <th> Tình trạng </th>
                               <th> User </th>
-                              <th></th>
+                              <th class="text-right"></th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr ng-repeat="tran in transactions" class="transaction-line">
-                              <td> {{ tran.transaction_id }} </td>
+                              <td class="text-center"> {{ tran.transaction_id }} </td>
                               <td> {{ tran.transaction_date}} </td>
                               <td> {{ tran.transaction_type}} </td>
                               <td> {{ tran.transaction_supplier}} </td>
                               <td> {{ tran.transaction_status}} </td>
                               <td> {{ tran.transaction_user}}</td>
-                              <td>
+                              <td class="text-right">
                                 <a data-target="#transaction-detail" class="btn green btn-md" data-toggle="modal" ng-click="detailTransaction(tran.transaction_id)">Chi tiết</a>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="btn-toolbar text-center margin-bottom-10">
+                            <div class="btn-group" style="float: none;">
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)" ng-disabled="panigation.prev_page_url == null">Trang trước</a>
+                                <button type="diable" class="btn btn-default">{{panigation.current_page}}</button>
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)" ng-disabled="panigation.next_page_url == null">Trang sau</button>
+                            </div>
+                        </div>
                       </div>
                     </div>
                     <div class="modal fade bs-modal-lg" id="transaction-detail" tabindex="-1" role="dialog" aria-hidden="true">
@@ -959,6 +782,176 @@
                 <!-- /.modal-dialog -->
               </div>
               <!-- End modal add trans -->
+            </div>
+            <!-- End Tab Pane 2 -->
+            <div class="tab-pane" id="tab-3" ng-controller= "InvoiceController">
+              <!-- Form -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-body">
+                      <form role="form">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3">
+                            <label>Từ ngày:</label>
+                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                              <input type="text" class="form-control" readonly="" name="datepicker">
+                              <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                  <i class="fa fa-calendar"></i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3">
+                            <label>Đến ngày:</label>
+                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                              <input type="text" class="form-control" readonly="" name="datepicker">
+                              <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                  <i class="fa fa-calendar"></i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2">
+                            <label style="display: block;">Lọc SP:</label>
+                            <button type="button" class="btn btn-danger">Lọc</button>
+                          </div>
+                          <div class="col-lg-4 col-md-4">
+                            <label style="display: block;">Tìm SP: </label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                  <i class="red fa fa-search"></i>
+                              </span>
+                              <input type="text" class="form-control" ng-model="searchText" ng-change="searchInvoice(searchText)">
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Table Wrap -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        <i class="icon-list font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Danh Sách</span>
+                      </div>
+                      <div class="actions">
+                        <button type="button" class="btn green" id="print-inventor" onclick="" disabled="">
+                          <i class="fa fa-print"></i> In
+                        </button>
+                      </div>
+                    </div>
+                    <div class="portlet-body">
+                      <div class="table-scrollable" id="trans_list">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th class="text-center"> Mã </th>
+                              <th class=""> Ngày </th>
+                              <th class=""> Loại giao dịch </th>
+                              <th class="text-right"> Số lượng</th>
+                              <th class="text-right"> Tổng tiền </th>
+                              <th class="text-right"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="invoice in invoices" class="transaction-line">
+                              <td class="text-center"> {{ invoice.invoice_id }} </td>
+                              <td class=""> {{ invoice.invoice_date}} </td>
+                              <td class=""> {{ invoice.invoice_transaction_type}} </td>
+                              <td class="text-right"> {{ invoice.invoice_quantity_bought}} </td>
+                              <td class="text-right"> {{ invoice.invoice_total | formatPrice}} </td>
+                              <td class="text-right">
+                                <a data-target="#invoice-detail" class="btn green btn-md" data-toggle="modal" ng-click="detailInvoice(invoice.invoice_id)">Chi tiết</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="btn-toolbar text-center margin-bottom-10">
+                            <div class="btn-group" style="float: none;">
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)" ng-disabled="panigation.prev_page_url == null">Trang trước</a>
+                                <button type="diable" class="btn btn-default">{{panigation.current_page}}</button>
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)" ng-disabled="panigation.next_page_url == null">Trang sau</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade bs-modal-lg" id="invoice-detail" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Chi tiết hóa đơn - <span>{{invoice.invoice_id}}</span></h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row static-info">
+                              <div class="col-xs-2 name">
+                                Ngày bán hàng
+                              </div>
+                              <div class="col-xs-10 value">
+                                {{invoice.invoice_date}}
+                              </div>
+                            </div>
+                            <div class="row static-info">
+                              <div class="col-xs-2 name">
+                                Tổng tiền
+                              </div>
+                              <div class="col-xs-10 value">
+                                {{invoice.invoice_total | formatPrice}} VND
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th> Mã </th>
+                                      <th> Sản phẩm </th>
+                                      <th class="text-right"> Giá </th>
+                                      <th class="text-right"> Số lượng </th>
+                                      <th class="text-right"> Khuyến mại </th>
+                                      <th class="text-right"> Tổng tiền </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr ng-repeat = "qlInvoice in invoice.ql_invoices">
+                                      <td>{{qlInvoice.products.product_barcode_name}}</td>
+                                      <td>{{qlInvoice.products.product_name}}</td>
+                                      <td class="text-right">{{qlInvoice.ql_invoices_product_retail_price | formatPrice}}</td>
+                                      <td class="text-right">{{qlInvoice.ql_invoices_quantity_bought}}</td>
+                                      <td class="text-right">{{qlInvoice.ql_invoices_discount}}&percnt;</td>
+                                      <td class="text-right">{{qlInvoice.ql_invoices_product_retail_price*qlInvoice.ql_invoices_quantity_bought*(100-qlInvoice.ql_invoices_discount)/100 | formatPrice}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end modal body -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn green" id="print-history" onclick="" disabled="">
+                              <i class="fa fa-print"></i> In
+                            </button>
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                          </div>
+                        </div>
+                        <!-- end modal content -->
+                      </div>
+                      <!-- end modal dialog -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Table Wrap -->
             </div>
             <!-- End Tab Pane 3 -->
           </div>

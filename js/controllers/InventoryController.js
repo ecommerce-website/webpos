@@ -3,27 +3,42 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
     $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
-
-
-        inventories.forEach(function(inventory) {
-            Inventory.addInventory(inventory);
-            Inventory.setInventorySelect(inventory);
-        });
-
-
-        // $log.info(Inventory); 
-        $scope.inventories = Inventory.listInventory;
-        // console.log($scope.invoice);
-
     });
 
     CallApi.callRestApiGet('inventories').then(function(data){
         $scope.inventories = data.data.data;
+        $scope.panigation = data.data;
+        Inventory.setListInventoryEmpty();
         data.data.data.forEach(function(inventory) {
             Inventory.addInventory(inventory);
             Inventory.setInventorySelect(inventory);
         });
     });
+
+
+    $scope.changePage = function(url){
+        CallApi.callApiGet(url).then(function(data){
+            $scope.inventories = data.data.data;
+            $scope.panigation = data.data;
+            Inventory.setListInventoryEmpty();
+            data.data.data.forEach(function(inventory) {
+                Inventory.addInventory(inventory);
+                Inventory.setInventorySelect(inventory);
+            });
+        });
+    }
+
+    $scope.changeRestPage = function(url){
+        CallApi.callRestApiGet(url).then(function(data){
+            $scope.inventories = data.data.data;
+            $scope.panigation = data.data;
+            Inventory.setListInventoryEmpty();
+            data.data.data.forEach(function(inventory) {
+                Inventory.addInventory(inventory);
+                Inventory.setInventorySelect(inventory);
+            });
+        });
+    }
 
     $scope.openPopup = function(productId){
         var api1 = 'products/sales/' + productId;
@@ -46,6 +61,12 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
         console.log(text);
         CallApi.callRestApiGet("inventories/filter?product_name=" + text).then(function(data){
             $scope.inventories = data.data.data;
+            $scope.panigation = data.data;
+            Inventory.setListInventoryEmpty();
+            data.data.data.forEach(function(inventory) {
+                Inventory.addInventory(inventory);
+                Inventory.setInventorySelect(inventory);
+            });
         });
     };
 });
