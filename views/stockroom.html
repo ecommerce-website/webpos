@@ -15,6 +15,9 @@
             <li class="">
               <a href="#" data-toggle="tab" data-target="#tab-3" aria-expanded="false">Hóa đơn</a>
             </li>
+            <li class="">
+              <a href="#" data-toggle="tab" data-target="#tab-4" aria-expanded="false">Kho hàng</a>
+            </li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-1" ng-controller="ProductController">
@@ -819,7 +822,7 @@
                             <button type="button" class="btn btn-danger">Lọc</button>
                           </div>
                           <div class="col-lg-4 col-md-4">
-                            <label style="display: block;">Tìm SP: </label>
+                            <label style="display: block;">Tìm mã hóa đơn: </label>
                             <div class="input-group">
                               <span class="input-group-addon">
                                   <i class="red fa fa-search"></i>
@@ -954,6 +957,118 @@
               <!-- End Table Wrap -->
             </div>
             <!-- End Tab Pane 3 -->
+            <div class="tab-pane" id="tab-4" ng-controller= "InventoryController">
+              <!-- Form -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-body">
+                      <form role="form">
+                        <div class="row">
+                          <div class="col-lg-8 col-md-8">
+                          </div>
+                          <div class="col-lg-4 col-md-4">
+                            <label style="display: block;">Tìm sản phẩm: </label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                  <i class="red fa fa-search"></i>
+                              </span>
+                              <input type="text" class="form-control" ng-model="searchText" ng-change="searchInventory(searchText)">
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Table Wrap -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet light bordered">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        <i class="icon-list font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Danh Sách</span>
+                      </div>
+                      <div class="actions">
+                        <button type="button" class="btn green" id="print-inventor" ng-click="print('print_product_list', true)">
+                          <i class="fa fa-print"></i> In tất cả
+                        </button>
+                        <button type="button" class="btn green" id="print-inventor" ng-click="print('print_product_list', false)">
+                          <i class="fa fa-print"></i> In trang
+                        </button>
+                      </div>
+                    </div>
+                    <div class="portlet-body">
+                      <div class="table-scrollable" id="product_list">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th class=""> Mã </th>
+                              <th class=""> Tên sản phẩm </th>
+                              <th class="text-right"> Giá nhập </th>
+                              <th class="text-right"> Giá bán </th>
+                              <th class="text-right"> Số lượng </th>
+                              <th class="text-right"> Giá TB </th>
+                              <th class="text-right"> Giá trị kho </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="product in inventories" class="transaction-line">
+                              <td class=""> {{ product.product_barcode_name }} </td>
+                              <td class=""> {{ product.product_name}} </td>
+                              <td class="text-right"> {{ product.product_cost | formatPrice}} </td>
+                              <td class="text-right"> {{ product.product_retail_price | formatPrice}} </td>
+                              <td class="text-right"> {{ product.product_on_hand}} </td>
+                              <td class="text-right"> {{ product.average_cost | formatPrice}} </td>
+                              <td class="text-right"> {{ product.remain_value | formatPrice}} </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-scrollable" id="print_product_list" style="display: none;">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th class=""> Mã </th>
+                              <th class=""> Tên sản phẩm </th>
+                              <th class="text-right"> Giá nhập </th>
+                              <th class="text-right"> Giá bán </th>
+                              <th class="text-right"> Số lượng </th>
+                              <th class="text-right"> Giá nhập TB </th>
+                              <th class="text-right"> Giá trị kho </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="product in print_inventories" class="transaction-line">
+                              <td class=""> {{ product.product_barcode_name }} </td>
+                              <td class=""> {{ product.product_name}} </td>
+                              <td class="text-right"> {{ product.product_cost | formatPrice}} </td>
+                              <td class="text-right"> {{ product.product_retail_price | formatPrice}} </td>
+                              <td class="text-right"> {{ product.product_on_hand}} </td>
+                              <td class="text-right"> {{ product.average_cost | formatPrice}} </td>
+                              <td class="text-right"> {{ product.remain_value | formatPrice}} </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="btn-toolbar text-center margin-bottom-10">
+                            <div class="btn-group" style="float: none;">
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.prev_page_url)" ng-disabled="panigation.prev_page_url == null">Trang trước</a>
+                                <button type="diable" class="btn btn-default">{{panigation.current_page}}</button>
+                                <button type="button" class="btn btn-default" ng-click="changePage(panigation.next_page_url)" ng-disabled="panigation.next_page_url == null">Trang sau</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Table Wrap -->
+            </div>
+            <!-- End Tab Pane 4 -->
           </div>
           <!-- End Main Tab Content -->
         </div>

@@ -15,6 +15,10 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
         });
     });
 
+    CallApi.callRestApiGet('inventories?all=true').then(function(data){
+        $scope.inventories_all = data.data;
+    });
+
 
     $scope.changePage = function(url){
         CallApi.callApiGet(url).then(function(data){
@@ -56,10 +60,11 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
         });
     };
 
-    $scope.searchInventory = function(){
-        var text = $('#searchInventory input').val();
-        console.log(text);
-        CallApi.callRestApiGet("inventories/filter?product_name=" + text).then(function(data){
+    $scope.searchInventory = function(Query){
+        var data = {
+            query : Query
+        };
+        CallApi.callRestApiPost('inventories/query', data).then(function(data){
             $scope.inventories = data.data.data;
             $scope.panigation = data.data;
             Inventory.setListInventoryEmpty();
@@ -68,5 +73,30 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
                 Inventory.setInventorySelect(inventory);
             });
         });
-    };
+    }
+
+    $scope.print = function($div, $all){
+        if($all){
+            $scope.print_inventories = $scope.inventories_all; 
+        } else {
+            $scope.print_inventories = $scope.inventories;
+        }
+        setTimeout(function() {
+            $scope.$apply(printDiv($div));
+        }, 1000);
+    }
+
+    $scope.printDiv = function($div) {
+        var innerContents = document.getElementById($div).innerHTML;
+        var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write("<html><head><title> Kho hàng </title>");
+        popupWinindow.document.write('<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>');
+        popupWinindow.document.write("</head><body>");
+        popupWinindow.document.write('<script type="text/javascript">setTimeout(function () { window.print(); }, 500);window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }</script>');
+        popupWinindow.document.write(innerContents);
+        popupWinindow.document.write("</body></html>");
+        popupWinindow.document.close();
+
+    }
 });
