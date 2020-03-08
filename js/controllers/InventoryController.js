@@ -15,10 +15,9 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
         });
     });
 
-    CallApi.callRestApiGet('inventories?all=true').then(function(data){
-        $scope.inventories_all = data.data;
-    });
-
+    // CallApi.callRestApiGet('inventories?all=true').then(function(data){
+    //     $scope.inventories_all = data.data;
+    // });
 
     $scope.changePage = function(url){
         CallApi.callApiGet(url).then(function(data){
@@ -77,7 +76,10 @@ angular.module('WebposApp').controller('InventoryController', function($rootScop
 
     $scope.print = function($div, $all){
         if($all){
-            $scope.print_inventories = $scope.inventories_all; 
+            CallApi.callRestApiGet('inventories?all=true').then(function(data){
+                $scope.inventories_all = data.data;
+                $scope.print_inventories = $scope.inventories_all; 
+            });
         } else {
             $scope.print_inventories = $scope.inventories;
         }

@@ -5,7 +5,8 @@ var WebposApp = angular.module("WebposApp", [
     "oc.lazyLoad",
     "ngSanitize",
     'ui.select',
-    'ngMaterial'
+    'ngMaterial',
+    'chart.js',
 ]);
 // Handle global LINK click
 WebposApp.directive('a', function() {
@@ -273,6 +274,35 @@ WebposApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                             'js/services/BuildUrl.js',
                             'js/services/CallApi.js',
                             'js/controllers/StockroomController.js',
+                            'js/controllers/InventoryController.js',
+                            'js/controllers/TransactionController.js',
+                            'js/controllers/ProductController.js',
+                            'js/controllers/InvoiceController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('statistic', {
+            url: "/statistic.html",
+            templateUrl: "views/statistic.html",
+            data: { pageTitle: 'Statistic' },
+            controller: "StatisticController",
+            resolve:{
+                deps: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load({
+                        name: 'WebposApp',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            'css/statistic.css',
+                            'js/print.js',
+                            'js/services/Product.js',
+                            'js/services/Inventory.js',
+                            'js/services/Transaction.js',
+                            'js/services/Invoice.js',
+                            'js/services/BuildUrl.js',
+                            'js/services/CallApi.js',
+                            'js/controllers/StatisticController.js',
                             'js/controllers/InventoryController.js',
                             'js/controllers/TransactionController.js',
                             'js/controllers/ProductController.js',

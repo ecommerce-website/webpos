@@ -1,0 +1,265 @@
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="StatisticController">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-12">
+        <!-- Statistic Form -->
+        <div class="statistic-form">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="portlet light bordered">
+                <div class="portlet-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12">
+                        <label style="display: block;">Thống kê theo</label>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn green" ng-click="rangeToDay()">Hôm nay</button>
+                          <button type="button" class="btn green" ng-click="rangeYesterday()">Hôm qua</button>
+                          <button type="button" class="btn green-jungle" ng-click="rangeThisWeek()">Tuần này</button>
+                          <button type="button" class="btn green-jungle" ng-click="rangeLastWeek()">1 tuần</button>
+                          <button type="button" class="btn yellow" ng-click="rangeThisMonth()">Tháng này</button>
+                          <button type="button" class="btn yellow" ng-click="rangeLastMonth()">1 tháng</button>
+                          <!-- <button type="button" class="btn red" ng-click="rangeThisYear()">Năm nay</button> -->
+                        </div>
+                      </div>
+                      <div class="col-lg-2 col-md-3">
+                        <label>Từ ngày:</label>
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="startDate"
+                            is-open="popupStart.opened" ng-required="true" close-text="Close" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openStart()"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="col-lg-2 col-md-3">
+                        <label>Đến ngày:</label>
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="endDate"
+                            is-open="popupEnd.opened" ng-required="true" close-text="Close" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openEnd()"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="col-lg-2 col-md-2">
+                        <label style="display: block;">&nbsp;</label>
+                        <button type="button" class="btn btn-danger" ng-click="doStatistic()">Thống kê</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Statistic Form -->
+        <!-- Chart -->
+        <div class="statistic-chart">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="portlet light bordered">
+                <div class="portlet-body">
+                  <hc-chart categories="{{chartCategories}}" series="{{chartSeries}}">Placeholder for generic chart</hc-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Chart -->
+        <!-- Table --> 
+        <div class="row">
+          <div class="col-md-12">
+            <div class="portlet light bordered">
+              <div class="portlet-title">
+                <div class="caption">
+                  <i class="icon-list font-red"></i>
+                  <span class="caption-subject font-red bold uppercase">Danh Sách</span>
+                </div>
+                <div class="actions">
+                  <button type="button" class="btn green" id="print-inventor" onclick="printDiv('detail_list')">
+                    <i class="fa fa-print"></i> In
+                  </button>
+                </div>
+              </div>
+              <div class="portlet-body" id="detail_list">
+                  <div class="row">
+                    <div class="col-md-12 detail_info">
+                      <div class="detail_info_time">Thời gian: <strong class="text-bold">{{displayStartDate}} đến {{displayEndDate}}</strong></div>
+                      <div class="detail_info_income">Tiền bán hàng: <strong class="font-green-jungle">{{incomeValue | formatPrice}} VND</strong></div>
+                      <div class="detail_info_outcome">Tiền nhập hàng: <strong class="font-red">{{outcomeValue | formatPrice}} VND</strong></div>
+                      <div class="detail_info_total">Tổng doanh thu: <strong class="font-blue">{{totalValue | formatPrice}} VND</strong></div>
+                    </div>
+                  </div>
+                <div class="table-scrollable">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th class=""> Ngày </th>
+                        <th class=""> Loại giao dịch </th>
+                        <th class="text-right"> Tổng tiền </th>
+                        <th class="text-right"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="detail in details" class="transaction-line">
+                        <td class=""> {{ detail.created_date}} </td>
+                        <td class=""> {{ detail.type == 'invoice' ? 'Bán lẻ' : 'Nhập hàng' }} </td>
+                        <td class="text-right text-bold {{ detail.type == 'transaction' ? 'font-red' : 'font-green-jungle'}}">
+                          <strong>{{ detail.type == 'transaction' ? '-': '' }}{{detail.money | formatPrice}}</strong>
+                        </td>
+                        <td class="text-right">
+                          <div ng-if="detail.type == 'transaction'">
+                            <a data-target="#transaction-detail" class="btn green btn-md" data-toggle="modal" ng-click="detailTransaction(detail.id)">Chi tiết</a>
+                          </div>
+                          <div ng-if="detail.type == 'invoice'">
+                            <a data-target="#invoice-detail" class="btn green btn-md" data-toggle="modal" ng-click="detailInvoice(detail.id)">Chi tiết</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="modal fade bs-modal-lg" id="invoice-detail" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Chi tiết hóa đơn - <span>{{invoice.invoice_id}}</span></h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Ngày bán hàng
+                        </div>
+                        <div class="col-xs-10 value">
+                          {{invoice.invoice_date}}
+                        </div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Tổng tiền
+                        </div>
+                        <div class="col-xs-10 value">
+                          {{invoice.invoice_total | formatPrice}} VND
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th> Mã </th>
+                                <th> Sản phẩm </th>
+                                <th class="text-right"> Giá </th>
+                                <th class="text-right"> Số lượng </th>
+                                <th class="text-right"> Khuyến mại </th>
+                                <th class="text-right"> Tổng tiền </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat = "qlInvoice in invoice.ql_invoices">
+                                <td>{{qlInvoice.products.product_barcode_name}}</td>
+                                <td>{{qlInvoice.products.product_name}}</td>
+                                <td class="text-right">{{qlInvoice.ql_invoices_product_retail_price | formatPrice}}</td>
+                                <td class="text-right">{{qlInvoice.ql_invoices_quantity_bought}}</td>
+                                <td class="text-right">{{qlInvoice.ql_invoices_discount}}&percnt;</td>
+                                <td class="text-right">{{qlInvoice.ql_invoices_product_retail_price*qlInvoice.ql_invoices_quantity_bought*(100-qlInvoice.ql_invoices_discount)/100 | formatPrice}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" id="print-history" onclick="printDiv('invoice-detail')">
+                        <i class="fa fa-print"></i> In
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+              <div class="modal fade bs-modal-lg" id="transaction-detail" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Chi tiết đơn hàng nhập - <span>{{transaction.transaction_id}}</span></h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Nhà cung cấp
+                        </div>
+                        <div class="col-xs-10 value">
+                          {{transaction.transaction_supplier}}
+                        </div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Ngày nhập hàng
+                        </div>
+                        <div class="col-xs-10 value">
+                          {{transaction.transaction_date}}
+                        </div>
+                      </div>
+                      <div class="row static-info">
+                        <div class="col-xs-2 name">
+                          Tổng tiền
+                        </div>
+                        <div class="col-xs-10 value">
+                          {{transaction.totalCost | formatPrice}} VND
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th> Sản phẩm </th>
+                                <th> Giá nhập </th>
+                                <th> Số lượng </th>
+                                <th> Tổng tiền </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat = "qlTransaction in transaction.qltransactions">
+                                <td>{{qlTransaction.products.product_name}}</td>
+                                <td>{{qlTransaction.ql_transactions_cost | formatPrice}}</td>
+                                <td>{{qlTransaction.ql_transactions_quantity_bought}}</td>
+                                <td>{{qlTransaction.totalCost | formatPrice}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn green" id="print-history" onclick="printDiv('transaction-detail')">
+                        <i class="fa fa-print"></i> In
+                      </button>
+                      <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                    </div>
+                  </div>
+                  <!-- end modal content -->
+                </div>
+                <!-- end modal dialog -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Table -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MAIN CONTENT -->

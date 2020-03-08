@@ -1,0 +1,17 @@
+.statistic-form {
+    margin-top: 15px;
+}
+
+hc-chart {
+    width: 100% !important;
+    display: block;
+    height: 500px;
+}
+
+.highcharts-container {
+    width: 100% !important
+}
+
+.detail_info {
+    font-size: 17px;
+}
